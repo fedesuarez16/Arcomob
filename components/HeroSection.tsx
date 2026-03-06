@@ -48,7 +48,7 @@ export default function HeroSection() {
   }, [])
 
   return (
-    <section className="relative w-full h-[110vh] pt-0 overflow-hidden  rounded-b-[50px]">
+    <section className="relative w-full h-[100vh] sm:h-[110vh] pt-0 overflow-hidden rounded-b-[30px] sm:rounded-b-[50px]">
       {/* Background Images - Carousel */}
       <div className="absolute inset-0 z-0 rounded-b-xl">
         {backgroundImages.map((src, index) => (
@@ -78,13 +78,13 @@ export default function HeroSection() {
       </div>
       
       <div className="relative z-10 h-full flex flex-col">
-        <div className="container mx-auto px-6 lg:px-10 xl:px-16 flex-1 flex flex-col justify-center pb-24">
-          <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-8 xl:gap-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 flex-1 flex flex-col justify-center pb-16 sm:pb-20 lg:pb-24">
+          <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6 lg:gap-8 xl:gap-12">
             
             {/* Left side - Content */}
-            <div className="flex-1 lg:max-w-[58%] space-y-4 lg:space-y-5">
+            <div className="flex-1 lg:max-w-[58%] space-y-3 sm:space-y-4 lg:space-y-5">
               {/* Headline */}
-              <h1 className={`text-3xl sm:text-4xl md:text-5xl lg:text-[3rem] xl:text-[3.4rem] font-bold text-white leading-[1.1] transition-all duration-1000 ease-out ${
+              <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.4rem] font-bold text-white leading-[1.15] sm:leading-[1.1] transition-all duration-1000 ease-out ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
                 Revestimientos que Transforman{' '}
@@ -104,7 +104,7 @@ export default function HeroSection() {
               </h1>
               
               {/* Description */}
-              <p className={`text-base sm:text-lg lg:text-lg text-gray-200 max-w-xl leading-relaxed transition-all duration-1000 ease-out delay-150 ${
+              <p className={`text-sm sm:text-base lg:text-lg text-gray-200 max-w-xl leading-relaxed transition-all duration-1000 ease-out delay-150 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
                 Diseño moderno, instalación rápida y terminaciones premium. 
@@ -112,16 +112,16 @@ export default function HeroSection() {
               </p>
               
               {/* CTA Button */}
-              <div className={`pt-2 transition-all duration-1000 ease-out delay-300 ${
+              <div className={`pt-1 sm:pt-2 transition-all duration-1000 ease-out delay-300 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
                 <Link
                   href="/cotizar"
-                  className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-3 lg:px-8 lg:py-4 rounded-full text-sm lg:text-base font-medium hover:bg-white/20 transition-all duration-300 shadow-lg"
+                  className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 text-white px-5 py-2.5 sm:px-6 sm:py-3 lg:px-8 lg:py-4 rounded-full text-xs sm:text-sm lg:text-base font-medium hover:bg-white/20 transition-all duration-300 shadow-lg"
                 >
                   Solicitar Presupuesto
                   <svg
-                    className="w-4 h-4 lg:w-5 lg:h-5"
+                    className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -133,7 +133,7 @@ export default function HeroSection() {
               </div>
               
               {/* Statistics Cards */}
-              <div className="grid grid-cols-3 gap-3 lg:gap-4 pt-4 lg:pt-6">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3 lg:gap-4 pt-3 sm:pt-4 lg:pt-6">
                 <div className={`transition-all duration-1000 ease-out delay-500 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
@@ -182,37 +182,30 @@ export default function HeroSection() {
       </div>
 
       {/* Logos Section - Bottom */}
-      <div className={`absolute bottom-10 left-0 right-0 z-20 transition-all duration-1000 ease-out delay-1000 ${
+      <div className={`absolute bottom-4 sm:bottom-6 lg:bottom-10 left-0 right-0 z-20 transition-all duration-1000 ease-out delay-1000 ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}>
-        <div className="w-full ">
-          <div className="container mx-auto px-6 lg:px-10 xl:px-16 py-6 lg:py-2">
-            <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-12 xl:gap-16">
-              <div className="text-gray-300 text-xl font-semibold opacity-70 hover:opacity-100 transition-opacity duration-300">
+        <div className="w-full">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-3 sm:py-4 lg:py-6">
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:gap-8 xl:gap-12">
+              <div className="text-gray-300 text-sm sm:text-base lg:text-xl font-semibold opacity-70 hover:opacity-100 transition-opacity duration-300">
                 CNBC
               </div>
-              <div className="text-gray-300 text-lg font-medium opacity-70 hover:opacity-100 transition-opacity duration-300">
+              <div className="text-gray-300 text-xs sm:text-sm lg:text-lg font-medium opacity-70 hover:opacity-100 transition-opacity duration-300">
                 officernd
               </div>
-              <div className="text-gray-300 text-xl font-semibold opacity-70 hover:opacity-100 transition-opacity duration-300">
+              <div className="text-gray-300 text-sm sm:text-base lg:text-xl font-semibold opacity-70 hover:opacity-100 transition-opacity duration-300">
                 ARCONIC
               </div>
-              <div className="text-gray-300 text-xl font-semibold opacity-70 hover:opacity-100 transition-opacity duration-300">
+              <div className="text-gray-300 text-sm sm:text-base lg:text-xl font-semibold opacity-70 hover:opacity-100 transition-opacity duration-300">
                 CNBC
               </div>
-              <div className="text-gray-300 text-lg font-medium opacity-70 hover:opacity-100 transition-opacity duration-300">
+              <div className="text-gray-300 text-xs sm:text-sm lg:text-lg font-medium opacity-70 hover:opacity-100 transition-opacity duration-300">
                 officernd
               </div>
-              <div className="text-gray-300 text-xl font-semibold opacity-70 hover:opacity-100 transition-opacity duration-300">
+              <div className="text-gray-300 text-sm sm:text-base lg:text-xl font-semibold opacity-70 hover:opacity-100 transition-opacity duration-300">
                 ARCONIC
               </div>
-              <div className="text-gray-300 text-xl font-semibold opacity-70 hover:opacity-100 transition-opacity duration-300">
-                CNBC
-              </div>
-              <div className="text-gray-300 text-lg font-medium opacity-70 hover:opacity-100 transition-opacity duration-300">
-                officernd
-              </div>
-              
             </div>
           </div>
         </div>

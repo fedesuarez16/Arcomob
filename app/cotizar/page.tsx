@@ -177,26 +177,26 @@ ${formData.message || 'Sin mensaje adicional'}
       </div>
 
       {/* Main Content - Split Layout */}
-      <div className="flex flex-col lg:flex-row h-[calc(100vh-4rem)]">
+      <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)]">
         {/* Left Section - Content */}
-        <div className="flex-1 bg-white px-6 lg:px-12 xl:px-16 py-8 lg:py-10 flex flex-col justify-center overflow-y-auto">
+        <div className="flex-1 bg-white px-4 sm:px-6 lg:px-12 xl:px-16 py-6 sm:py-8 lg:py-10 flex flex-col justify-center overflow-y-auto">
           <div className="max-w-2xl">
             {/* Headline */}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 mb-4 leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-stone-900 mb-3 sm:mb-4 leading-tight">
               Revestimientos Alistonados para Empresas
             </h1>
             
             {/* Sub-headline */}
-            <p className="text-base lg:text-lg text-stone-600 mb-8 leading-relaxed">
+            <p className="text-sm sm:text-base lg:text-lg text-stone-600 mb-6 sm:mb-8 leading-relaxed">
               Desde startups en crecimiento hasta empresas Fortune 500, ArcoMob potencia proyectos de revestimientos a gran escala con diseño moderno y calidad superior.
             </p>
 
             {/* Testimonial */}
-            <div>
+            <div className="hidden lg:block">
               <div className="text-stone-400 text-xs font-semibold mb-3 uppercase tracking-wider">
                 Cliente Destacado
               </div>
-              <div className="bg-stone-50 rounded-xl p-5 border-l-4 border-stone-900">
+              <div className="bg-stone-50 rounded-xl p-4 sm:p-5 border-l-4 border-stone-900">
                 <p className="text-stone-700 text-sm lg:text-base leading-relaxed italic mb-3">
                   "En nuestro proyecto corporativo, operamos a gran escala con múltiples servicios y plataformas. ArcoMob aprovechó nuestros datos de uso para entregar mejoras medibles, incluyendo menos complicaciones, caminos de resolución más rápidos y flujos de trabajo más eficientes en nuestros equipos."
                 </p>
@@ -215,7 +215,7 @@ ${formData.message || 'Sin mensaje adicional'}
         </div>
 
         {/* Right Section - Form with Background Image */}
-        <div className="flex-1 relative h-full overflow-hidden">
+        <div className="flex-1 relative min-h-[500px] lg:h-full overflow-hidden">
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
@@ -229,15 +229,15 @@ ${formData.message || 'Sin mensaje adicional'}
           </div>
 
           {/* Form Card */}
-          <div className="relative z-10 h-full flex items-center justify-center p-4 lg:p-6 overflow-y-auto">
-            <div className="w-full max-w-2xl bg-white rounded-xl shadow-2xl p-6 lg:p-7">
-              <h2 className="text-xl lg:text-2xl font-bold text-stone-900 mb-5">
+          <div className="relative z-10 h-full flex items-center justify-center p-4 sm:p-5 lg:p-6 overflow-y-auto">
+            <div className="w-full max-w-2xl bg-white rounded-xl shadow-2xl p-5 sm:p-6 lg:p-7">
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-stone-900 mb-4 sm:mb-5">
                 Solicita tu Presupuesto
               </h2>
 
-              <form onSubmit={handleSubmit} className="space-y-3">
+              <form onSubmit={handleSubmit} className="space-y-2.5 sm:space-y-3">
                 {/* First Name and Last Name - Two Columns */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                   <div>
                     <label htmlFor="firstName" className="block text-xs font-medium text-stone-700 mb-1.5">
                       Nombre *
@@ -279,7 +279,7 @@ ${formData.message || 'Sin mensaje adicional'}
                 </div>
 
                 {/* Email and Phone - Two Columns */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                   <div>
                     <label htmlFor="email" className="block text-xs font-medium text-stone-700 mb-1.5">
                       Email *
@@ -332,7 +332,7 @@ ${formData.message || 'Sin mensaje adicional'}
                 </div>
 
                 {/* Product Type and Project Type - Two Columns */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                   <div>
                     <label htmlFor="productType" className="block text-xs font-medium text-stone-700 mb-1.5">
                       Producto *
@@ -384,7 +384,7 @@ ${formData.message || 'Sin mensaje adicional'}
                 </div>
 
                 {/* Area and Monthly Volume - Two Columns */}
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                   <div>
                     <label htmlFor="area" className="block text-xs font-medium text-stone-700 mb-1.5">
                       Área (m²)
