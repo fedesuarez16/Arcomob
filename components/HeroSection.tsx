@@ -133,7 +133,7 @@ export default function HeroSection() {
               </div>
               
               {/* Statistics Cards */}
-              <div className="grid grid-cols-3 gap-2 sm:gap-3 lg:gap-4 pt-3 sm:pt-4 lg:pt-6">
+              <div className="grid grid-cols-3 gap-2 sm:gap-3 lg:gap-4 pt-3 sm:pt-4 lg:pt-6 items-stretch">
                 <div className={`transition-all duration-1000 ease-out delay-500 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
