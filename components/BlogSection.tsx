@@ -48,12 +48,13 @@ export default function BlogSection() {
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {blogPosts.map((post) => (
-            <article
+            <Link
               key={post.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              href={`/blog/${post.id}`}
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 block"
             >
               {/* Image */}
-              <Link href={`/blog/${post.id}`} className="block relative h-64 overflow-hidden">
+              <div className="relative h-64 overflow-hidden">
                 <Image
                   src={post.image}
                   alt={post.title}
@@ -67,7 +68,7 @@ export default function BlogSection() {
                     {post.category}
                   </span>
                 </div>
-              </Link>
+              </div>
 
               {/* Content */}
               <div className="p-6 lg:p-8">
@@ -78,11 +79,9 @@ export default function BlogSection() {
                 </div>
 
                 {/* Title */}
-                <Link href={`/blog/${post.id}`}>
-                  <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-3 group-hover:text-stone-600 transition-colors line-clamp-2">
-                    {post.title}
-                  </h3>
-                </Link>
+                <h3 className="text-xl lg:text-2xl font-bold text-gray-900 mb-3 group-hover:text-stone-600 transition-colors line-clamp-2">
+                  {post.title}
+                </h3>
 
                 {/* Excerpt */}
                 <p className="text-gray-600 leading-relaxed mb-6 line-clamp-3">
@@ -90,13 +89,10 @@ export default function BlogSection() {
                 </p>
 
                 {/* Read More Link */}
-                <Link
-                  href={`/blog/${post.id}`}
-                  className="inline-flex items-center text-stone-900 font-semibold hover:text-stone-600 transition-colors group/link"
-                >
+                <div className="inline-flex items-center text-stone-900 font-semibold group-hover:text-stone-600 transition-colors group/link">
                   Leer más
                   <svg
-                    className="ml-2 w-5 h-5 transform group-hover/link:translate-x-1 transition-transform"
+                    className="ml-2 w-5 h-5 transform group-hover:translate-x-1 transition-transform"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -104,9 +100,9 @@ export default function BlogSection() {
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </Link>
+                </div>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 
