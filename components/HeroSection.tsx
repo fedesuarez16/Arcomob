@@ -84,7 +84,7 @@ export default function HeroSection() {
             {/* Left side - Content */}
             <div className="flex-1 lg:max-w-[58%] space-y-3 sm:space-y-4 lg:space-y-5">
               {/* Headline */}
-              <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.4rem] font-bold text-white leading-[1.15] sm:leading-[1.1] transition-all duration-1000 ease-out ${
+              <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.4rem] font-bold text-white leading-[1.4] sm:leading-[1.35] lg:leading-[1] transition-all duration-1000 ease-out ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
                 Revestimientos que Transforman{' '}

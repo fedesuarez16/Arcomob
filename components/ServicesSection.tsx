@@ -33,16 +33,6 @@ const services = [
       { label: 'Ver Catálogo', href: '/productos/accesorios' },
       { label: 'Solicitar Presupuesto', href: '/cotizar' }
     ]
-  },
-  {
-    image: '/media/products/molduras.png',
-    alt: 'Molduras Luminosas',
-    title: 'Molduras Luminosas',
-    description: 'Ilumina tus espacios con estilo. Nuestras molduras luminosas combinan diseño moderno con tecnología LED para crear ambientes únicos y sofisticados.',
-    actions: [
-      { label: 'Ver Catálogo', href: '/productos/molduras-luminosas' },
-      { label: 'Solicitar Presupuesto', href: '/cotizar' }
-    ]
   }
 ]
 

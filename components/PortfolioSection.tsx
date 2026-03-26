@@ -24,19 +24,19 @@ export default function PortfolioSection() {
             </p>
           </div>
 
-          {/* Top Center - Living Moderno */}
+          {/* Top Center - Fachada y piscina */}
           <div className="md:col-start-2 md:row-start-1 relative group cursor-pointer">
             <div className="relative h-full min-h-[220px] lg:min-h-[260px] rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/media/usecases/living.png"
-                alt="Living Moderno"
+                src="/media/usecases/casa.png"
+                alt="Fachada con revestimiento de madera y piscina"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 quality={90}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-5">
-                <h3 className="text-white text-base lg:text-lg font-semibold">Living Moderno</h3>
+                <h3 className="text-white text-base lg:text-lg font-semibold">Entrada principal</h3>
               </div>
             </div>
           </div>
@@ -45,15 +45,15 @@ export default function PortfolioSection() {
           <div className="md:col-start-3 md:row-start-1 md:row-span-2 relative group cursor-pointer">
             <div className="relative h-full min-h-[300px] lg:min-h-[540px] rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/media/usecases/Gemini_Generated_Image_ib9to0ib9to0ib9t.png"
-                alt="Dormitorio Principal"
+                src="/media/usecases/escalera.png"
+                alt="Baño con revestimiento y techo de madera"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 quality={90}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6">
-                <h3 className="text-white text-base lg:text-lg font-semibold">Dormitorio Principal</h3>
+                <h3 className="text-white text-base lg:text-lg font-semibold">Iluminacion exterior</h3>
               </div>
             </div>
           </div>
@@ -62,32 +62,32 @@ export default function PortfolioSection() {
           <div className="md:col-start-1 md:row-start-2 md:row-span-2 relative group cursor-pointer">
             <div className="relative h-full min-h-[300px] lg:min-h-[540px] rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/media/usecases/dormitorio.png"
-                alt="Oficina Corporativa"
+                src="/media/usecases/1.3.png"
+                alt="Casa con revestimiento de madera en entorno natural"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 quality={90}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6">
-                <h3 className="text-white text-base lg:text-lg font-semibold">Dormitorio Principal</h3>
+                <h3 className="text-white text-base lg:text-lg font-semibold">Baño principal</h3>
               </div>
             </div>
           </div>
 
-           {/* Bottom Left - Tall image spanning 2 rows (starts from row 2) */}
+           {/* Center - Hall con iluminación */}
            <div className="md:col-start-2 md:row-start-2 md:row-span-2 relative group cursor-pointer">
             <div className="relative h-full min-h-[300px] lg:max-h-[540px] rounded-2xl overflow-hidden shadow-lg">
             <Image
-                src="/media/usecases/Gemini_Generated_Image_5w8nql5w8nql5w8n.png"
-                alt="Local Comercial"
+                src="/media/usecases/entrada.png"
+                alt="Hall con revestimiento de madera e iluminación LED"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 quality={90}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
               <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6">
-                <h3 className="text-white text-base lg:text-lg font-semibold">Recepcion</h3>
+                <h3 className="text-white text-base lg:text-lg font-semibold">Entrada principal</h3>
               </div>
             </div>
           </div>
