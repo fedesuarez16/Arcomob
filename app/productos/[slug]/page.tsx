@@ -30,6 +30,8 @@ type RevestimientoItem = {
   imagenPerfil: string
   /** Vista material / producto (visible al pasar el cursor) */
   imagenProducto: string
+  /** Texto breve bajo el título (opcional) */
+  description?: string
 }
 
 const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
@@ -57,14 +59,25 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   ],
   'Particulados-MD': [
     {
-      name: 'Pino impregnado',
-      imagenPerfil: '/media/revestimientos/pino impregnado.png',
-      imagenProducto: '/media/revestimientos/pino impregnado.png'
+      name: 'Particulados MD',
+      imagenPerfil: '/media/revestimientos/particulados%20.png',
+      imagenProducto: '/media/revestimientos/particulados%20.png',
     }
   ],
-  'Revestimientos Especiales': [],
-  'Revestimientos Clásicos': [],
-  'Revestimiento Madera para Exterior': []
+  'Revestimientos Especiales': [
+    {
+      name: 'Paraíso',
+      imagenPerfil: '/media/revestimientos/paraiso.png',
+      imagenProducto: '/media/revestimientos/paraiso.png'
+    }
+  ],
+  'Revestimiento Madera para Exterior': [
+    {
+      name: 'pino impregnado para exteriores',
+      imagenPerfil: '/media/revestimientos/exteriores.png',
+      imagenProducto: '/media/revestimientos/exteriores.png'
+    }
+  ]
 }
 
 const accesoriosProducts = [
@@ -440,7 +453,7 @@ export default function ProductPage() {
                             </svg>
                           </div>
                         </div>
-                        <div className="p-4 relative min-h-[3rem] flex items-center justify-center">
+                        <div className="p-4 relative min-h-[3rem] flex flex-col items-center justify-center gap-2">
                           {tieneDosVistas ? (
                             <>
                               <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center transition-all duration-300 group-hover:opacity-0">
@@ -454,6 +467,11 @@ export default function ProductPage() {
                             <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300">
                               {item.name}
                             </h3>
+                          )}
+                          {item.description && (
+                            <p className="text-xs sm:text-sm text-stone-600 text-center leading-relaxed max-w-prose">
+                              {item.description}
+                            </p>
                           )}
                         </div>
                       </div>
