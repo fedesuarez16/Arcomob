@@ -5,23 +5,40 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
-const moldurasProducts = [
-  'Antepecho',
-  'Balaustres torneados',
-  'Contra vidrio',
-  'Cornisas',
-  'Guardasillas',
-  'Listones',
-  'Tapacintas',
-  'Tapa juntas',
-  'Terminaciones',
+/** Orden de subcategorías en el catálogo de molduras (sin duplicar Cornisas / Cuadros) */
+const moldurasCategoriasOrden = [
   'Zócalos',
-  'Barral Liso',
-  'Pasamanos',
+  'Contramarcos',
   'Rinconeros',
-  'Tapa Cantos',
-  'Barral Estriado'
-]
+  'Terminaciones',
+  'Cuadros',
+  'Accesorios',
+  'Cornisas',
+  'Listones',
+  'Antepecho',
+  'Tapacantos',
+  'Esquineros',
+  'Balustres',
+  'Zocalín'
+] as const
+
+const moldurasCatalogPreviewSrc = '/media/products/molduras01.jpeg'
+
+const moldurasSubcategorias: Record<string, string[]> = {
+  Zócalos: ['Zócalos'],
+  Contramarcos: ['Contra vidrio'],
+  Rinconeros: ['Rinconeros'],
+  Terminaciones: ['Terminaciones', 'Guardasillas', 'Tapa juntas'],
+  Cuadros: [],
+  Accesorios: ['Barral Liso', 'Pasamanos', 'Barral Estriado'],
+  Cornisas: ['Cornisas'],
+  Listones: ['Listones'],
+  Antepecho: ['Antepecho'],
+  Tapacantos: ['Tapacintas', 'Tapa Cantos'],
+  Esquineros: [],
+  Balustres: ['Balaustres torneados'],
+  Zocalín: ['Zocalín']
+}
 
 type RevestimientoItem = {
   /** Nombre base del producto (sin “ - perfil”) */
@@ -57,9 +74,9 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
       imagenProducto: '/media/revestimientos/cambará.png'
     }
   ],
-  'Particulados-MD': [
+  'Particulados-MDF': [
     {
-      name: 'Particulados MD',
+      name: 'Particulados MDF',
       imagenPerfil: '/media/revestimientos/particulados%20.png',
       imagenProducto: '/media/revestimientos/particulados%20.png',
     }
@@ -201,6 +218,7 @@ export default function ProductPage() {
   const product = products[slug as keyof typeof products]
   const revestimientosCategorias = Object.keys(revestimientosSubcategorias)
   const [selectedRevestimientoCategoria, setSelectedRevestimientoCategoria] = useState<string | null>(null)
+  const [selectedMoldurasCategoria, setSelectedMoldurasCategoria] = useState<string | null>(null)
 
   if (!product) {
     return (
@@ -311,56 +329,99 @@ export default function ProductPage() {
               <p className="text-center text-stone-600 mb-12 text-lg">
                 Explora nuestra amplia gama de molduras y terminaciones
               </p>
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 lg:gap-6">
-                {moldurasProducts.map((productName, index) => (
-                  <div
-                    key={index}
-                    className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
+              {selectedMoldurasCategoria && (
+                <div className="mb-6 flex justify-center">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedMoldurasCategoria(null)}
+                    className="inline-flex items-center gap-2 bg-white border border-stone-300 text-stone-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-stone-100 transition-colors"
                   >
-                    {/* Image Placeholder */}
-                    <div className="relative w-[85%] max-w-full mx-auto aspect-square bg-gradient-to-br from-stone-100 to-stone-200 flex items-center justify-center overflow-hidden">
-                      {/* Placeholder icon or image */}
-                      <div className="w-full h-full flex items-center justify-center bg-stone-100 group-hover:bg-stone-200 transition-colors duration-300">
-                        <svg
-                          className="w-16 h-16 text-stone-400 group-hover:text-stone-500 transition-colors duration-300"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={1.5}
-                            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                          />
-                        </svg>
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Volver a subcategorías
+                  </button>
+                </div>
+              )}
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+                {!selectedMoldurasCategoria &&
+                  moldurasCategoriasOrden.map((categoria) => (
+                    <button
+                      type="button"
+                      key={categoria}
+                      onClick={() => setSelectedMoldurasCategoria(categoria)}
+                      className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300 text-left w-full"
+                    >
+                      <div className="relative w-[100%] max-w-full mx-auto aspect-square overflow-hidden bg-stone-100">
+                        <Image
+                          src={moldurasCatalogPreviewSrc}
+                          alt={categoria}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover:scale-105"
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                          quality={85}
+                        />
                       </div>
-                      {/* Overlay on hover */}
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
-                        <svg
-                          className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                          />
-                        </svg>
+                      <div className="p-4">
+                        <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300 leading-snug">
+                          {categoria}
+                        </h3>
+                      </div>
+                    </button>
+                  ))}
+
+                {selectedMoldurasCategoria &&
+                  moldurasSubcategorias[selectedMoldurasCategoria]?.map((productName, index) => (
+                    <div
+                      key={`${productName}-${index}`}
+                      className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
+                    >
+                      <div className="relative w-[85%] max-w-full mx-auto aspect-square bg-gradient-to-br from-stone-100 to-stone-200 flex items-center justify-center overflow-hidden">
+                        <div className="w-full h-full flex items-center justify-center bg-stone-100 group-hover:bg-stone-200 transition-colors duration-300">
+                          <svg
+                            className="w-16 h-16 text-stone-400 group-hover:text-stone-500 transition-colors duration-300"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={1.5}
+                              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                            />
+                          </svg>
+                        </div>
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
+                          <svg
+                            className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      <div className="p-4">
+                        <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300">
+                          {productName}
+                        </h3>
                       </div>
                     </div>
-                    {/* Product Name */}
-                    <div className="p-4">
-                      <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300">
-                        {productName}
-                      </h3>
-                    </div>
-                  </div>
-                ))}
+                  ))}
               </div>
+              {selectedMoldurasCategoria &&
+                (moldurasSubcategorias[selectedMoldurasCategoria]?.length ?? 0) === 0 && (
+                  <p className="text-center text-stone-500 mt-8">
+                    Esta subcategoría aún no tiene productos cargados.
+                  </p>
+                )}
             </div>
           </div>
         </section>
@@ -392,18 +453,39 @@ export default function ProductPage() {
               )}
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
                 {!selectedRevestimientoCategoria &&
-                  revestimientosCategorias.map((categoria, index) => (
-                    <button
-                      type="button"
-                      key={index}
-                      onClick={() => setSelectedRevestimientoCategoria(categoria)}
-                      className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300 p-6 min-h-[180px] flex items-center justify-center"
-                    >
-                      <h3 className="text-base lg:text-lg font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300">
-                        {categoria}
-                      </h3>
-                    </button>
-                  ))}
+                  revestimientosCategorias.map((categoria, index) => {
+                    const preview = revestimientosSubcategorias[categoria]?.[0]
+                    return (
+                      <button
+                        type="button"
+                        key={index}
+                        onClick={() => setSelectedRevestimientoCategoria(categoria)}
+                        className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300 text-left w-full"
+                      >
+                        <div className="relative w-[100%] max-w-full mx-auto aspect-square overflow-hidden bg-stone-100">
+                          {preview ? (
+                            <Image
+                              src={preview.imagenPerfil}
+                              alt={categoria}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                              quality={85}
+                            />
+                          ) : (
+                            <div className="absolute inset-0 flex items-center justify-center bg-stone-200 text-stone-500 text-xs sm:text-sm p-4 text-center">
+                              Contenido próximamente
+                            </div>
+                          )}
+                        </div>
+                        <div className="p-4">
+                          <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300 leading-snug">
+                            {categoria}
+                          </h3>
+                        </div>
+                      </button>
+                    )
+                  })}
 
                 {selectedRevestimientoCategoria &&
                   revestimientosSubcategorias[selectedRevestimientoCategoria].map((item, index) => {
@@ -411,7 +493,7 @@ export default function ProductPage() {
                     return (
                       <div
                         key={index}
-                        className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
+                        className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
                       >
                         <div className="relative w-[100%] max-w-full mx-auto aspect-square overflow-hidden bg-stone-100">
                           {/* Por defecto: perfil; al hover: producto (si hay dos imágenes distintas) */}
@@ -504,7 +586,7 @@ export default function ProductPage() {
                 {accesoriosProducts.map((productName, index) => (
                   <div
                     key={index}
-                    className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
+                    className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
                   >
                     {/* Image Placeholder */}
                     <div className="relative w-[85%] max-w-full mx-auto aspect-square bg-gradient-to-br from-stone-100 to-stone-200 flex items-center justify-center overflow-hidden">
@@ -570,7 +652,7 @@ export default function ProductPage() {
                 {moldurasLuminosasProducts.map((productName, index) => (
                   <div
                     key={index}
-                    className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
+                    className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
                   >
                     {/* Image Placeholder */}
                     <div className="relative w-[85%] max-w-full mx-auto aspect-square bg-gradient-to-br from-stone-100 to-stone-200 flex items-center justify-center overflow-hidden">
@@ -632,7 +714,7 @@ export default function ProductPage() {
               {product.features.map((feature, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-4 p-6 bg-stone-50 rounded-xl border border-stone-200 hover:border-stone-300 transition-colors"
+                  className="flex items-start gap-4 p-6 bg-stone-50 rounded-md border border-stone-200 hover:border-stone-300 transition-colors"
                 >
                   <div className="flex-shrink-0 w-6 h-6 rounded-full bg-red-600 flex items-center justify-center mt-0.5">
                     <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -685,7 +767,7 @@ export default function ProductPage() {
               {product.gallery.map((image, index) => (
                 <div
                   key={index}
-                  className="relative h-64 lg:h-80 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group cursor-pointer"
+                  className="relative h-64 lg:h-80 rounded-md overflow-hidden shadow-lg hover:shadow-xl transition-shadow group cursor-pointer"
                 >
                   <Image
                     src={image}

@@ -61,7 +61,7 @@ export default function ComparisonSection() {
           <div className="relative rounded-lg overflow-hidden shadow-md border-2 border-stone-900">
             <div className="relative h-48 lg:h-64">
               <Image
-                src="/media/usecases/comparison.png"
+                src="/media/usecases/luminico.png"
                 alt="Revestimiento Alistonado Luminoso"
                 fill
                 className="object-cover object-right"
