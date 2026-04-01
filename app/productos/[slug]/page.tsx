@@ -56,7 +56,7 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
 
     {
       name: 'Cedro',
-      imagenPerfil: '/media/revestimientos/CEDRO.png',
+      imagenPerfil: '/media/revestimientos/enchapado.png',
       imagenProducto: '/media/revestimientos/CEDRO.png'
     },
     {
@@ -83,7 +83,7 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
       imagenProducto: '/media/revestimientos/paraiso.png'
     }
   ],
-  'Particulados-MDF': [
+  'Particulados': [
     {
       name: 'Particulados MDF',
       imagenPerfil: '/media/revestimientos/MDFCRUDOPINTADO.JPEG',
@@ -94,10 +94,15 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
       imagenPerfil: '/media/revestimientos/mdfcrudo.png',
       imagenProducto: '/media/revestimientos/mdfcrudo.png',
     }, 
+    {
+      name: 'OSB',
+      imagenPerfil: '/media/revestimientos/osb.jpeg',
+      imagenProducto: '/media/revestimientos/particuladoosb.png',
+    }, 
 
   ],
  
-  'Revestimiento Madera para Exterior': [
+  'Revestimiento para Exterior': [
     {
       name: 'pino impregnado para exteriores',
       imagenPerfil: '/media/revestimientos/pinoimpregnadoexterior.png',
