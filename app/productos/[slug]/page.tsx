@@ -55,7 +55,7 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   'Enchapados de Madera Natural': [
     {
       name: 'Kiri',
-      imagenPerfil: '/media/revestimientos/KIRI2.png',
+      imagenPerfil: '/media/revestimientos/enchapados.jpeg',
       imagenProducto: '/media/revestimientos/KIRI.png'
     },
     {
@@ -77,9 +77,15 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   'Particulados-MDF': [
     {
       name: 'Particulados MDF',
-      imagenPerfil: '/media/revestimientos/particulados%20.png',
-      imagenProducto: '/media/revestimientos/particulados%20.png',
-    }
+      imagenPerfil: '/media/revestimientos/particuladoosb.png',
+      imagenProducto: '/media/revestimientos/particuladoosb.png',
+    }, 
+    {
+      name: 'Crudo MDF',
+      imagenPerfil: '/media/revestimientos/mdfcrudo.png',
+      imagenProducto: '/media/revestimientos/mdfcrudo.png',
+    }, 
+
   ],
   'Revestimientos Especiales': [
     {
