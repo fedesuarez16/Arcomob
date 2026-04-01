@@ -53,16 +53,18 @@ type RevestimientoItem = {
 
 const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   'Enchapados de Madera Natural': [
-    {
-      name: 'Kiri',
-      imagenPerfil: '/media/revestimientos/enchapados.jpeg',
-      imagenProducto: '/media/revestimientos/KIRI.png'
-    },
+
     {
       name: 'Cedro',
-      imagenPerfil: '/media/revestimientos/CEDRO2.png',
+      imagenPerfil: '/media/revestimientos/CEDRO.png',
       imagenProducto: '/media/revestimientos/CEDRO.png'
     },
+    {
+      name: 'Kiri',
+      imagenPerfil: '/media/revestimientos/KIRI.jpeg',
+      imagenProducto: '/media/revestimientos/KIRI.png'
+    },
+    
     {
       name: 'Cancharana',
       imagenPerfil: '/media/revestimientos/Cancharana.png',
@@ -74,11 +76,18 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
       imagenProducto: '/media/revestimientos/cambará.png'
     }
   ],
+  'Revestimientos Especiales': [
+    {
+      name: 'Paraíso',
+      imagenPerfil: '/media/revestimientos/especiales.png',
+      imagenProducto: '/media/revestimientos/paraiso.png'
+    }
+  ],
   'Particulados-MDF': [
     {
       name: 'Particulados MDF',
-      imagenPerfil: '/media/revestimientos/particuladoosb.png',
-      imagenProducto: '/media/revestimientos/particuladoosb.png',
+      imagenPerfil: '/media/revestimientos/MDFCRUDOPINTADO.JPEG',
+      imagenProducto: '/media/revestimientos/MDFCRUDOPINTADO.JPEG',
     }, 
     {
       name: 'Crudo MDF',
@@ -87,17 +96,11 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
     }, 
 
   ],
-  'Revestimientos Especiales': [
-    {
-      name: 'Paraíso',
-      imagenPerfil: '/media/revestimientos/paraiso.png',
-      imagenProducto: '/media/revestimientos/paraiso.png'
-    }
-  ],
+ 
   'Revestimiento Madera para Exterior': [
     {
       name: 'pino impregnado para exteriores',
-      imagenPerfil: '/media/revestimientos/exteriores.png',
+      imagenPerfil: '/media/revestimientos/pinoimpregnadoexterior.png',
       imagenProducto: '/media/revestimientos/exteriores.png'
     }
   ]
@@ -485,7 +488,7 @@ export default function ProductPage() {
                           )}
                         </div>
                         <div className="p-4">
-                          <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300 leading-snug">
+                          <h3 className="text-sm lg:text-sm font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300 leading-snug">
                             {categoria}
                           </h3>
                         </div>
