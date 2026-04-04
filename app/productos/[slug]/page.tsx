@@ -55,33 +55,38 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   'Enchapados de Madera Natural': [
 
     {
-      name: 'Cedro',
+      name: '',
       imagenPerfil: '/media/revestimientos/enchapado.png',
-      imagenProducto: '/media/revestimientos/CEDRO.png'
+      imagenProducto: '/media/revestimientos/enchapado.png'
     },
     {
-      name: 'Kiri',
-      imagenPerfil: '/media/revestimientos/KIRI.jpeg',
-      imagenProducto: '/media/revestimientos/KIRI.png'
-    },
-    
-    {
-      name: 'Cancharana',
-      imagenPerfil: '/media/revestimientos/Cancharana.png',
-      imagenProducto: '/media/revestimientos/cancharanar.png'
-    },
-    {
-      name: 'Cambará',
-      imagenPerfil: '/media/revestimientos/cambarár.png',
-      imagenProducto: '/media/revestimientos/cambará.png'
-    }
+      name: '',
+      imagenPerfil: '/media/revestimientos/enchapado1.jpeg',
+      imagenProducto: '/media/revestimientos/enchapado1.jpeg'
+    }, {
+      name: '',
+      imagenPerfil: '/media/revestimientos/enchapado2.jpeg',
+      imagenProducto: '/media/revestimientos/enchapado2.jpeg'
+    }, 
   ],
   'Revestimientos Especiales': [
     {
       name: 'Paraíso',
       imagenPerfil: '/media/revestimientos/especiales.png',
-      imagenProducto: '/media/revestimientos/paraiso.png'
-    }
+      imagenProducto: '/media/revestimientos/especiales.png'
+    },
+    {
+      name: 'Cedro',
+      imagenPerfil: '/media/revestimientos/CEDRO.png',
+      imagenProducto: '/media/revestimientos/CEDRO.png'
+    },
+    {
+      name: 'Kiri',
+      imagenPerfil: '/media/revestimientos/KIRI.png',
+      imagenProducto: '/media/revestimientos/KIRI.png'
+    },
+    
+    
   ],
   'Particulados': [
     {
