@@ -9,29 +9,49 @@ import { useParams } from 'next/navigation'
 const moldurasCategoriasOrden = [
   'Zócalos',
   'Contramarcos',
+  'Cornisas',
+  'Balustres',
   'Rinconeros',
   'Terminaciones',
   'Cuadros',
   'Accesorios',
-  'Cornisas',
   'Listones',
   'Antepecho',
   'Tapacantos',
   'Esquineros',
-  'Balustres',
+ 
   'Zocalín'
 ] as const
 
 const moldurasCatalogPreviewSrc = '/media/products/molduras01.jpeg'
 
+/** Vista previa de cada subcategoría en la grilla (sin entrada → imagen genérica) */
+const moldurasSubcategoriaPreviewSrc: Partial<
+  Record<(typeof moldurasCategoriasOrden)[number], string>
+> = {
+  Cornisas: '/media/molduras/cornisas.png',
+  Zócalos: '/media/molduras/zocalo.png',
+  Contramarcos: '/media/molduras/contramarcos.png',
+  Rinconeros: '/media/molduras/rinconero.png',
+  Terminaciones: '/media/molduras/terminaciones.png',
+  Cuadros: '/media/molduras/cuadros.png',
+  Accesorios: '/media/molduras/accesorios.png',
+  Listones: '/media/molduras/listones.png',
+  Antepecho: '/media/molduras/antepecho.png',
+  Tapacantos: '/media/molduras/tapacantos.png',
+  Esquineros: '/media/molduras/esquineros.png',
+  Balustres: '/media/molduras/balustres.png',
+  Zocalín: '/media/molduras/zocalin.png',
+}
+
 const moldurasSubcategorias: Record<string, string[]> = {
   Zócalos: ['Zócalos'],
   Contramarcos: ['Contra vidrio'],
+  Cornisas: ['Cornisas'],
   Rinconeros: ['Rinconeros'],
   Terminaciones: ['Terminaciones', 'Guardasillas', 'Tapa juntas'],
   Cuadros: [],
-  Accesorios: ['Barral Liso', 'Pasamanos', 'Barral Estriado'],
-  Cornisas: ['Cornisas'],
+  Accesorios: ['Barral Liso', 'Pasamanos', 'Barral Estriado'],  
   Listones: ['Listones'],
   Antepecho: ['Antepecho'],
   Tapacantos: ['Tapacintas', 'Tapa Cantos'],
@@ -91,8 +111,8 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   'Particulados': [
     {
       name: 'Particulados MDF',
-      imagenPerfil: '/media/revestimientos/MDFCRUDOPINTADO.JPEG',
-      imagenProducto: '/media/revestimientos/MDFCRUDOPINTADO.JPEG',
+      imagenPerfil: '/media/revestimientos/MDFCRUDOPINTADO.jpeg',
+      imagenProducto: '/media/revestimientos/MDFCRUDOPINTADO.jpeg',
     }, 
     {
       name: 'Crudo MDF',
@@ -373,7 +393,7 @@ export default function ProductPage() {
                     >
                       <div className="relative w-[100%] max-w-full mx-auto aspect-square overflow-hidden bg-stone-100">
                         <Image
-                          src={moldurasCatalogPreviewSrc}
+                          src={moldurasSubcategoriaPreviewSrc[categoria] ?? moldurasCatalogPreviewSrc}
                           alt={categoria}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
