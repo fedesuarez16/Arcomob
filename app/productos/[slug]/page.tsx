@@ -1,26 +1,31 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
 
 /** Orden de subcategorías en el catálogo de molduras (sin duplicar Cornisas / Cuadros) */
 const moldurasCategoriasOrden = [
+  'Esquineros',
+  'Contravidrios',
+  'Zocalín',
+  'Tapacintas',
+  'Guardasillas',
+  'Antepecho',
+  'Cuadros',
+'Listones',
+ 'Tapacantos',
   'Zócalos',
   'Contramarcos',
   'Cornisas',
   'Balustres',
   'Rinconeros',
   'Terminaciones',
-  'Cuadros',
-  'Accesorios',
-  'Listones',
-  'Antepecho',
-  'Tapacantos',
-  'Esquineros',
+  'Pasamanos'
+  
  
-  'Zocalín'
+ 
 ] as const
 
 const moldurasCatalogPreviewSrc = '/media/products/molduras01.jpeg'
@@ -35,13 +40,16 @@ const moldurasSubcategoriaPreviewSrc: Partial<
   Rinconeros: '/media/molduras/rinconero.png',
   Terminaciones: '/media/molduras/terminaciones.png',
   Cuadros: '/media/molduras/cuadros.png',
-  Accesorios: '/media/molduras/accesorios.png',
   Listones: '/media/molduras/listones.png',
   Antepecho: '/media/molduras/antepecho.png',
   Tapacantos: '/media/molduras/tapacantos.png',
   Esquineros: '/media/molduras/esquineros.png',
   Balustres: '/media/molduras/balustres.png',
   Zocalín: '/media/molduras/zocalin.png',
+  Contravidrios: '/media/molduras/contravidrios.png',
+  Guardasillas: '/media/molduras/guardasillas.png',
+  Tapacintas: '/media/molduras/tapacintas.png',
+  Pasamanos: '/media/molduras/pasamanos.png'
 }
 
 const moldurasSubcategorias: Record<string, string[]> = {
@@ -51,14 +59,35 @@ const moldurasSubcategorias: Record<string, string[]> = {
   Rinconeros: ['Rinconeros'],
   Terminaciones: ['Terminaciones', 'Guardasillas', 'Tapa juntas'],
   Cuadros: [],
-  Accesorios: ['Barral Liso', 'Pasamanos', 'Barral Estriado'],  
   Listones: ['Listones'],
   Antepecho: ['Antepecho'],
   Tapacantos: ['Tapacintas', 'Tapa Cantos'],
   Esquineros: [],
   Balustres: ['Balaustres torneados'],
-  Zocalín: ['Zocalín']
+  Zocalín: ['Zocalín'],
+  Contravidrios: ['Contravidrios'],
+  Guardasillas: ['Guardasillas'],
+  Tapacintas: ['Tapacintas'],
+  Pasamanos: ['Pasamanos']
 }
+
+/** Imagen por subcategoría + nombre de ítem (debe coincidir con el string en moldurasSubcategorias) */
+const moldurasCatalogProductImage: Record<string, Record<string, string>> = {
+  Zócalos: {
+    Zócalos: '/media/molduras/zocalostipos.png'
+  },
+  Contramarcos: {
+    Contramarcos: '/media/molduras/contramarcos.png'
+  },
+  Cornisas: {
+    Cornisas: '/media/molduras/cornisas.png'
+  },
+  Rinconeros: {
+    Rinconeros: '/media/molduras/rinconeros.png'
+  },
+}
+
+
 
 type RevestimientoItem = {
   /** Nombre base del producto (sin “ - perfil”) */
@@ -258,6 +287,21 @@ export default function ProductPage() {
   const revestimientosCategorias = Object.keys(revestimientosSubcategorias)
   const [selectedRevestimientoCategoria, setSelectedRevestimientoCategoria] = useState<string | null>(null)
   const [selectedMoldurasCategoria, setSelectedMoldurasCategoria] = useState<string | null>(null)
+  const [moldurasLightbox, setMoldurasLightbox] = useState<{ src: string; alt: string } | null>(null)
+
+  useEffect(() => {
+    if (!moldurasLightbox) return
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMoldurasLightbox(null)
+    }
+    const prevOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    window.addEventListener('keydown', onKey)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.body.style.overflow = prevOverflow
+    }
+  }, [moldurasLightbox])
 
   if (!product) {
     return (
@@ -372,7 +416,10 @@ export default function ProductPage() {
                 <div className="mb-6 flex justify-center">
                   <button
                     type="button"
-                    onClick={() => setSelectedMoldurasCategoria(null)}
+                    onClick={() => {
+                      setMoldurasLightbox(null)
+                      setSelectedMoldurasCategoria(null)
+                    }}
                     className="inline-flex items-center gap-2 bg-white border border-stone-300 text-stone-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-stone-100 transition-colors"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -391,7 +438,7 @@ export default function ProductPage() {
                       onClick={() => setSelectedMoldurasCategoria(categoria)}
                       className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300 text-left w-full"
                     >
-                      <div className="relative w-[100%] max-w-full mx-auto aspect-square overflow-hidden bg-stone-100">
+                      <div className="relative w-[100%] max-w-full mx-auto aspect-[4/3] overflow-hidden bg-stone-100">
                         <Image
                           src={moldurasSubcategoriaPreviewSrc[categoria] ?? moldurasCatalogPreviewSrc}
                           alt={categoria}
@@ -410,50 +457,74 @@ export default function ProductPage() {
                   ))}
 
                 {selectedMoldurasCategoria &&
-                  moldurasSubcategorias[selectedMoldurasCategoria]?.map((productName, index) => (
-                    <div
-                      key={`${productName}-${index}`}
-                      className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
-                    >
-                      <div className="relative w-[85%] max-w-full mx-auto aspect-square bg-gradient-to-br from-stone-100 to-stone-200 flex items-center justify-center overflow-hidden">
-                        <div className="w-full h-full flex items-center justify-center bg-stone-100 group-hover:bg-stone-200 transition-colors duration-300">
-                          <svg
-                            className="w-16 h-16 text-stone-400 group-hover:text-stone-500 transition-colors duration-300"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={1.5}
-                              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                            />
-                          </svg>
+                  moldurasSubcategorias[selectedMoldurasCategoria]?.map((productName, index) => {
+                    const productSrc =
+                      moldurasCatalogProductImage[selectedMoldurasCategoria]?.[productName]
+                    return (
+                      <div
+                        key={`${productName}-${index}`}
+                        className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
+                      >
+                        <div className="relative w-[85%] max-w-full mx-auto aspect-[4/3] overflow-hidden bg-stone-100">
+                          {productSrc ? (
+                            <button
+                              type="button"
+                              onClick={() => setMoldurasLightbox({ src: productSrc, alt: productName })}
+                              className="absolute inset-0 block cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
+                              aria-label={`Ampliar imagen: ${productName}`}
+                            >
+                              <Image
+                                src={productSrc}
+                                alt={productName}
+                                fill
+                                className="object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none"
+                                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                                quality={90}
+                              />
+                            </button>
+                          ) : (
+                            <>
+                              <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-stone-100 to-stone-200 group-hover:from-stone-100 group-hover:to-stone-200">
+                                <svg
+                                  className="w-16 h-16 text-stone-400 group-hover:text-stone-500 transition-colors duration-300"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={1.5}
+                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                                  />
+                                </svg>
+                              </div>
+                              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
+                                <svg
+                                  className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                  fill="none"
+                                  viewBox="0 0 24 24"
+                                  stroke="currentColor"
+                                >
+                                  <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                                  />
+                                </svg>
+                              </div>
+                            </>
+                          )}
                         </div>
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center">
-                          <svg
-                            className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                            />
-                          </svg>
+                        <div className="p-4">
+                          <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300">
+                            {productName}
+                          </h3>
                         </div>
                       </div>
-                      <div className="p-4">
-                        <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300">
-                          {productName}
-                        </h3>
-                      </div>
-                    </div>
-                  ))}
+                    )
+                  })}
               </div>
               {selectedMoldurasCategoria &&
                 (moldurasSubcategorias[selectedMoldurasCategoria]?.length ?? 0) === 0 && (
@@ -501,7 +572,7 @@ export default function ProductPage() {
                         onClick={() => setSelectedRevestimientoCategoria(categoria)}
                         className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300 text-left w-full"
                       >
-                        <div className="relative w-[100%] max-w-full mx-auto aspect-square overflow-hidden bg-stone-100">
+                        <div className="relative w-[100%] max-w-full mx-auto aspect-[4/3] overflow-hidden bg-stone-100">
                           {preview ? (
                             <Image
                               src={preview.imagenPerfil}
@@ -534,7 +605,7 @@ export default function ProductPage() {
                         key={index}
                         className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
                       >
-                        <div className="relative w-[100%] max-w-full mx-auto aspect-square overflow-hidden bg-stone-100">
+                        <div className="relative w-[100%] max-w-full mx-auto aspect-[4/3] overflow-hidden bg-stone-100">
                           {/* Por defecto: perfil; al hover: producto (si hay dos imágenes distintas) */}
                           <Image
                             src={item.imagenPerfil}
@@ -545,7 +616,7 @@ export default function ProductPage() {
                                 ? 'opacity-100 scale-100 group-hover:opacity-0 group-hover:scale-105'
                                 : 'group-hover:scale-105'
                             }`}
-                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                            sizes="(max-width: 840px) 50vw, (max-width: 1324px) 33vw, 25vw"
                             quality={85}
                           />
                           {tieneDosVistas && (
@@ -554,7 +625,7 @@ export default function ProductPage() {
                               alt={item.name}
                               fill
                               className="object-cover absolute inset-0 transition-all duration-500 opacity-0 scale-100 group-hover:opacity-100 group-hover:scale-105"
-                              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                              sizes="(max-width: 840px) 50vw, (max-width: 1324px) 33vw, 25vw"
                               quality={85}
                             />
                           )}
@@ -628,7 +699,7 @@ export default function ProductPage() {
                     className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
                   >
                     {/* Image Placeholder */}
-                    <div className="relative w-[85%] max-w-full mx-auto aspect-square bg-gradient-to-br from-stone-100 to-stone-200 flex items-center justify-center overflow-hidden">
+                    <div className="relative w-[85%] max-w-full mx-auto aspect-[4/3] bg-gradient-to-br from-stone-100 to-stone-200 flex items-center justify-center overflow-hidden">
                       {/* Placeholder icon or image */}
                       <div className="w-full h-full flex items-center justify-center bg-stone-100 group-hover:bg-stone-200 transition-colors duration-300">
                         <svg
@@ -694,7 +765,7 @@ export default function ProductPage() {
                     className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
                   >
                     {/* Image Placeholder */}
-                    <div className="relative w-[85%] max-w-full mx-auto aspect-square bg-gradient-to-br from-stone-100 to-stone-200 flex items-center justify-center overflow-hidden">
+                    <div className="relative w-[85%] max-w-full mx-auto aspect-[4/3] bg-gradient-to-br from-stone-100 to-stone-200 flex items-center justify-center overflow-hidden">
                       {/* Placeholder icon or image */}
                       <div className="w-full h-full flex items-center justify-center bg-stone-100 group-hover:bg-stone-200 transition-colors duration-300">
                         <svg
@@ -821,6 +892,42 @@ export default function ProductPage() {
             </div>
           </div>
         </section>
+      )}
+
+      {/* Lightbox — imágenes del catálogo molduras */}
+      {moldurasLightbox && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 sm:p-8"
+          onClick={() => setMoldurasLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Vista ampliada"
+        >
+          <button
+            type="button"
+            onClick={() => setMoldurasLightbox(null)}
+            className="absolute top-3 right-3 sm:top-6 sm:right-6 z-[101] rounded-full bg-white/10 hover:bg-white/20 text-white p-2.5 backdrop-blur-sm transition-colors"
+            aria-label="Cerrar"
+          >
+            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div
+            className="relative w-full max-w-[min(95vw,1200px)] h-[min(90dvh,90vh)] max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src={moldurasLightbox.src}
+              alt={moldurasLightbox.alt}
+              fill
+              className="object-cover"
+              sizes="100vw"
+              quality={95}
+              priority
+            />
+          </div>
+        </div>
       )}
 
       {/* CTA Section */}
