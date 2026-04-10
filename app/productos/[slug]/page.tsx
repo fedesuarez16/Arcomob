@@ -10,19 +10,21 @@ const moldurasCategoriasOrden = [
   'Esquineros',
   'Contravidrios',
   'Zocalín',
-  'Tapacintas',
+  
   'Guardasillas',
   'Antepecho',
+  'Rinconeros',
   'Cuadros',
-'Listones',
+  'Listones',
+  'Tapacintas',
  'Tapacantos',
   'Zócalos',
   'Contramarcos',
   'Cornisas',
   'Balustres',
-  'Rinconeros',
   'Terminaciones',
   'Pasamanos'
+  
   
  
  
@@ -62,7 +64,7 @@ const moldurasSubcategorias: Record<string, string[]> = {
   Listones: ['Listones'],
   Antepecho: ['Antepecho'],
   Tapacantos: ['Tapacintas', 'Tapa Cantos'],
-  Esquineros: [],
+  Esquineros: ['Esquineros'],
   Balustres: ['Balaustres torneados'],
   Zocalín: ['Zocalín'],
   Contravidrios: ['Contravidrios'],
@@ -71,20 +73,53 @@ const moldurasSubcategorias: Record<string, string[]> = {
   Pasamanos: ['Pasamanos']
 }
 
-/** Imagen por subcategoría + nombre de ítem (debe coincidir con el string en moldurasSubcategorias) */
+/**
+ * Láminas de catálogo por subcategoría + nombre de ítem (igual que en moldurasSubcategorias).
+ * Archivos en `public/media/molduras/catalogo/` — convención sugerida: `<tema>Catalogo.png` (ej. esquineroCatalogo.png).
+ */
 const moldurasCatalogProductImage: Record<string, Record<string, string>> = {
   Zócalos: {
     Zócalos: '/media/molduras/zocalostipos.png'
   },
-  Contramarcos: {
-    Contramarcos: '/media/molduras/contramarcos.png'
+  Contravidrios: {
+    Contravidrios: '/media/molduras/catalogo/contravidriosCatalogo.png'
   },
   Cornisas: {
-    Cornisas: '/media/molduras/cornisas.png'
+    Cornisas: '/media/molduras/cornisasCatalogo.png'
   },
   Rinconeros: {
-    Rinconeros: '/media/molduras/rinconeros.png'
+    Rinconeros: '/media/molduras/catalogo/rinconerosCatalogo.png'
   },
+  Esquineros: {
+    Esquineros: '/media/molduras/catalogo/esquineroCatalogo.png'
+  },
+  Balustres: {
+    Balustres: '/media/molduras/balustresCatalogo.png'
+  },
+  Zocalín: {
+    Zocalín: '/media/molduras/catalogo/zocalinCatalogo.png'
+  },
+  Guardasillas: {
+    Guardasillas: '/media/molduras/catalogo/guardasillasCatalogo.png'
+  },
+  Tapacantos: {
+    Tapacantos: '/media/molduras/catalogo/tapacantosCatalogo.png'
+  },
+  Pasamanos: {
+    Pasamanos: '/media/molduras/catalogo/pasamanosCatalogo.png'
+  },
+  Listones: {
+    Listones: '/media/molduras/catalogo/listonesCatalogo.png'
+  },
+  terminaciones: {
+    Terminaciones: '/media/molduras/catalogo/terminacionesCatalogo.png'
+  },
+  Antepecho: {
+    Antepecho: '/media/molduras/catalogo/antepechoCatalogo.png'
+  },
+  tapacantos: {
+    Tapacantos: '/media/molduras/catalogo/tapacantosCatalogo.png'
+  }
 }
 
 
@@ -914,14 +949,14 @@ export default function ProductPage() {
             </svg>
           </button>
           <div
-            className="relative w-full max-w-[min(95vw,1200px)] h-[min(90dvh,90vh)] max-h-[90vh]"
+            className="relative mx-auto h-[min(90dvh,90vh)] w-[min(95vw,1400px)] max-h-[90vh] max-w-[95vw]"
             onClick={(e) => e.stopPropagation()}
           >
             <Image
               src={moldurasLightbox.src}
               alt={moldurasLightbox.alt}
               fill
-              className="object-cover"
+              className="object-contain object-center"
               sizes="100vw"
               quality={95}
               priority
