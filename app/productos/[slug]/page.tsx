@@ -43,7 +43,7 @@ const moldurasSubcategoriaPreviewSrc: Partial<
   Terminaciones: '/media/molduras/terminaciones.png',
   Cuadros: '/media/molduras/cuadros.png',
   Listones: '/media/molduras/listones.png',
-  Antepecho: '/media/molduras/antepecho.png',
+  Antepecho: '/media/molduras/antepechos.png',
   Tapacantos: '/media/molduras/tapacantos.png',
   Esquineros: '/media/molduras/esquineros.png',
   Balustres: '/media/molduras/balustres.png',
@@ -56,14 +56,14 @@ const moldurasSubcategoriaPreviewSrc: Partial<
 
 const moldurasSubcategorias: Record<string, string[]> = {
   Zócalos: ['Zócalos'],
-  Contramarcos: ['Contra vidrio'],
+  Contramarcos: ['Contramarcos'],
   Cornisas: ['Cornisas'],
   Rinconeros: ['Rinconeros'],
-  Terminaciones: ['Terminaciones', 'Guardasillas', 'Tapa juntas'],
-  Cuadros: [],
+  Terminaciones: ['Terminaciones'],
+  Cuadros: ['Cuadros'],
   Listones: ['Listones'],
   Antepecho: ['Antepecho'],
-  Tapacantos: ['Tapacintas', 'Tapa Cantos'],
+  Tapacantos: [ 'Tapacantos'],
   Esquineros: ['Esquineros'],
   Balustres: ['Balaustres torneados'],
   Zocalín: ['Zocalín'],
@@ -85,7 +85,7 @@ const moldurasCatalogProductImage: Record<string, Record<string, string>> = {
     Contravidrios: '/media/molduras/catalogo/contravidriosCatalogo.png'
   },
   Cornisas: {
-    Cornisas: '/media/molduras/cornisasCatalogo.png'
+    Cornisas: '/media/molduras/catalogo/cornisasCatalogo.png'
   },
   Rinconeros: {
     Rinconeros: '/media/molduras/catalogo/rinconerosCatalogo.png'
@@ -94,7 +94,7 @@ const moldurasCatalogProductImage: Record<string, Record<string, string>> = {
     Esquineros: '/media/molduras/catalogo/esquineroCatalogo.png'
   },
   Balustres: {
-    Balustres: '/media/molduras/balustresCatalogo.png'
+    Balustres: '/media/molduras/catalogo/balustresCatalogo.png'
   },
   Zocalín: {
     Zocalín: '/media/molduras/catalogo/zocalinCatalogo.png'
@@ -103,7 +103,7 @@ const moldurasCatalogProductImage: Record<string, Record<string, string>> = {
     Guardasillas: '/media/molduras/catalogo/guardasillasCatalogo.png'
   },
   Tapacantos: {
-    Tapacantos: '/media/molduras/catalogo/tapacantosCatalogo.png'
+    Tapacantos: '/media/molduras/catalogo/tapacantosCatalogo.png',
   },
   Pasamanos: {
     Pasamanos: '/media/molduras/catalogo/pasamanosCatalogo.png'
@@ -111,18 +111,34 @@ const moldurasCatalogProductImage: Record<string, Record<string, string>> = {
   Listones: {
     Listones: '/media/molduras/catalogo/listonesCatalogo.png'
   },
-  terminaciones: {
+  Terminaciones: {
     Terminaciones: '/media/molduras/catalogo/terminacionesCatalogo.png'
   },
   Antepecho: {
     Antepecho: '/media/molduras/catalogo/antepechoCatalogo.png'
   },
-  tapacantos: {
-    Tapacantos: '/media/molduras/catalogo/tapacantosCatalogo.png'
+  Cuadros: {
+    Cuadros: '/media/molduras/catalogo/cuadrosCatalogo.png'
+  },
+   Contramarcos: {
+    Contramarcos: '/media/molduras/catalogo/contramarcosCatalogo.png'
   }
 }
 
-
+/** Primera lámina de catálogo de una subcategoría (orden de moldurasSubcategorias, luego cualquier clave del mapa). */
+function getFirstMoldurasCatalogLightbox(categoria: string): { src: string; alt: string } | null {
+  const map = moldurasCatalogProductImage[categoria]
+  if (!map) return null
+  const order = moldurasSubcategorias[categoria] ?? []
+  for (const name of order) {
+    const src = map[name]
+    if (src) return { src, alt: name }
+  }
+  const entries = Object.entries(map)
+  if (entries.length === 0) return null
+  const [alt, src] = entries[0]
+  return { src, alt }
+}
 
 type RevestimientoItem = {
   /** Nombre base del producto (sin “ - perfil”) */
@@ -470,7 +486,11 @@ export default function ProductPage() {
                     <button
                       type="button"
                       key={categoria}
-                      onClick={() => setSelectedMoldurasCategoria(categoria)}
+                      onClick={() => {
+                        setSelectedMoldurasCategoria(categoria)
+                        const light = getFirstMoldurasCatalogLightbox(categoria)
+                        if (light) setMoldurasLightbox(light)
+                      }}
                       className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300 text-left w-full"
                     >
                       <div className="relative w-[100%] max-w-full mx-auto aspect-[4/3] overflow-hidden bg-stone-100">
@@ -498,24 +518,29 @@ export default function ProductPage() {
                     return (
                       <div
                         key={`${productName}-${index}`}
-                        className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
+                        className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-stone-200 hover:border-stone-300"
                       >
                         <div className="relative w-[85%] max-w-full mx-auto aspect-[4/3] overflow-hidden bg-stone-100">
                           {productSrc ? (
                             <button
                               type="button"
                               onClick={() => setMoldurasLightbox({ src: productSrc, alt: productName })}
-                              className="absolute inset-0 block cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
-                              aria-label={`Ampliar imagen: ${productName}`}
+                              className="absolute inset-0 block text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
+                              aria-label={`Ver catálogo: ${productName}`}
                             >
                               <Image
                                 src={productSrc}
-                                alt={productName}
+                                alt=""
                                 fill
                                 className="object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none"
                                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                                 quality={90}
                               />
+                              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent pt-14 pb-2.5 flex justify-center">
+                                <span className="rounded-full bg-white/95 px-4 py-1.5 text-xs sm:text-sm font-semibold text-red-600 shadow-sm">
+                                  Ver catálogo
+                                </span>
+                              </div>
                             </button>
                           ) : (
                             <>
