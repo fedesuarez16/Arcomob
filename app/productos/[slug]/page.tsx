@@ -125,19 +125,21 @@ const moldurasCatalogProductImage: Record<string, Record<string, string>> = {
   }
 }
 
+type CatalogLightboxSlide = { src: string; caption: string }
+
 /** Primera lámina de catálogo de una subcategoría (orden de moldurasSubcategorias, luego cualquier clave del mapa). */
-function getFirstMoldurasCatalogLightbox(categoria: string): { src: string; alt: string } | null {
+function getFirstMoldurasCatalogLightbox(categoria: string): CatalogLightboxSlide[] | null {
   const map = moldurasCatalogProductImage[categoria]
   if (!map) return null
   const order = moldurasSubcategorias[categoria] ?? []
   for (const name of order) {
     const src = map[name]
-    if (src) return { src, alt: name }
+    if (src) return [{ src, caption: name }]
   }
   const entries = Object.entries(map)
   if (entries.length === 0) return null
   const [alt, src] = entries[0]
-  return { src, alt }
+  return [{ src, caption: alt }]
 }
 
 type RevestimientoItem = {
@@ -155,25 +157,39 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   'Enchapados de Madera Natural': [
 
     {
-      name: '',
+      name: 'GUAYUBIRA',
       imagenPerfil: '/media/revestimientos/enchapado.png',
-      imagenProducto: '/media/revestimientos/enchapado.png'
+      imagenProducto: '/media/revestimientos/guayubira.png'
     },
     {
-      name: '',
-      imagenPerfil: '/media/revestimientos/enchapado1.jpeg',
-      imagenProducto: '/media/revestimientos/enchapado1.jpeg'
-    }, {
-      name: '',
-      imagenPerfil: '/media/revestimientos/enchapado2.jpeg',
-      imagenProducto: '/media/revestimientos/enchapado2.jpeg'
-    }, 
+      name: 'PARAISO',
+      imagenPerfil: '/media/revestimientos/paraisoenchapado.jpeg',
+      imagenProducto: '/media/revestimientos/paraisodetalle1.png'
+    },
+    {
+      name: 'ITAUBA',
+      imagenPerfil: '/media/revestimientos/itauba.png',
+      imagenProducto: '/media/revestimientos/itaubadetalle.png'
+    },
+  
+    {
+      name: 'FREIJO',
+      imagenPerfil: '/media/revestimientos/freijoenchapado.png',
+      imagenProducto: '/media/revestimientos/freijoenchapado.png'
+    },
+    {
+      name: 'ROBLE AMERICANO',
+      imagenPerfil: '/media/revestimientos/robleamericano.png',
+      imagenProducto: '/media/revestimientos/robleamericanodetalle.png'
+    },
+   
+    
   ],
   'Revestimientos Especiales': [
     {
-      name: 'Paraíso',
-      imagenPerfil: '/media/revestimientos/especiales.png',
-      imagenProducto: '/media/revestimientos/especiales.png'
+      name: 'cambará',
+      imagenPerfil: '/media/revestimientos/especiales/cambara.png',
+      imagenProducto: '/media/revestimientos/especiales/cambara.png'
     },
     {
       name: 'Cedro',
@@ -184,6 +200,11 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
       name: 'Kiri',
       imagenPerfil: '/media/revestimientos/KIRI.png',
       imagenProducto: '/media/revestimientos/KIRI.png'
+    },
+    {
+      name: 'Cnacharana',
+      imagenPerfil: '/media/revestimientos/especiales/cancharana.png',
+      imagenProducto: '/media/revestimientos/especiales/cancharana.png'
     },
     
     
@@ -206,7 +227,19 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
     }, 
 
   ],
- 
+  Macizos: [
+    {
+      name: 'pino',
+      imagenPerfil: '/media/revestimientos/macizos/pinodorm.png',
+      imagenProducto: '/media/revestimientos/macizos/pino.png'
+    },
+    {
+      name: 'eucalipto',
+      imagenPerfil: '/media/revestimientos/macizos/eucalipto.png',
+      imagenProducto: '/media/revestimientos/macizos/eucalipto.png'
+    }
+
+  ],
   'Revestimiento para Exterior': [
     {
       name: 'pino impregnado para exteriores',
@@ -341,12 +374,12 @@ export default function ProductPage() {
   const revestimientosCategorias = Object.keys(revestimientosSubcategorias)
   const [selectedRevestimientoCategoria, setSelectedRevestimientoCategoria] = useState<string | null>(null)
   const [selectedMoldurasCategoria, setSelectedMoldurasCategoria] = useState<string | null>(null)
-  const [moldurasLightbox, setMoldurasLightbox] = useState<{ src: string; alt: string } | null>(null)
+  const [catalogImageLightbox, setCatalogImageLightbox] = useState<CatalogLightboxSlide[] | null>(null)
 
   useEffect(() => {
-    if (!moldurasLightbox) return
+    if (!catalogImageLightbox) return
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMoldurasLightbox(null)
+      if (e.key === 'Escape') setCatalogImageLightbox(null)
     }
     const prevOverflow = document.body.style.overflow
     document.body.style.overflow = 'hidden'
@@ -355,7 +388,7 @@ export default function ProductPage() {
       window.removeEventListener('keydown', onKey)
       document.body.style.overflow = prevOverflow
     }
-  }, [moldurasLightbox])
+  }, [catalogImageLightbox])
 
   if (!product) {
     return (
@@ -471,7 +504,7 @@ export default function ProductPage() {
                   <button
                     type="button"
                     onClick={() => {
-                      setMoldurasLightbox(null)
+                      setCatalogImageLightbox(null)
                       setSelectedMoldurasCategoria(null)
                     }}
                     className="inline-flex items-center gap-2 bg-white border border-stone-300 text-stone-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-stone-100 transition-colors"
@@ -492,7 +525,7 @@ export default function ProductPage() {
                       onClick={() => {
                         setSelectedMoldurasCategoria(categoria)
                         const light = getFirstMoldurasCatalogLightbox(categoria)
-                        if (light) setMoldurasLightbox(light)
+                        if (light) setCatalogImageLightbox(light)
                       }}
                       className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300 text-left w-full"
                     >
@@ -527,7 +560,9 @@ export default function ProductPage() {
                           {productSrc ? (
                             <button
                               type="button"
-                              onClick={() => setMoldurasLightbox({ src: productSrc, alt: productName })}
+                              onClick={() =>
+                                setCatalogImageLightbox([{ src: productSrc, caption: productName }])
+                              }
                               className="absolute inset-0 block text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
                               aria-label={`Ver catálogo: ${productName}`}
                             >
@@ -614,7 +649,11 @@ export default function ProductPage() {
               {selectedRevestimientoCategoria && (
                 <div className="mb-6 flex justify-center">
                   <button
-                    onClick={() => setSelectedRevestimientoCategoria(null)}
+                    type="button"
+                    onClick={() => {
+                      setCatalogImageLightbox(null)
+                      setSelectedRevestimientoCategoria(null)
+                    }}
                     className="inline-flex items-center gap-2 bg-white border border-stone-300 text-stone-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-stone-100 transition-colors"
                   >
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -663,12 +702,31 @@ export default function ProductPage() {
                 {selectedRevestimientoCategoria &&
                   revestimientosSubcategorias[selectedRevestimientoCategoria].map((item, index) => {
                     const tieneDosVistas = item.imagenPerfil !== item.imagenProducto
+                    const labelAmpliar =
+                      item.name?.trim() ||
+                      `${selectedRevestimientoCategoria} — ${index + 1}`
                     return (
                       <div
                         key={index}
-                        className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300"
+                        className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-stone-200 hover:border-stone-300"
                       >
-                        <div className="relative w-[100%] max-w-full mx-auto aspect-[4/3] overflow-hidden bg-stone-100">
+                        <button
+                          type="button"
+                          className="relative w-[100%] max-w-full mx-auto block aspect-[4/3] overflow-hidden bg-stone-100 cursor-zoom-in text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
+                          onClick={() => {
+                            if (tieneDosVistas) {
+                              setCatalogImageLightbox([
+                                { src: item.imagenPerfil, caption: `${labelAmpliar} — perfil` },
+                                { src: item.imagenProducto, caption: `${labelAmpliar} — detalle` }
+                              ])
+                            } else {
+                              setCatalogImageLightbox([
+                                { src: item.imagenPerfil, caption: labelAmpliar }
+                              ])
+                            }
+                          }}
+                          aria-label={`Ampliar imagen: ${labelAmpliar}`}
+                        >
                           {/* Por defecto: perfil; al hover: producto (si hay dos imágenes distintas) */}
                           <Image
                             src={item.imagenPerfil}
@@ -693,26 +751,14 @@ export default function ProductPage() {
                             />
                           )}
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center pointer-events-none">
-                            <svg
-                              className="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                              />
-                            </svg>
+                            
                           </div>
-                        </div>
+                        </button>
                         <div className="p-4 relative min-h-[3rem] flex flex-col items-center justify-center gap-2">
                           {tieneDosVistas ? (
                             <>
                               <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center transition-all duration-300 group-hover:opacity-0">
-                                {item.name} - perfil
+                                {item.name}
                               </h3>
                               <h3 className="absolute inset-0 flex items-center justify-center text-sm lg:text-base font-semibold text-red-600 text-center px-4 opacity-0 transition-all duration-300 group-hover:opacity-100">
                                 {item.name}
@@ -932,18 +978,18 @@ export default function ProductPage() {
         </section>
       )}
 
-      {/* Lightbox — imágenes del catálogo molduras */}
-      {moldurasLightbox && (
+      {/* Lightbox — catálogo molduras y revestimientos */}
+      {catalogImageLightbox && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/85 p-4 sm:p-8"
-          onClick={() => setMoldurasLightbox(null)}
+          onClick={() => setCatalogImageLightbox(null)}
           role="dialog"
           aria-modal="true"
           aria-label="Vista ampliada"
         >
           <button
             type="button"
-            onClick={() => setMoldurasLightbox(null)}
+            onClick={() => setCatalogImageLightbox(null)}
             className="absolute top-3 right-3 sm:top-6 sm:right-6 z-[101] rounded-full bg-white/10 hover:bg-white/20 text-white p-2.5 backdrop-blur-sm transition-colors"
             aria-label="Cerrar"
           >
@@ -952,18 +998,30 @@ export default function ProductPage() {
             </svg>
           </button>
           <div
-            className="relative mx-auto h-[min(90dvh,90vh)] w-[min(95vw,1400px)] max-h-[90vh] max-w-[95vw]"
+            className="mx-auto flex max-h-[90vh] w-full max-w-[min(95vw,1600px)] flex-col gap-4 overflow-y-auto overflow-x-hidden px-2 sm:px-4 lg:flex-row lg:items-start lg:justify-center lg:gap-6"
             onClick={(e) => e.stopPropagation()}
           >
-            <Image
-              src={moldurasLightbox.src}
-              alt={moldurasLightbox.alt}
-              fill
-              className="object-contain object-center"
-              sizes="100vw"
-              quality={95}
-              priority
-            />
+            {catalogImageLightbox.map((slide, slideIndex) => (
+              <figure
+                key={`${slide.src}-${slideIndex}`}
+                className="flex min-h-0 w-full min-w-0 flex-1 flex-col items-center lg:max-w-[50%]"
+              >
+                <div className="relative h-[min(42vh,520px)] w-full lg:h-[min(85vh,920px)] lg:max-h-[85vh]">
+                  <Image
+                    src={slide.src}
+                    alt={slide.caption}
+                    fill
+                    className="object-contain object-center"
+                    sizes="(max-width: 1024px) 95vw, 45vw"
+                    quality={95}
+                    priority={slideIndex === 0}
+                  />
+                </div>
+                <figcaption className="mt-2 max-w-full shrink-0 px-2 text-center text-sm text-white/90">
+                  {slide.caption}
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       )}
