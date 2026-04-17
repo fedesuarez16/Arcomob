@@ -137,7 +137,7 @@ const moldurasCatalogProductImage: Record<string, Record<string, MoldurasCatalog
     Contramarcos: [
       '/media/molduras/catalogo/contramarcosCatalogo.png',
       '/media/molduras/catalogo/contramarcosvintage.png',
-      '/media/molduras/catalogo/contravidriosCatalogo.png'
+      '/media/molduras/catalogo/contrmarcosminimaline.png'
     ]
   }
 }
@@ -413,6 +413,12 @@ export default function ProductPage() {
   const [selectedRevestimientoCategoria, setSelectedRevestimientoCategoria] = useState<string | null>(null)
   const [selectedMoldurasCategoria, setSelectedMoldurasCategoria] = useState<string | null>(null)
   const [catalogImageLightbox, setCatalogImageLightbox] = useState<CatalogLightboxSlide[] | null>(null)
+  /** Índice de lámina ampliada con zoom en el lightbox de catálogo (clic para alternar). */
+  const [catalogLightboxZoomSlide, setCatalogLightboxZoomSlide] = useState<number | null>(null)
+
+  useEffect(() => {
+    setCatalogLightboxZoomSlide(null)
+  }, [catalogImageLightbox])
 
   useEffect(() => {
     if (!catalogImageLightbox) return
@@ -1070,27 +1076,59 @@ export default function ProductPage() {
             className="mx-auto flex max-h-[90vh] w-full max-w-[min(95vw,1600px)] flex-col gap-4 overflow-y-auto overflow-x-hidden px-2 sm:px-4 lg:flex-row lg:items-start lg:justify-center lg:gap-6"
             onClick={(e) => e.stopPropagation()}
           >
-            {catalogImageLightbox.map((slide, slideIndex) => (
-              <figure
-                key={`${slide.src}-${slideIndex}`}
-                className="flex min-h-0 w-full min-w-0 flex-1 flex-col items-center lg:max-w-[50%]"
-              >
-                <div className="relative h-[min(42vh,520px)] w-full lg:h-[min(85vh,920px)] lg:max-h-[85vh]">
-                  <Image
-                    src={slide.src}
-                    alt={slide.caption}
-                    fill
-                    className="object-contain object-center"
-                    sizes="(max-width: 1024px) 95vw, 45vw"
-                    quality={95}
-                    priority={slideIndex === 0}
-                  />
-                </div>
-                <figcaption className="mt-2 max-w-full shrink-0 px-2 text-center text-sm text-white/90">
-                  {slide.caption}
-                </figcaption>
-              </figure>
-            ))}
+            {catalogImageLightbox.map((slide, slideIndex) => {
+              const zoomed = catalogLightboxZoomSlide === slideIndex
+              return (
+                <figure
+                  key={`${slide.src}-${slideIndex}`}
+                  className="flex min-h-0 w-full min-w-0 flex-1 flex-col items-center lg:max-w-[50%]"
+                >
+                  <div
+                    role="button"
+                    tabIndex={0}
+                    aria-label={zoomed ? 'Reducir imagen' : 'Ampliar imagen'}
+                    aria-pressed={zoomed}
+                    className={`relative h-[min(42vh,520px)] w-full touch-pan-x touch-pan-y transition-shadow duration-200 outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black/50 lg:h-[min(85vh,920px)] lg:max-h-[85vh] ${
+                      zoomed
+                        ? 'cursor-zoom-out overflow-auto shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]'
+                        : 'cursor-zoom-in overflow-hidden'
+                    }`}
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      setCatalogLightboxZoomSlide((prev) => (prev === slideIndex ? null : slideIndex))
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        e.stopPropagation()
+                        setCatalogLightboxZoomSlide((prev) => (prev === slideIndex ? null : slideIndex))
+                      }
+                    }}
+                    title={zoomed ? 'Clic para reducir' : 'Clic para ampliar'}
+                  >
+                    <div
+                      className={`relative transition-[width,height] duration-200 ease-out ${
+                        zoomed ? 'h-[165%] w-[165%] min-h-full min-w-full' : 'h-full w-full'
+                      }`}
+                    >
+                      <Image
+                        src={slide.src}
+                        alt={slide.caption}
+                        fill
+                        className="object-contain object-center"
+                        sizes="(max-width: 1024px) 95vw, 45vw"
+                        quality={95}
+                        priority={slideIndex === 0}
+                        draggable={false}
+                      />
+                    </div>
+                  </div>
+                  <figcaption className="mt-2 max-w-full shrink-0 px-2 text-center text-sm text-white/90">
+                    {slide.caption}
+                  </figcaption>
+                </figure>
+              )
+            })}
           </div>
         </div>
       )}
