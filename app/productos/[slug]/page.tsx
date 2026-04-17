@@ -7,6 +7,8 @@ import { useParams } from 'next/navigation'
 
 /** Orden de subcategorías en el catálogo de molduras (sin duplicar Cornisas / Cuadros) */
 const moldurasCategoriasOrden = [
+  'Zócalos',
+  'Contramarcos',
   'Esquineros',
   'Contravidrios',
   'Zocalín',
@@ -18,8 +20,6 @@ const moldurasCategoriasOrden = [
   'Listones',
   'Tapacintas',
  'Tapacantos',
-  'Zócalos',
-  'Contramarcos',
   'Cornisas',
   'Balustres',
   'Terminaciones',
@@ -73,13 +73,22 @@ const moldurasSubcategorias: Record<string, string[]> = {
   Pasamanos: ['Pasamanos']
 }
 
+/** Una imagen o varias (por ejemplo 3 vistas para Zócalos / Contramarcos / Zocalín). */
+type MoldurasCatalogImageEntry = string | string[]
+
+const MOLDURAS_CATALOG_VARIANT_LABELS = ['standar', 'vintage', 'minimaline'] as const
+
 /**
  * Láminas de catálogo por subcategoría + nombre de ítem (igual que en moldurasSubcategorias).
  * Archivos en `public/media/molduras/catalogo/` — convención sugerida: `<tema>Catalogo.png` (ej. esquineroCatalogo.png).
  */
-const moldurasCatalogProductImage: Record<string, Record<string, string>> = {
+const moldurasCatalogProductImage: Record<string, Record<string, MoldurasCatalogImageEntry>> = {
   Zócalos: {
-    Zócalos: '/media/molduras/zocalostipos.png'
+    Zócalos: [
+      '/media/molduras/catalogo/zocalostipos.png',
+      '/media/molduras/catalogo/zocalostandar.png',
+      '/media/molduras/catalogo/zocalominimaline.png'
+    ]
   },
   Contravidrios: {
     Contravidrios: '/media/molduras/catalogo/contravidriosCatalogo.png'
@@ -97,7 +106,11 @@ const moldurasCatalogProductImage: Record<string, Record<string, string>> = {
     Balustres: '/media/molduras/catalogo/balustresCatalogo.png'
   },
   Zocalín: {
-    Zocalín: '/media/molduras/catalogo/zocalinCatalogo.png'
+    Zocalín: [
+      '/media/molduras/catalogo/zocalinCatalogo.png',
+      '/media/molduras/zocalin.png',
+      '/media/molduras/catalogo/zocalinminimaline.png'
+    ]
   },
   Guardasillas: {
     Guardasillas: '/media/molduras/catalogo/guardasillasCatalogo.png'
@@ -120,9 +133,35 @@ const moldurasCatalogProductImage: Record<string, Record<string, string>> = {
   Cuadros: {
     Cuadros: '/media/molduras/catalogo/cuadrosCatalogo.png'
   },
-   Contramarcos: {
-    Contramarcos: '/media/molduras/catalogo/contramarcosCatalogo.png'
+  Contramarcos: {
+    Contramarcos: [
+      '/media/molduras/catalogo/contramarcosCatalogo.png',
+      '/media/molduras/catalogo/contramarcosvintage.png',
+      '/media/molduras/catalogo/contravidriosCatalogo.png'
+    ]
   }
+}
+
+function moldurasCatalogImagesList(raw: MoldurasCatalogImageEntry | undefined): string[] {
+  if (raw == null) return []
+  return Array.isArray(raw) ? raw : [raw]
+}
+
+function moldurasProductToLightboxSlides(productName: string, raw: MoldurasCatalogImageEntry): CatalogLightboxSlide[] {
+  const list = moldurasCatalogImagesList(raw)
+  return list.map((src, i) => {
+    const variant =
+      list.length === MOLDURAS_CATALOG_VARIANT_LABELS.length
+        ? MOLDURAS_CATALOG_VARIANT_LABELS[i]
+        : null
+    const caption =
+      variant != null
+        ? `${productName} — ${variant}`
+        : list.length > 1
+          ? `${productName} — ${i + 1}`
+          : productName
+    return { src, caption }
+  })
 }
 
 type CatalogLightboxSlide = { src: string; caption: string }
@@ -133,13 +172,15 @@ function getFirstMoldurasCatalogLightbox(categoria: string): CatalogLightboxSlid
   if (!map) return null
   const order = moldurasSubcategorias[categoria] ?? []
   for (const name of order) {
-    const src = map[name]
-    if (src) return [{ src, caption: name }]
+    const raw = map[name]
+    if (raw == null) continue
+    const slides = moldurasProductToLightboxSlides(name, raw)
+    if (slides.length > 0) return slides
   }
   const entries = Object.entries(map)
   if (entries.length === 0) return null
-  const [alt, src] = entries[0]
-  return [{ src, caption: alt }]
+  const [alt, raw] = entries[0]
+  return moldurasProductToLightboxSlides(alt, raw)
 }
 
 type RevestimientoItem = {
@@ -189,22 +230,22 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
     {
       name: 'cambará',
       imagenPerfil: '/media/revestimientos/especiales/cambara.png',
-      imagenProducto: '/media/revestimientos/especiales/cambara.png'
+      imagenProducto: '/media/revestimientos/especiales/cambara1.png'
     },
     {
       name: 'Cedro',
       imagenPerfil: '/media/revestimientos/CEDRO.png',
-      imagenProducto: '/media/revestimientos/CEDRO.png'
+      imagenProducto: '/media/revestimientos/especiales/cedro1.png'
     },
     {
       name: 'Kiri',
       imagenPerfil: '/media/revestimientos/KIRI.png',
-      imagenProducto: '/media/revestimientos/KIRI.png'
+      imagenProducto: '/media/revestimientos/especiales/KIRI1.png'
     },
     {
       name: 'Cnacharana',
       imagenPerfil: '/media/revestimientos/especiales/cancharana.png',
-      imagenProducto: '/media/revestimientos/especiales/cancharana.png'
+      imagenProducto: '/media/revestimientos/especiales/cancharana1.png'
     },
     
     
@@ -235,7 +276,7 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
     },
     {
       name: 'eucalipto',
-      imagenPerfil: '/media/revestimientos/macizos/eucalipto.png',
+      imagenPerfil: '/media/revestimientos/macizos/eucaliving.png',
       imagenProducto: '/media/revestimientos/macizos/eucalipto.png'
     }
 
@@ -243,8 +284,8 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   'Revestimiento para Exterior': [
     {
       name: 'pino impregnado para exteriores',
-      imagenPerfil: '/media/revestimientos/pinoimpregnadoexterior.png',
-      imagenProducto: '/media/revestimientos/exteriores.png'
+      imagenPerfil: '/media/revestimientos/pinoimpreg.png',
+      imagenProducto: '/media/revestimientos/pinoimpreg.png'
     }
   ]
 }
@@ -252,10 +293,7 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
 const accesoriosCatalog: { name: string; image: string }[] = [
   { name: 'Zocalín', image: '/media/molduras/zocalin.png' },
   { name: 'Cuadros', image: '/media/molduras/cuadros.png' },
-  {
-    name: 'Inglete',
-    image: '/media/products/accesorioss.png'
-  }
+ 
 ]
 
 const moldurasLuminosasProducts = [
@@ -549,33 +587,64 @@ export default function ProductPage() {
 
                 {selectedMoldurasCategoria &&
                   moldurasSubcategorias[selectedMoldurasCategoria]?.map((productName, index) => {
-                    const productSrc =
+                    const productRaw =
                       moldurasCatalogProductImage[selectedMoldurasCategoria]?.[productName]
+                    const productImages = moldurasCatalogImagesList(productRaw)
                     return (
                       <div
                         key={`${productName}-${index}`}
                         className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-stone-200 hover:border-stone-300"
                       >
                         <div className="relative w-[85%] max-w-full mx-auto aspect-[4/3] overflow-hidden bg-stone-100">
-                          {productSrc ? (
+                          {productImages.length > 0 ? (
                             <button
                               type="button"
                               onClick={() =>
-                                setCatalogImageLightbox([{ src: productSrc, caption: productName }])
+                                setCatalogImageLightbox(
+                                  moldurasProductToLightboxSlides(productName, productRaw as MoldurasCatalogImageEntry)
+                                )
                               }
-                              className="absolute inset-0 block text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
+                              className="absolute inset-0 flex h-full w-full flex-col text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
                               aria-label={`Ver catálogo: ${productName}`}
                             >
-                              <Image
-                                src={productSrc}
-                                alt=""
-                                fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none"
-                                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                                quality={90}
-                              />
-                              <div className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent pt-14 pb-2.5 flex justify-center">
-                                <span className="rounded-full bg-white/95 px-4 py-1.5 text-xs sm:text-sm font-semibold text-red-600 shadow-sm">
+                              <div
+                                className={`min-h-0 flex-1 ${
+                                  productImages.length > 1
+                                    ? 'grid grid-cols-3 gap-0.5 sm:gap-1'
+                                    : 'grid grid-cols-1'
+                                }`}
+                              >
+                                {productImages.map((src, imgIndex) => (
+                                  <div key={`${src}-${imgIndex}`} className="relative min-h-0 min-w-0">
+                                    <Image
+                                      src={src}
+                                      alt=""
+                                      fill
+                                      className="object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none"
+                                      sizes={
+                                        productImages.length > 1
+                                          ? '(max-width: 640px) 30vw, 12vw'
+                                          : '(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw'
+                                      }
+                                      quality={90}
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                              {productImages.length === MOLDURAS_CATALOG_VARIANT_LABELS.length && (
+                                <div className="pointer-events-none grid shrink-0 grid-cols-3 gap-0.5 border-t border-stone-200/90 bg-stone-50/95 py-1 sm:gap-1 sm:py-1.5">
+                                  {MOLDURAS_CATALOG_VARIANT_LABELS.map((label) => (
+                                    <span
+                                      key={label}
+                                      className="text-center text-[9px] font-semibold uppercase tracking-wide text-stone-600 sm:text-[10px]"
+                                    >
+                                      {label}
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
+                              <div className="pointer-events-none relative z-10 flex shrink-0 justify-center bg-gradient-to-t from-black/75 via-black/30 to-transparent pt-3 pb-2 sm:pt-4">
+                                <span className="rounded-full bg-white/95 px-3 py-1 text-[10px] font-semibold text-red-600 shadow-sm sm:px-4 sm:py-1.5 sm:text-xs">
                                   Ver catálogo
                                 </span>
                               </div>
