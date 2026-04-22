@@ -85,9 +85,9 @@ const MOLDURAS_CATALOG_VARIANT_LABELS = ['standar', 'vintage', 'minimaline'] as 
 const moldurasCatalogProductImage: Record<string, Record<string, MoldurasCatalogImageEntry>> = {
   Zócalos: {
     Zócalos: [
-      '/media/molduras/catalogo/zocalostipos.png',
+      '/media/molduras/catalogo/zocalominimaline.png',
       '/media/molduras/catalogo/zocalostandar.png',
-      '/media/molduras/catalogo/zocalominimaline.png'
+      '/media/molduras/catalogo/zocalostipos.png'
     ]
   },
   Contravidrios: {
