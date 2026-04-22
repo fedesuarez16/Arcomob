@@ -199,8 +199,8 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
 
     {
       name: 'GUAYUBIRA',
-      imagenPerfil: '/media/revestimientos/enchapado.png',
-      imagenProducto: '/media/revestimientos/guayabiradetail.png'
+      imagenPerfil: '/media/revestimientos/GUAYUBIRAperfil.jpeg',
+      imagenProducto: '/media/revestimientos/guayubiradetail.png'
     },
     {
       name: 'PARAISO',
