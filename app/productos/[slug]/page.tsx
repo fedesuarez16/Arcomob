@@ -200,17 +200,17 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
     {
       name: 'GUAYUBIRA',
       imagenPerfil: '/media/revestimientos/enchapado.png',
-      imagenProducto: '/media/revestimientos/guayubira.png'
+      imagenProducto: '/media/revestimientos/guayabiradetail.png'
     },
     {
       name: 'PARAISO',
       imagenPerfil: '/media/revestimientos/paraisoenchapado.jpeg',
-      imagenProducto: '/media/revestimientos/paraisodetalle1.png'
+      imagenProducto: '/media/revestimientos/paraisodetail1.png'
     },
     {
       name: 'ITAUBA',
-      imagenPerfil: '/media/revestimientos/itauba.png',
-      imagenProducto: '/media/revestimientos/itaubadetalle.png'
+      imagenPerfil: '/media/revestimientos/itaubaliving.png',
+      imagenProducto: '/media/revestimientos/itaudadetail.png'
     },
   
     {
@@ -221,7 +221,7 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
     {
       name: 'ROBLE AMERICANO',
       imagenPerfil: '/media/revestimientos/robleamericano.png',
-      imagenProducto: '/media/revestimientos/robleamericanodetalle.png'
+      imagenProducto: '/media/revestimientos/robleamericanodetail.png'
     },
    
     
