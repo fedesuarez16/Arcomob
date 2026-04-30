@@ -81,29 +81,16 @@ export default function CotizarPage() {
     setSubmitStatus('idle')
 
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      
-      const emailBody = `
-Nueva solicitud de cotización - ArcoMob
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'cotizacion', data: formData }),
+      })
 
-DATOS PERSONALES:
-Nombre: ${formData.firstName} ${formData.lastName}
-Email: ${formData.email}
-Teléfono: ${formData.phone || 'No especificado'}
-Empresa: ${formData.company || 'No especificada'}
+      if (!res.ok) {
+        throw new Error('Request failed')
+      }
 
-DETALLES DE COTIZACIÓN:
-Producto: ${formData.productType}
-Tipo de proyecto: ${formData.projectType}
-Área aproximada: ${formData.area || 'No especificada'} m²
-Volumen mensual estimado: ${formData.monthlyVolume || 'No especificado'}
-
-MENSAJE ADICIONAL:
-${formData.message || 'Sin mensaje adicional'}
-      `.trim()
-
-      console.log('Email a enviar:', emailBody)
-      
       setSubmitStatus('success')
       setTimeout(() => {
         setFormData({
@@ -198,7 +185,7 @@ ${formData.message || 'Sin mensaje adicional'}
               </div>
               <div className="bg-stone-50 rounded-xl p-4 sm:p-5 border-l-4 border-stone-900">
                 <p className="text-stone-700 text-sm lg:text-base leading-relaxed italic mb-3">
-                  "En nuestro proyecto corporativo, operamos a gran escala con múltiples servicios y plataformas. ArcoMob aprovechó nuestros datos de uso para entregar mejoras medibles, incluyendo menos complicaciones, caminos de resolución más rápidos y flujos de trabajo más eficientes en nuestros equipos."
+                  &quot;En nuestro proyecto corporativo, operamos a gran escala con múltiples servicios y plataformas. ArcoMob aprovechó nuestros datos de uso para entregar mejoras medibles, incluyendo menos complicaciones, caminos de resolución más rápidos y flujos de trabajo más eficientes en nuestros equipos.&quot;
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center">

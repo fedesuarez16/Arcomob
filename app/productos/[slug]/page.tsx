@@ -197,41 +197,49 @@ type RevestimientoItem = {
 const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   'Enchapados de Madera Natural': [
 
+    
+    {
+      name: 'PARAISO',
+      imagenPerfil: '/media/revestimientos/enchapados/paraiso/perfil.png',
+      imagenProducto: '/media/revestimientos/enchapados/paraiso/detalle.jpeg'
+    },
     {
       name: 'GUAYUBIRA',
       imagenPerfil: '/media/revestimientos/guay.jpeg',
-      imagenProducto: '/media/revestimientos/guaydetail.jpeg'
+      imagenProducto: '/media/revestimientos/enchapados/guayubira/detalle.png'
     },
     {
-      name: 'PARAISO',
-      imagenPerfil: '/media/revestimientos/paraisoenchapado.jpeg',
-      imagenProducto: '/media/revestimientos/paraisodetail1.png'
+      name: 'ROBLE AMERICANO',
+      imagenPerfil: '/media/revestimientos/enchapados/roble americano/perfil.png',
+      imagenProducto: '/media/revestimientos/enchapados/roble americano/detalle.png'
+    },
+    {
+      name: 'GUATAMBU',
+      imagenPerfil: '/media/revestimientos/enchapados/guatambu/perfil.png',
+      imagenProducto: '/media/revestimientos/enchapados/guatambu/detalle.png'
     },
     {
       name: 'ITAUBA',
-      imagenPerfil: '/media/revestimientos/itaubaliving.png',
-      imagenProducto: '/media/revestimientos/itaudadetail.png'
+      imagenPerfil: '/media/revestimientos/enchapados/itabua/perfil.png',
+      imagenProducto: '/media/revestimientos/enchapados/itabua/itauba.png'
     },
   
     {
       name: 'FREIJO',
       imagenPerfil: '/media/revestimientos/freijoenchapado.png',
-      imagenProducto: '/media/revestimientos/freijoenchapado.png'
+      imagenProducto: '/media/revestimientos/enchapados/freijo/freijo.png'
     },
-    {
-      name: 'ROBLE AMERICANO',
-      imagenPerfil: '/media/revestimientos/robleamericano.png',
-      imagenProducto: '/media/revestimientos/robleamericanodetail.png'
-    },
+   
    
     
   ],
   'Revestimientos Especiales': [
     {
-      name: 'cambará',
-      imagenPerfil: '/media/revestimientos/especiales/cambara.png',
-      imagenProducto: '/media/revestimientos/especiales/cambara1.png'
+      name: 'Cnacharana',
+      imagenPerfil: '/media/revestimientos/especiales/cancharanaperfil.png',
+      imagenProducto: '/media/revestimientos/especiales/cancharana1.png'
     },
+    
     {
       name: 'Cedro',
       imagenPerfil: '/media/revestimientos/CEDRO.png',
@@ -239,14 +247,16 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
     },
     {
       name: 'Kiri',
-      imagenPerfil: '/media/revestimientos/KIRI.png',
-      imagenProducto: '/media/revestimientos/especiales/KIRI1.png'
+      imagenPerfil: '/media/revestimientos/especiales/kiri/perfil.png',
+      imagenProducto: '/media/revestimientos/especiales/kiri/detalle.png'
     },
     {
-      name: 'Cnacharana',
-      imagenPerfil: '/media/revestimientos/especiales/cancharana.png',
-      imagenProducto: '/media/revestimientos/especiales/cancharana1.png'
+      name: 'cambará',
+      imagenPerfil: '/media/revestimientos/especiales/cambara.png',
+      imagenProducto: '/media/revestimientos/especiales/cambara1.png'
     },
+    
+   
     
     
   ],
@@ -271,21 +281,21 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   Macizos: [
     {
       name: 'pino',
-      imagenPerfil: '/media/revestimientos/macizos/pinodorm.png',
-      imagenProducto: '/media/revestimientos/macizos/pino.png'
+      imagenPerfil: '/media/revestimientos/macizos/pino/perfil.png',
+      imagenProducto: '/media/revestimientos/macizos/pino/detalle.png'
     },
     {
       name: 'eucalipto',
-      imagenPerfil: '/media/revestimientos/macizos/eucaliving.png',
-      imagenProducto: '/media/revestimientos/macizos/eucalipto.png'
+      imagenPerfil: '/media/revestimientos/macizos/eucalipto/perfil.png',
+      imagenProducto: '/media/revestimientos/macizos/eucalipto/detalle.png'
     }
 
   ],
   'Revestimiento para Exterior': [
     {
       name: 'pino impregnado para exteriores',
-      imagenPerfil: '/media/revestimientos/pinoimpreg.png',
-      imagenProducto: '/media/revestimientos/pinoimpreg.png'
+      imagenPerfil: '/media/revestimientos/pino impregnado/ChatGPT Image Apr 30, 2026, 02_11_29 AM.png',
+      imagenProducto: '/media/revestimientos/pino impregnado/ChatGPT Image Apr 30, 2026, 02_11_29 AM.png'
     }
   ]
 }
@@ -738,44 +748,49 @@ export default function ProductPage() {
                   </button>
                 </div>
               )}
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
-                {!selectedRevestimientoCategoria &&
-                  revestimientosCategorias.map((categoria, index) => {
-                    const preview = revestimientosSubcategorias[categoria]?.[0]
-                    return (
-                      <button
-                        type="button"
-                        key={index}
-                        onClick={() => setSelectedRevestimientoCategoria(categoria)}
-                        className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer border border-stone-200 hover:border-stone-300 text-left w-full"
-                      >
-                        <div className="relative w-[100%] max-w-full mx-auto aspect-[4/3] overflow-hidden bg-stone-100">
-                          {preview ? (
-                            <Image
-                              src={preview.imagenPerfil}
-                              alt={categoria}
-                              fill
-                              className="object-cover transition-transform duration-500 group-hover:scale-105"
-                              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                              quality={85}
-                            />
-                          ) : (
-                            <div className="absolute inset-0 flex items-center justify-center bg-stone-200 text-stone-500 text-xs sm:text-sm p-4 text-center">
-                              Contenido próximamente
-                            </div>
-                          )}
+            </div>
+            {!selectedRevestimientoCategoria && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
+                {revestimientosCategorias.map((categoria, index) => {
+                  const preview = revestimientosSubcategorias[categoria]?.[0]
+                  return (
+                    <button
+                      type="button"
+                      key={index}
+                      onClick={() => setSelectedRevestimientoCategoria(categoria)}
+                      className="group relative aspect-[3/4] overflow-hidden rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer border border-stone-200 hover:border-stone-300 text-left w-full bg-stone-100"
+                    >
+                      {preview ? (
+                        <Image
+                          src={preview.imagenPerfil}
+                          alt={categoria}
+                          fill
+                          className="object-cover transition-transform duration-700 group-hover:scale-110"
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          quality={85}
+                        />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center bg-stone-200 text-stone-500 text-xs sm:text-sm p-4 text-center">
+                          Contenido próximamente
                         </div>
-                        <div className="p-4">
-                          <h3 className="text-sm lg:text-sm font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300 leading-snug">
-                            {categoria}
-                          </h3>
-                        </div>
-                      </button>
-                    )
-                  })}
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent transition-opacity duration-500 group-hover:from-black/90" />
+                      <div className="absolute inset-x-0 bottom-0 p-5 lg:p-6">
+                        <h3 className="text-lg lg:text-2xl font-semibold text-white leading-snug drop-shadow-md transition-colors duration-300 group-hover:text-red-300">
+                          {categoria}
+                        </h3>
+                        <div className="mt-2 h-0.5 w-10 bg-red-600 transition-all duration-500 group-hover:w-20" />
+                      </div>
+                    </button>
+                  )
+                })}
+              </div>
+            )}
 
-                {selectedRevestimientoCategoria &&
-                  revestimientosSubcategorias[selectedRevestimientoCategoria].map((item, index) => {
+            {selectedRevestimientoCategoria && (
+              <div className="max-w-6xl mx-auto">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+                  {revestimientosSubcategorias[selectedRevestimientoCategoria].map((item, index) => {
                     const tieneDosVistas = item.imagenPerfil !== item.imagenProducto
                     const labelAmpliar =
                       item.name?.trim() ||
@@ -853,14 +868,14 @@ export default function ProductPage() {
                       </div>
                     )
                   })}
-              </div>
-              {selectedRevestimientoCategoria &&
-                revestimientosSubcategorias[selectedRevestimientoCategoria].length === 0 && (
+                </div>
+                {revestimientosSubcategorias[selectedRevestimientoCategoria].length === 0 && (
                   <p className="text-center text-stone-500 mt-8">
                     Esta subcategoría aún no tiene productos cargados.
                   </p>
                 )}
-            </div>
+              </div>
+            )}
           </div>
         </section>
       )}

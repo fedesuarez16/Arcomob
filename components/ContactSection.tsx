@@ -12,6 +12,8 @@ export default function ContactSection() {
     projectType: '',
     message: ''
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
@@ -20,10 +22,25 @@ export default function ContactSection() {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Aquí iría la lógica de envío del formulario
-    console.log('Form submitted:', formData)
+    setIsSubmitting(true)
+    setSubmitStatus('idle')
+    try {
+      const res = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'contacto', data: formData }),
+      })
+      if (!res.ok) throw new Error('Request failed')
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', phone: '', company: '', projectType: '', message: '' })
+    } catch (error) {
+      console.error('Error al enviar:', error)
+      setSubmitStatus('error')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -173,10 +190,27 @@ export default function ContactSection() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-stone-900 text-white px-6 py-4 rounded-lg font-semibold text-lg hover:bg-stone-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                disabled={isSubmitting}
+                className="w-full bg-stone-900 text-white px-6 py-4 rounded-lg font-semibold text-lg hover:bg-stone-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Enviar Consulta
+                {isSubmitting ? 'Enviando...' : 'Enviar Consulta'}
               </button>
+
+              {submitStatus === 'success' && (
+                <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+                  <p className="text-green-800 text-sm font-medium text-center">
+                    ¡Consulta enviada! Nos pondremos en contacto contigo pronto.
+                  </p>
+                </div>
+              )}
+
+              {submitStatus === 'error' && (
+                <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+                  <p className="text-red-800 text-sm font-medium text-center">
+                    Error al enviar. Por favor, intenta nuevamente.
+                  </p>
+                </div>
+              )}
 
               <p className="text-xs text-gray-500 text-center">
                 Al enviar este formulario, aceptas que nos pongamos en contacto contigo.
