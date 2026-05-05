@@ -235,7 +235,7 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   ],
   'Revestimientos Especiales': [
     {
-      name: 'Cnacharana',
+      name: 'Cancharana',
       imagenPerfil: '/media/revestimientos/especiales/cancharanaperfil.png',
       imagenProducto: '/media/revestimientos/especiales/cancharana1.png'
     },
@@ -788,84 +788,67 @@ export default function ProductPage() {
             )}
 
             {selectedRevestimientoCategoria && (
-              <div className="max-w-6xl mx-auto">
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6">
+              <>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
                   {revestimientosSubcategorias[selectedRevestimientoCategoria].map((item, index) => {
                     const tieneDosVistas = item.imagenPerfil !== item.imagenProducto
                     const labelAmpliar =
                       item.name?.trim() ||
                       `${selectedRevestimientoCategoria} — ${index + 1}`
                     return (
-                      <div
+                      <button
+                        type="button"
                         key={index}
-                        className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-stone-200 hover:border-stone-300"
+                        className="group relative aspect-[3/4] overflow-hidden rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 cursor-zoom-in border border-stone-200 hover:border-stone-300 text-left w-full bg-stone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
+                        onClick={() => {
+                          if (tieneDosVistas) {
+                            setCatalogImageLightbox([
+                              { src: item.imagenPerfil, caption: `${labelAmpliar} — perfil` },
+                              { src: item.imagenProducto, caption: `${labelAmpliar} — detalle` }
+                            ])
+                          } else {
+                            setCatalogImageLightbox([
+                              { src: item.imagenPerfil, caption: labelAmpliar }
+                            ])
+                          }
+                        }}
+                        aria-label={`Ampliar imagen: ${labelAmpliar}`}
                       >
-                        <button
-                          type="button"
-                          className="relative w-[100%] max-w-full mx-auto block aspect-[4/3] overflow-hidden bg-stone-100 cursor-zoom-in text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
-                          onClick={() => {
-                            if (tieneDosVistas) {
-                              setCatalogImageLightbox([
-                                { src: item.imagenPerfil, caption: `${labelAmpliar} — perfil` },
-                                { src: item.imagenProducto, caption: `${labelAmpliar} — detalle` }
-                              ])
-                            } else {
-                              setCatalogImageLightbox([
-                                { src: item.imagenPerfil, caption: labelAmpliar }
-                              ])
-                            }
-                          }}
-                          aria-label={`Ampliar imagen: ${labelAmpliar}`}
-                        >
-                          {/* Por defecto: perfil; al hover: producto (si hay dos imágenes distintas) */}
+                        <Image
+                          src={item.imagenPerfil}
+                          alt={tieneDosVistas ? `${item.name} - perfil` : item.name}
+                          fill
+                          className={`object-cover transition-all duration-700 ${
+                            tieneDosVistas
+                              ? 'opacity-100 group-hover:opacity-0 group-hover:scale-110'
+                              : 'group-hover:scale-110'
+                          }`}
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          quality={85}
+                        />
+                        {tieneDosVistas && (
                           <Image
-                            src={item.imagenPerfil}
-                            alt={tieneDosVistas ? `${item.name} - perfil` : item.name}
+                            src={item.imagenProducto}
+                            alt={item.name}
                             fill
-                            className={`object-cover transition-all duration-500 ${
-                              tieneDosVistas
-                                ? 'opacity-100 scale-100 group-hover:opacity-0 group-hover:scale-105'
-                                : 'group-hover:scale-105'
-                            }`}
-                            sizes="(max-width: 840px) 50vw, (max-width: 1324px) 33vw, 25vw"
+                            className="object-cover absolute inset-0 transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-110"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             quality={85}
                           />
-                          {tieneDosVistas && (
-                            <Image
-                              src={item.imagenProducto}
-                              alt={item.name}
-                              fill
-                              className="object-cover absolute inset-0 transition-all duration-500 opacity-0 scale-100 group-hover:opacity-100 group-hover:scale-105"
-                              sizes="(max-width: 840px) 50vw, (max-width: 1324px) 33vw, 25vw"
-                              quality={85}
-                            />
-                          )}
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 flex items-center justify-center pointer-events-none">
-                            
-                          </div>
-                        </button>
-                        <div className="p-4 relative min-h-[3rem] flex flex-col items-center justify-center gap-2">
-                          {tieneDosVistas ? (
-                            <>
-                              <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center transition-all duration-300 group-hover:opacity-0">
-                                {item.name}
-                              </h3>
-                              <h3 className="absolute inset-0 flex items-center justify-center text-sm lg:text-base font-semibold text-red-600 text-center px-4 opacity-0 transition-all duration-300 group-hover:opacity-100">
-                                {item.name}
-                              </h3>
-                            </>
-                          ) : (
-                            <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300">
-                              {item.name}
-                            </h3>
-                          )}
+                        )}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent transition-opacity duration-500 group-hover:from-black/90" />
+                        <div className="absolute inset-x-0 bottom-0 p-5 lg:p-6">
+                          <h3 className="text-lg lg:text-2xl font-semibold text-white leading-snug drop-shadow-md transition-colors duration-300 group-hover:text-red-300">
+                            {item.name}
+                          </h3>
                           {item.description && (
-                            <p className="text-xs sm:text-sm text-stone-600 text-center leading-relaxed max-w-prose">
+                            <p className="mt-1 text-xs sm:text-sm text-white/85 leading-relaxed line-clamp-2">
                               {item.description}
                             </p>
                           )}
+                          <div className="mt-2 h-0.5 w-10 bg-red-600 transition-all duration-500 group-hover:w-20" />
                         </div>
-                      </div>
+                      </button>
                     )
                   })}
                 </div>
@@ -874,7 +857,7 @@ export default function ProductPage() {
                     Esta subcategoría aún no tiene productos cargados.
                   </p>
                 )}
-              </div>
+              </>
             )}
           </div>
         </section>
