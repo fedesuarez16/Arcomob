@@ -593,8 +593,8 @@ export default function ProductPage() {
                           quality={85}
                         />
                       </div>
-                      <div className="p-4">
-                        <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300 leading-snug">
+                      <div className="p-4 bg-stone-100 border-t border-stone-200">
+                        <h3 className="text-sm lg:text-base font-bold uppercase tracking-wide text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300 leading-snug">
                           {categoria}
                         </h3>
                       </div>
@@ -700,8 +700,8 @@ export default function ProductPage() {
                             </>
                           )}
                         </div>
-                        <div className="p-4">
-                          <h3 className="text-sm lg:text-base font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300">
+                        <div className="p-4 bg-stone-100 border-t border-stone-200">
+                          <h3 className="text-sm lg:text-base font-bold uppercase tracking-wide text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300">
                             {productName}
                           </h3>
                         </div>
