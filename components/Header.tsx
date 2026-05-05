@@ -14,16 +14,16 @@ export default function Header() {
   return (
     <header className=" sticky top-0 z-50 ">
       <nav className="container mx-auto px-6 lg:px-10 xl:px-16">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-32">
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center group">
               <Image
                 src="/media/logo.png"
                 alt="ArcoMob Logo"
-                width={180}
-                height={60}
-                className="h-auto w-auto max-w-[150px] sm:max-w-[180px] lg:max-w-[200px]"
+                width={360}
+                height={120}
+                className="h-auto w-auto max-w-[300px] sm:max-w-[360px] lg:max-w-[400px]"
                 priority
               />
             </Link>
@@ -33,31 +33,31 @@ export default function Header() {
           <div className="hidden md:flex md:items-center md:space-x-8">
             <Link
               href="#beneficios"
-              className="text-white/90 hover:text-white transition-colors duration-200 text-[13px] font-normal tracking-wide"
+              className="text-white/90 hover:text-white transition-colors duration-200 text-[17px] font-normal tracking-wide"
             >
               Beneficios
             </Link>
             <Link
               href="#aplicaciones"
-              className="text-white/90 hover:text-white transition-colors duration-200 text-[13px] font-normal tracking-wide"
+              className="text-white/90 hover:text-white transition-colors duration-200 text-[17px] font-normal tracking-wide"
             >
               Aplicaciones
             </Link>
             <Link
               href="#proyectos"
-              className="text-white/90 hover:text-white transition-colors duration-200 text-[13px] font-normal tracking-wide"
+              className="text-white/90 hover:text-white transition-colors duration-200 text-[17px] font-normal tracking-wide"
             >
               Proyectos
             </Link>
             <Link
               href="#proceso"
-              className="text-white/90 hover:text-white transition-colors duration-200 text-[13px] font-normal tracking-wide"
+              className="text-white/90 hover:text-white transition-colors duration-200 text-[17px] font-normal tracking-wide"
             >
               Proceso
             </Link>
             <Link
               href="#contacto"
-              className="text-white/90 hover:text-white transition-colors duration-200 text-[13px] font-normal tracking-wide"
+              className="text-white/90 hover:text-white transition-colors duration-200 text-[17px] font-normal tracking-wide"
             >
               Contacto
             </Link>
