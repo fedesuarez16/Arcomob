@@ -6,6 +6,7 @@ interface ServiceCardProps {
   alt: string
   title: string
   description: string
+  href?: string
   actions?: Array<{
     label: string
     href: string
@@ -13,7 +14,9 @@ interface ServiceCardProps {
   priority?: boolean
 }
 
-export default function ServiceCard({ image, alt, title, description, actions, priority = false }: ServiceCardProps) {
+export default function ServiceCard({ image, alt, title, description, href, actions, priority = false }: ServiceCardProps) {
+  const cardHref = href ?? actions?.[0]?.href
+
   return (
     <div className="group h-full">
       <div className="relative h-[440px] lg:h-[520px] rounded-2xl overflow-hidden ring-1 ring-stone-200 shadow-md hover:shadow-xl transition-shadow duration-300">
@@ -33,14 +36,24 @@ export default function ServiceCard({ image, alt, title, description, actions, p
         <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-7">
           <div className="space-y-3">
             <h3 className="text-xl lg:text-2xl font-bold text-white leading-tight">
-              {title}
+              {cardHref ? (
+                <Link
+                  href={cardHref}
+                  className="before:absolute before:inset-0 before:content-[''] before:rounded-2xl focus:outline-none focus-visible:before:ring-2 focus-visible:before:ring-white"
+                  aria-label={`${title} — Ver más`}
+                >
+                  {title}
+                </Link>
+              ) : (
+                title
+              )}
             </h3>
             <p className="text-sm text-stone-200/90 leading-relaxed line-clamp-3">
               {description}
             </p>
 
             {actions && actions.length > 0 && (
-              <div className="flex flex-col gap-2 pt-3">
+              <div className="relative z-10 flex flex-col gap-2 pt-3">
                 {actions.map((action, index) => (
                   <Link
                     key={index}

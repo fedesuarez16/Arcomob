@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import Footer from '@/components/Footer'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         {children}
         <Footer />
+        <WhatsAppButton />
       </body>
       <GoogleAnalytics gaId="G-CDCQWD09GZ" />
     </html>
