@@ -68,8 +68,6 @@ export default function HeroSection() {
             />
           </div>
         ))}
-        {/* Gradient overlay - from right (transparent) to left (black) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-900 via-stone-900/70 to-stone-900/10 rounded-b-xl"></div>
       </div>
       
       {/* Header positioned over background */}
