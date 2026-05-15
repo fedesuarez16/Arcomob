@@ -183,35 +183,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Logos Section - Bottom */}
-      <div className={`absolute bottom-4 sm:bottom-6 lg:bottom-10 left-0 right-0 z-20 transition-all duration-1000 ease-out delay-1000 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-      }`}>
-        <div className="w-full">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-16 py-3 sm:py-4 lg:py-6">
-            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 lg:gap-8 xl:gap-12">
-              <div className="text-gray-300 text-sm sm:text-base lg:text-xl font-semibold opacity-70 hover:opacity-100 transition-opacity duration-300">
-                CNBC
-              </div>
-              <div className="text-gray-300 text-xs sm:text-sm lg:text-lg font-medium opacity-70 hover:opacity-100 transition-opacity duration-300">
-                officernd
-              </div>
-              <div className="text-gray-300 text-sm sm:text-base lg:text-xl font-semibold opacity-70 hover:opacity-100 transition-opacity duration-300">
-                ARCONIC
-              </div>
-              <div className="text-gray-300 text-sm sm:text-base lg:text-xl font-semibold opacity-70 hover:opacity-100 transition-opacity duration-300">
-                CNBC
-              </div>
-              <div className="text-gray-300 text-xs sm:text-sm lg:text-lg font-medium opacity-70 hover:opacity-100 transition-opacity duration-300">
-                officernd
-              </div>
-              <div className="text-gray-300 text-sm sm:text-base lg:text-xl font-semibold opacity-70 hover:opacity-100 transition-opacity duration-300">
-                ARCONIC
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
   )
 }
