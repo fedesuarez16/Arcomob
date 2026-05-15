@@ -7,10 +7,12 @@ import Header from './Header'
 import StatisticsCard from './StatisticsCard'
 
 const backgroundImages = [
-  '/media/usecases/living.png',
-  '/media/Gemini_Generated_Image_j84f1cj84f1cj84f.png',
-  '/media/Gemini_Generated_Image_azoikfazoikfazoi.png',
-  '/media/Gemini_Generated_Image_58de8j58de8j58de.png'
+  '/media/hero/6.png',
+  '/media/hero/1.png',
+  '/media/hero/2.png',
+  '/media/hero/3.png',
+  '/media/hero/4.png',
+  
 ]
 
 const rotatingWords = ['Espacios', 'Comercios', 'Trabajos', 'Hogares']
@@ -68,6 +70,8 @@ export default function HeroSection() {
             />
           </div>
         ))}
+        {/* Gradient overlay - from right (transparent) to left (black) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-800 via-stone-800/20 to-stone-800/0/0 rounded-b-xl"></div>
       </div>
       
       {/* Header positioned over background */}

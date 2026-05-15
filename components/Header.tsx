@@ -21,8 +21,8 @@ export default function Header() {
               <Image
                 src="/media/logo.png"
                 alt="ArcoMob Logo"
-                width={360}
-                height={120}
+                width={300}
+                height={100}
                 className="h-auto w-auto max-w-[300px] sm:max-w-[360px] lg:max-w-[400px]"
                 priority
               />
