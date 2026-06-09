@@ -24,7 +24,7 @@ export default function ComparisonSection() {
   ]
 
   return (
-    <section className="w-full bg-white py-8 lg:py-12">
+    <section id="proceso" className="w-full bg-white py-8 lg:py-12">
       <div className="container mx-auto px-6 lg:px-10 xl:px-16">
         {/* Section Title */}
         <div className="mb-6 lg:mb-8 text-center">

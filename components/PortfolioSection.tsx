@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export default function PortfolioSection() {
   return (
-    <section className="w-full relative py-16 lg:py-24">
+    <section id="proyectos" className="w-full relative py-16 lg:py-24">
       {/* Gradient transition from white to stone-900 at the top */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-white/50 to-stone-900 h-[200px] lg:h-[250px] pointer-events-none"></div>
       {/* Base background */}

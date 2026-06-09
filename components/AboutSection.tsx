@@ -89,7 +89,7 @@ function CountUp({ end, suffix, duration = 2000, isRed = false }: { end: number,
 
 export default function AboutSection() {
   return (
-    <section className="w-full bg-white py-16 lg:mb-32 lg:py-24">
+    <section id="aplicaciones" className="w-full bg-white py-16 lg:mb-32 lg:py-24">
       <div className="container mx-auto px-6 lg:px-10 xl:px-16">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
           
