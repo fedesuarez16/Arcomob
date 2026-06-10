@@ -103,7 +103,7 @@ const moldurasCatalogProductImage: Record<string, Record<string, MoldurasCatalog
     Esquineros: '/media/molduras/catalogo/esquineroCatalogo.png'
   },
   Balustres: {
-    Balustres: '/media/molduras/catalogo/balustresCatalogo.png'
+    'Balaustres torneados': '/media/molduras/catalogo/balustresCatalogo.png'
   },
   Zocalín: {
     Zocalín: [
@@ -131,7 +131,10 @@ const moldurasCatalogProductImage: Record<string, Record<string, MoldurasCatalog
     Antepecho: '/media/molduras/catalogo/antepechoCatalogo.png'
   },
   Cuadros: {
-    Cuadros: '/media/molduras/catalogo/cuadrosCatalogo.png'
+    Cuadros: [
+      '/media/molduras/catalogo/cuadrosCatalogo.png',
+      '/media/molduras/cuadrosCatalogo2.png'
+    ]
   },
   Contramarcos: {
     Contramarcos: [
@@ -139,6 +142,9 @@ const moldurasCatalogProductImage: Record<string, Record<string, MoldurasCatalog
       '/media/molduras/catalogo/contramarcosvintage.png',
       '/media/molduras/catalogo/contrmarcosminimaline.png'
     ]
+  },
+  Tapacintas: {
+    Tapacintas: '/media/molduras/tapacintas.png'
   }
 }
 
@@ -479,19 +485,19 @@ export default function ProductPage() {
                 href="/#beneficios"
                 className="text-white hover:text-stone-900 transition-colors duration-200 text-[13px] font-normal tracking-wide"
               >
-                Beneficios
+                Catálogo
               </Link>
               <Link
                 href="/#aplicaciones"
                 className="text-white hover:text-stone-900 transition-colors duration-200 text-[13px] font-normal tracking-wide"
               >
-                Aplicaciones
+                Sobre nosotros
               </Link>
               <Link
                 href="/#proyectos"
                 className="text-white hover:text-stone-900 transition-colors duration-200 text-[13px] font-normal tracking-wide"
               >
-                Proyectos
+                Aplicaciones
               </Link>
               <Link
                 href="/#contacto"

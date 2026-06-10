@@ -35,25 +35,19 @@ export default function Header() {
               href="#beneficios"
               className="text-white/90 hover:text-white transition-colors duration-200 text-[17px] font-normal tracking-wide"
             >
-              Beneficios
+              Catálogo
             </Link>
             <Link
               href="#aplicaciones"
               className="text-white/90 hover:text-white transition-colors duration-200 text-[17px] font-normal tracking-wide"
             >
-              Aplicaciones
+              Sobre nosotros
             </Link>
             <Link
               href="#proyectos"
               className="text-white/90 hover:text-white transition-colors duration-200 text-[17px] font-normal tracking-wide"
             >
-              Proyectos
-            </Link>
-            <Link
-              href="#proceso"
-              className="text-white/90 hover:text-white transition-colors duration-200 text-[17px] font-normal tracking-wide"
-            >
-              Proceso
+              Aplicaciones
             </Link>
             <Link
               href="#contacto"
@@ -117,28 +111,21 @@ export default function Header() {
               className="block px-3 py-2.5 rounded-md text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Beneficios
+              Catálogo
             </Link>
             <Link
               href="#aplicaciones"
               className="block px-3 py-2.5 rounded-md text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Aplicaciones
+              Sobre nosotros
             </Link>
             <Link
               href="#proyectos"
               className="block px-3 py-2.5 rounded-md text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Proyectos
-            </Link>
-            <Link
-              href="#proceso"
-              className="block px-3 py-2.5 rounded-md text-sm text-gray-700 hover:text-gray-900 hover:bg-gray-50 transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Proceso
+              Aplicaciones
             </Link>
             <Link
               href="#contacto"
