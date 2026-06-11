@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { GoogleAnalytics } from '@next/third-parties/google'
+import Script from 'next/script'
 import './globals.css'
 import Footer from '@/components/Footer'
 import WhatsAppButton from '@/components/WhatsAppButton'
@@ -25,6 +26,9 @@ export default function RootLayout({
         <WhatsAppButton />
       </body>
       <GoogleAnalytics gaId="G-CDCQWD09GZ" />
+      <Script id="google-ads" strategy="afterInteractive">
+        {`gtag('config', 'AW-803060047');`}
+      </Script>
     </html>
   )
 }
