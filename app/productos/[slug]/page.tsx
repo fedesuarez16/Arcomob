@@ -306,10 +306,25 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   ]
 }
 
-const accesoriosCatalog: { name: string; image: string }[] = [
-  { name: 'Zocalín', image: '/media/molduras/zocalin.png' },
-  { name: 'Cuadros', image: '/media/molduras/cuadros.png' },
- 
+const accesoriosCatalog: { name: string; image: string; catalogImages?: string[] }[] = [
+  {
+    name: 'Zocalín',
+    image: '/media/molduras/zocalin.png',
+    catalogImages: [
+      '/media/molduras/catalogo/zocalinCatalogo.png',
+      '/media/molduras/zocalin.png',
+      '/media/molduras/catalogo/zocalinminimaline.png'
+    ]
+  },
+  {
+    name: 'Cuadros',
+    image: '/media/molduras/cuadros.png',
+    catalogImages: [
+      '/media/molduras/catalogo/cuadrosCatalogo.png',
+      '/media/molduras/cuadrosCatalogo2.png'
+    ]
+  },
+  { name: 'Baldosas deck', image: '/media/baldosasdeck.png', catalogImages: ['/media/baldosasdeck.png'] },
 ]
 
 const moldurasLuminosasProducts = [
@@ -881,29 +896,80 @@ export default function ProductPage() {
                 Accesorios y complementos para completar tu proyecto
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
-                {accesoriosCatalog.map((item, index) => (
-                  <div
-                    key={index}
-                    className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-stone-200 hover:border-stone-300"
-                  >
-                    <div className="relative w-[85%] max-w-full mx-auto aspect-[4/3] overflow-hidden bg-stone-100">
-                      <Image
-                        src={item.image}
-                        alt={item.name}
-                        fill
-                        className="object-cover transition-transform duration-500 group-hover:scale-105"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        quality={90}
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-all duration-300 pointer-events-none" />
+                {accesoriosCatalog.map((item, index) => {
+                  const hasCatalog = item.catalogImages && item.catalogImages.length > 0
+                  const hasImage = !!item.image
+                  const slides: CatalogLightboxSlide[] = hasCatalog
+                    ? item.catalogImages!.map((src, i) => ({
+                        src,
+                        caption: item.catalogImages!.length > 1 ? `${item.name} — ${i + 1}` : item.name
+                      }))
+                    : []
+                  const innerContent = (
+                    <>
+                      <div className="relative w-[85%] max-w-full mx-auto aspect-[4/3] overflow-hidden bg-stone-100">
+                        {hasImage ? (
+                          <>
+                            <Image
+                              src={item.image}
+                              alt={item.name}
+                              fill
+                              className="object-cover transition-transform duration-500 group-hover:scale-105"
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                              quality={90}
+                            />
+                            {hasCatalog && (
+                              <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 flex justify-center bg-gradient-to-t from-black/75 via-black/30 to-transparent pt-3 pb-2 sm:pt-4">
+                                <span className="rounded-full bg-white/95 px-3 py-1 text-[10px] font-semibold text-red-600 shadow-sm sm:px-4 sm:py-1.5 sm:text-xs">
+                                  Ver catálogo
+                                </span>
+                              </div>
+                            )}
+                          </>
+                        ) : (
+                          <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-stone-100 to-stone-200">
+                            <svg
+                              className="w-16 h-16 text-stone-400"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                              />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+                      <div className="p-4 bg-stone-100 border-t border-stone-200">
+                        <h3 className="text-base lg:text-lg font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300">
+                          {item.name}
+                        </h3>
+                      </div>
+                    </>
+                  )
+                  return hasCatalog ? (
+                    <button
+                      key={index}
+                      type="button"
+                      onClick={() => setCatalogImageLightbox(slides)}
+                      aria-label={`Ver catálogo: ${item.name}`}
+                      className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-stone-200 hover:border-stone-300 w-full text-left cursor-pointer"
+                    >
+                      {innerContent}
+                    </button>
+                  ) : (
+                    <div
+                      key={index}
+                      className="group bg-white rounded-md overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-stone-200 hover:border-stone-300"
+                    >
+                      {innerContent}
                     </div>
-                    <div className="p-4">
-                      <h3 className="text-base lg:text-lg font-semibold text-stone-900 text-center group-hover:text-red-600 transition-colors duration-300">
-                        {item.name}
-                      </h3>
-                    </div>
-                  </div>
-                ))}
+                  )
+                })}
               </div>
             </div>
           </div>
