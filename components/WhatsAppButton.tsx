@@ -1,7 +1,15 @@
+'use client'
+
 import Link from 'next/link'
 
 const WHATSAPP_NUMBER = '5491160367871'
 const WHATSAPP_MESSAGE = 'Hola, me gustaría recibir más información sobre ArcoMob.'
+const CONVERSION_ID = 'AW-803060047/ZVDZCJTQm_UBEM_y9v4C'
+
+function trackWhatsAppConversion() {
+  const g = (window as Window & { gtag?: (...args: unknown[]) => void }).gtag
+  g?.('event', 'conversion', { send_to: CONVERSION_ID })
+}
 
 export default function WhatsAppButton() {
   const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`
@@ -12,6 +20,7 @@ export default function WhatsAppButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Contactar por WhatsApp"
+      onClick={trackWhatsAppConversion}
       className="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg shadow-black/20 transition-transform duration-200 hover:scale-110 hover:bg-[#1EBE5D] focus:outline-none focus:ring-2 focus:ring-[#25D366] focus:ring-offset-2"
     >
       <svg
