@@ -324,7 +324,11 @@ const accesoriosCatalog: { name: string; image: string; catalogImages?: string[]
       '/media/molduras/cuadrosCatalogo2.png'
     ]
   },
-  { name: 'Baldosas deck', image: '/media/baldosasdeck.png', catalogImages: ['/media/baldosasdeck.png'] },
+  {
+    name: 'Baldosas deck',
+    image: '/media/baldosas-deck-1.jpg',
+    catalogImages: ['/media/baldosas-deck-1.jpg', '/media/baldosas-deck-2.jpg']
+  },
 ]
 
 const moldurasLuminosasProducts = [
