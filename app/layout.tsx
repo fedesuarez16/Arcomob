@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { GoogleAnalytics } from '@next/third-parties/google'
 import Script from 'next/script'
 import './globals.css'
 import Footer from '@/components/Footer'
@@ -24,11 +23,20 @@ export default function RootLayout({
         {children}
         <Footer />
         <WhatsAppButton />
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-803060047"
+        />
+        <Script id="gtag-config" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-CDCQWD09GZ');
+            gtag('config', 'AW-803060047');
+          `}
+        </Script>
       </body>
-      <GoogleAnalytics gaId="G-CDCQWD09GZ" />
-      <Script id="google-ads" strategy="afterInteractive">
-        {`gtag('config', 'AW-803060047');`}
-      </Script>
     </html>
   )
 }
