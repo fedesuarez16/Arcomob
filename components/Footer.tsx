@@ -163,7 +163,7 @@ export default function Footer() {
                   />
                 </svg>
                 <span className="text-sm text-gray-400">
-                  +54 11 1234-5678
+                  +54 9 11 6036-7871
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -181,7 +181,7 @@ export default function Footer() {
                   />
                 </svg>
                 <span className="text-sm text-gray-400">
-                  contacto@arcomob.com
+                  ventas@arcomob.com
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -205,7 +205,7 @@ export default function Footer() {
                   />
                 </svg>
                 <span className="text-sm text-gray-400">
-                  Buenos Aires, Argentina
+                  Camino de Cintura 2552, B1838 Luis Guillon, Provincia de Buenos Aires
                 </span>
               </li>
             </ul>

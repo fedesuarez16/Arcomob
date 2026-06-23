@@ -308,21 +308,9 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
 
 const accesoriosCatalog: { name: string; image: string; catalogImages?: string[] }[] = [
   {
-    name: 'Zocalín',
-    image: '/media/molduras/zocalin.png',
-    catalogImages: [
-      '/media/molduras/catalogo/zocalinCatalogo.png',
-      '/media/molduras/zocalin.png',
-      '/media/molduras/catalogo/zocalinminimaline.png'
-    ]
-  },
-  {
-    name: 'Cuadros',
-    image: '/media/molduras/cuadros.png',
-    catalogImages: [
-      '/media/molduras/catalogo/cuadrosCatalogo.png',
-      '/media/molduras/cuadrosCatalogo2.png'
-    ]
+    name: 'Roll Deck',
+    image: '/media/roll-deck-1.png',
+    catalogImages: ['/media/roll-deck-1.png', '/media/roll-deck-2.png']
   },
   {
     name: 'Baldosas deck',
