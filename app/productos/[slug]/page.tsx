@@ -268,21 +268,15 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   ],
   'Particulados': [
     {
-      name: 'Particulados MDF',
+      name: 'Crudos',
       imagenPerfil: '/media/revestimientos/MDFCRUDOPINTADO.jpeg',
-      imagenProducto: '/media/revestimientos/MDFCRUDOPINTADO.jpeg',
-    }, 
-    {
-      name: 'Crudo MDF',
-      imagenPerfil: '/media/revestimientos/mdfcrudo.png',
       imagenProducto: '/media/revestimientos/mdfcrudo.png',
-    }, 
+    },
     {
       name: 'OSB',
       imagenPerfil: '/media/revestimientos/osb.jpeg',
       imagenProducto: '/media/revestimientos/particuladoosb.png',
-    }, 
-
+    },
   ],
   Macizos: [
     {
