@@ -268,7 +268,7 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   ],
   'Particulados': [
     {
-      name: 'Crudos',
+      name: 'MDF Crudos',
       imagenPerfil: '/media/revestimientos/MDFCRUDOPINTADO.jpeg',
       imagenProducto: '/media/revestimientos/mdfcrudo.png',
     },
