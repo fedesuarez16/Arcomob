@@ -22,6 +22,15 @@ const config: Config = {
           900: '#0c4a6e',
         },
       },
+      keyframes: {
+        typingDot: {
+          '0%, 60%, 100%': { transform: 'translateY(0)', opacity: '0.4' },
+          '30%': { transform: 'translateY(-3px)', opacity: '1' },
+        },
+      },
+      animation: {
+        'typing-dot': 'typingDot 1.2s ease-in-out infinite',
+      },
     },
   },
   plugins: [],
