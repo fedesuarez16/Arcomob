@@ -5,7 +5,7 @@ import { blogPosts } from '@/data/blog'
 
 export const metadata: Metadata = {
   title: 'Blog y Guías de Revestimientos Alistonados y Lumínicos | ArcoMob',
-  description: 'Guías sobre revestimientos alistonados, revestimientos lumínicos y paneles con LED integrado: instalación, comparativas y consejos para elegir el revestimiento ideal.',
+  description: 'Guías sobre revestimientos alistonados, revestimientos lumínicos y revestimientos con iluminación LED integrada: instalación, comparativas y consejos para elegir el revestimiento ideal.',
 }
 
 export default function BlogPage() {
@@ -52,7 +52,7 @@ export default function BlogPage() {
               Blog y Guías
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
-              Aprende sobre instalación, mantenimiento y las últimas tendencias en revestimientos alistonados y revestimientos lumínicos con LED integrado
+              Aprende sobre instalación, mantenimiento y las últimas tendencias en revestimientos alistonados y revestimientos con iluminación LED integrada
             </p>
           </div>
         </div>

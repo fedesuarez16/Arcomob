@@ -14,7 +14,7 @@ export default function BlogSection() {
             Blog y Guías
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Aprende sobre instalación, mantenimiento y las últimas tendencias en revestimientos alistonados y revestimientos lumínicos
+            Aprende sobre instalación, mantenimiento y las últimas tendencias en revestimientos alistonados y revestimientos con iluminación LED
           </p>
         </div>
 

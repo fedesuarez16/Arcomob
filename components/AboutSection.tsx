@@ -101,7 +101,7 @@ export default function AboutSection() {
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
               En ArcoMob, creemos que los revestimientos alistonados son más que solo paneles;
               se trata de crear ambientes que mejoran la experiencia humana. Fabricamos revestimientos
-              de madera y revestimientos lumínicos con LED integrado, transformando espacios
+              de madera y revestimientos con luces LED integradas, transformando espacios
               con diseño moderno, calidad superior y atención al detalle.
             </p>
             

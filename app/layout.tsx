@@ -10,11 +10,16 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Revestimientos Alistonados y Revestimientos Lumínicos - Transforma tus Espacios',
-  description: 'Revestimientos alistonados de madera y revestimientos lumínicos con LED integrado: diseño moderno, instalación rápida y terminaciones premium para hogares y comercios.',
+  description: 'Revestimientos alistonados de madera y revestimientos con iluminación LED integrada: diseño moderno, instalación rápida y terminaciones premium para hogares y comercios.',
   keywords: [
     'revestimientos lumínicos',
     'revestimientos luminicos',
+    'revestimientos con iluminación',
+    'revestimientos con iluminacion',
+    'revestimientos con luces LED',
     'revestimientos con LED integrado',
+    'revestimientos iluminados',
+    'paneles de madera con luz LED',
     'revestimientos alistonados',
     'paneles alistonados de madera',
     'revestimientos de madera',
