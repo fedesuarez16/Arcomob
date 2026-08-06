@@ -60,7 +60,7 @@ export default function ContactSection() {
           {/* Left Side - Image */}
           <div className="hidden lg:block relative h-full min-h-[500px] rounded-2xl overflow-hidden shadow-2xl">
             <Image
-              src="/media/usecases/living.png"
+              src="/media/usecases/living.jpg"
               alt="Contacto"
               fill
               className="object-cover"

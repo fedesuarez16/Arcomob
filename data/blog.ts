@@ -12,18 +12,18 @@ export type BlogPost = {
 export const blogPosts: BlogPost[] = [
   {
     id: 4,
-    image: '/media/usecases/luminico.png',
+    image: '/media/usecases/luminico.jpg',
     title: 'Revestimientos Lumínicos: Paneles Alistonados con LED Integrado',
-    excerpt: 'Qué son los revestimientos lumínicos, cómo funcionan los perfiles con LED integrados y por qué se están convirtiendo en el estándar para locales, oficinas y viviendas de diseño.',
+    excerpt: 'Qué son los revestimientos con iluminación LED integrada, cómo funcionan los paneles con luces LED y por qué se están convirtiendo en el estándar para locales, oficinas y viviendas de diseño.',
     category: 'Innovación',
     readTime: '8 min lectura',
     date: '22 Ene 2024',
     content: `
-      <h2>Qué son los revestimientos lumínicos</h2>
-      <p>Los <strong>revestimientos lumínicos</strong> son paneles alistonados de madera que incorporan una línea de iluminación LED dentro del propio perfil. En lugar de sumar artefactos, apliques o veladores sobre una pared ya revestida, la luz forma parte del revestimiento: el listón y el LED son una sola pieza, instalada de una sola vez.</p>
+      <h2>Qué son los revestimientos con iluminación</h2>
+      <p>Los <strong>revestimientos lumínicos</strong> —también llamados <strong>revestimientos con iluminación</strong> o <strong>revestimientos con luces LED</strong>— son paneles alistonados de madera que incorporan una línea de iluminación LED dentro del propio perfil. En lugar de sumar artefactos, apliques o veladores sobre una pared ya revestida, la luz forma parte del revestimiento: el listón y el LED son una sola pieza, instalada de una sola vez.</p>
       <p>El resultado es una pared que cumple dos funciones al mismo tiempo. De día se lee como un revestimiento de madera clásico, con su textura y su ritmo de listones. De noche, los <strong>revestimientos con LED integrados</strong> se convierten en la fuente de luz ambiental del ambiente.</p>
 
-      <h2>Cómo funciona un revestimiento con LED integrado</h2>
+      <h2>Cómo funciona un revestimiento con luces LED integradas</h2>
       <p>La lógica constructiva es simple, y por eso funciona tan bien:</p>
       <ul>
         <li><strong>Perfil alistonado:</strong> el listón de madera con un canal donde se aloja la tira LED.</li>
@@ -34,10 +34,10 @@ export const blogPosts: BlogPost[] = [
       </ul>
       <p>Toda la instalación eléctrica queda oculta detrás del revestimiento. Sin cajas a la vista, sin cables colgando, sin canaletas.</p>
 
-      <h2>Revestimientos lumínicos vs iluminación tradicional</h2>
+      <h2>Revestimientos con iluminación vs iluminación tradicional</h2>
       <p>La comparación más honesta no es contra "no tener luz", sino contra resolver la iluminación ambiental con artefactos convencionales.</p>
       <ul>
-        <li><strong>Menos intervenciones:</strong> un revestimiento lumínico reemplaza el trabajo de revestir + instalar apliques + pasar cañerías separadas.</li>
+        <li><strong>Menos intervenciones:</strong> un revestimiento con iluminación integrada reemplaza el trabajo de revestir + instalar apliques + pasar cañerías separadas.</li>
         <li><strong>Luz indirecta y pareja:</strong> la iluminación lineal no encandila y no genera los conos duros de un spot puntual.</li>
         <li><strong>Consumo bajo:</strong> el LED integrado consume una fracción de lo que consumen las soluciones halógenas tradicionales.</li>
         <li><strong>Mantenimiento acotado:</strong> sin lámparas que cambiar cada temporada.</li>
@@ -53,7 +53,7 @@ export const blogPosts: BlogPost[] = [
       <p>En recepciones y salas de reunión, los paneles con LED integrado aportan luz de acompañamiento que baja el contraste de las pantallas y hace el ambiente más agradable durante jornadas largas.</p>
 
       <h3>Livings y dormitorios</h3>
-      <p>En vivienda, la aplicación más frecuente es la pared del televisor y el respaldo de cama. En tono cálido y con dimmer, el revestimiento con LED integrado reemplaza por completo la necesidad de lámparas de mesa.</p>
+      <p>En vivienda, la aplicación más frecuente es la pared del televisor y el respaldo de cama. En tono cálido y con dimmer, el revestimiento con luces LED reemplaza por completo la necesidad de lámparas de mesa.</p>
 
       <h3>Escaleras, pasillos y entradas</h3>
       <p>Espacios de circulación donde la luz lineal cumple una función práctica además de estética: marcar el recorrido sin necesidad de artefactos en el techo.</p>
@@ -76,13 +76,13 @@ export const blogPosts: BlogPost[] = [
       </ul>
 
       <h2>Conclusión</h2>
-      <p>Los <strong>revestimientos lumínicos</strong> resuelven en una sola instalación lo que antes eran dos trabajos separados: revestir y iluminar. Los <strong>revestimientos con LED integrados</strong> no son un accesorio decorativo — son una decisión de proyecto que conviene tomar temprano, junto con la electricidad, y no improvisar sobre el final de la obra.</p>
+      <p>Los <strong>revestimientos con iluminación LED integrada</strong> resuelven en una sola instalación lo que antes eran dos trabajos separados: revestir e iluminar. Los <strong>revestimientos con luces LED</strong> no son un accesorio decorativo — son una decisión de proyecto que conviene tomar temprano, junto con la electricidad, y no improvisar sobre el final de la obra.</p>
       <p>Si estás evaluando un proyecto con revestimientos lumínicos, definí primero temperatura de color, metros lineales y punto de alimentación. Con esos tres datos, el presupuesto y la instalación dejan de tener sorpresas.</p>
     `
   },
   {
     id: 1,
-    image: '/media/usecases/living.png',
+    image: '/media/usecases/living.jpg',
     title: 'Cómo Instalar un Revestimiento Luminoso de Forma Sencilla',
     excerpt: 'Guía paso a paso para instalar revestimientos lumínicos con LED integrado en tu hogar o negocio. Aprende los secretos de una instalación profesional y sin complicaciones.',
     category: 'Instalación',
@@ -132,7 +132,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 2,
-    image: '/media/usecases/dormitorio.png',
+    image: '/media/usecases/dormitorio.jpg',
     title: 'Ventajas de los Revestimientos Alistonados vs Otras Opciones',
     excerpt: 'Descubre por qué los revestimientos alistonados son la mejor opción para transformar tus espacios. Comparativa detallada con otras alternativas del mercado.',
     category: 'Comparativa',
@@ -188,7 +188,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 3,
-    image: '/media/usecases/Gemini_Generated_Image_5w8nql5w8nql5w8n.png',
+    image: '/media/usecases/Gemini_Generated_Image_5w8nql5w8nql5w8n.jpg',
     title: 'Cómo Elegir el Revestimiento Perfecto para tu Espacio',
     excerpt: 'Consejos profesionales para seleccionar el revestimiento ideal según el tipo de ambiente, estilo decorativo y necesidades específicas de tu proyecto.',
     category: 'Guía',

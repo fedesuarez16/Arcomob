@@ -36,22 +36,22 @@ const moldurasCatalogPreviewSrc = '/media/products/molduras01.jpeg'
 const moldurasSubcategoriaPreviewSrc: Partial<
   Record<(typeof moldurasCategoriasOrden)[number], string>
 > = {
-  Cornisas: '/media/molduras/cornisas.png',
-  Zócalos: '/media/molduras/zocalo.png',
-  Contramarcos: '/media/molduras/contramarcos.png',
-  Rinconeros: '/media/molduras/rinconero.png',
-  Terminaciones: '/media/molduras/terminaciones.png',
-  Cuadros: '/media/molduras/cuadros.png',
-  Listones: '/media/molduras/listones.png',
-  Antepecho: '/media/molduras/antepechos.png',
-  Tapacantos: '/media/molduras/tapacantos.png',
-  Esquineros: '/media/molduras/esquineros.png',
-  Balustres: '/media/molduras/balustres.png',
-  Zocalín: '/media/molduras/zocalin.png',
-  Contravidrios: '/media/molduras/contravidrios.png',
-  Guardasillas: '/media/molduras/guardasillas.png',
-  Tapacintas: '/media/molduras/tapacintas.png',
-  Pasamanos: '/media/molduras/pasamanos.png'
+  Cornisas: '/media/molduras/cornisas.jpg',
+  Zócalos: '/media/molduras/zocalo.jpg',
+  Contramarcos: '/media/molduras/contramarcos.jpg',
+  Rinconeros: '/media/molduras/rinconero.jpg',
+  Terminaciones: '/media/molduras/terminaciones.jpg',
+  Cuadros: '/media/molduras/cuadros.jpg',
+  Listones: '/media/molduras/listones.jpg',
+  Antepecho: '/media/molduras/antepechos.jpg',
+  Tapacantos: '/media/molduras/tapacantos.jpg',
+  Esquineros: '/media/molduras/esquineros.jpg',
+  Balustres: '/media/molduras/balustres.jpg',
+  Zocalín: '/media/molduras/zocalin.jpg',
+  Contravidrios: '/media/molduras/contravidrios.jpg',
+  Guardasillas: '/media/molduras/guardasillas.jpg',
+  Tapacintas: '/media/molduras/tapacintas.jpg',
+  Pasamanos: '/media/molduras/pasamanos.jpg'
 }
 
 const moldurasSubcategorias: Record<string, string[]> = {
@@ -85,66 +85,66 @@ const MOLDURAS_CATALOG_VARIANT_LABELS = ['standar', 'vintage', 'minimaline'] as 
 const moldurasCatalogProductImage: Record<string, Record<string, MoldurasCatalogImageEntry>> = {
   Zócalos: {
     Zócalos: [
-      '/media/molduras/catalogo/zocalominimaline.png',
-      '/media/molduras/catalogo/zocalostandar.png',
-      '/media/molduras/catalogo/zocalostipos.png'
+      '/media/molduras/catalogo/zocalominimaline.jpg',
+      '/media/molduras/catalogo/zocalostandar.jpg',
+      '/media/molduras/catalogo/zocalostipos.jpg'
     ]
   },
   Contravidrios: {
-    Contravidrios: '/media/molduras/catalogo/contravidriosCatalogo.png'
+    Contravidrios: '/media/molduras/catalogo/contravidriosCatalogo.jpg'
   },
   Cornisas: {
-    Cornisas: '/media/molduras/catalogo/cornisasCatalogo.png'
+    Cornisas: '/media/molduras/catalogo/cornisasCatalogo.jpg'
   },
   Rinconeros: {
-    Rinconeros: '/media/molduras/catalogo/rinconerosCatalogo.png'
+    Rinconeros: '/media/molduras/catalogo/rinconerosCatalogo.jpg'
   },
   Esquineros: {
-    Esquineros: '/media/molduras/catalogo/esquineroCatalogo.png'
+    Esquineros: '/media/molduras/catalogo/esquineroCatalogo.jpg'
   },
   Balustres: {
-    'Balaustres torneados': '/media/molduras/catalogo/balustresCatalogo.png'
+    'Balaustres torneados': '/media/molduras/catalogo/balustresCatalogo.jpg'
   },
   Zocalín: {
     Zocalín: [
-      '/media/molduras/catalogo/zocalinCatalogo.png',
-      '/media/molduras/zocalin.png',
-      '/media/molduras/catalogo/zocalinminimaline.png'
+      '/media/molduras/catalogo/zocalinCatalogo.jpg',
+      '/media/molduras/zocalin.jpg',
+      '/media/molduras/catalogo/zocalinminimaline.jpg'
     ]
   },
   Guardasillas: {
-    Guardasillas: '/media/molduras/catalogo/guardasillasCatalogo.png'
+    Guardasillas: '/media/molduras/catalogo/guardasillasCatalogo.jpg'
   },
   Tapacantos: {
-    Tapacantos: '/media/molduras/catalogo/tapacantosCatalogo.png',
+    Tapacantos: '/media/molduras/catalogo/tapacantosCatalogo.jpg',
   },
   Pasamanos: {
-    Pasamanos: '/media/molduras/catalogo/pasamanosCatalogo.png'
+    Pasamanos: '/media/molduras/catalogo/pasamanosCatalogo.jpg'
   },
   Listones: {
-    Listones: '/media/molduras/catalogo/listonesCatalogo.png'
+    Listones: '/media/molduras/catalogo/listonesCatalogo.jpg'
   },
   Terminaciones: {
-    Terminaciones: '/media/molduras/catalogo/terminacionesCatalogo.png'
+    Terminaciones: '/media/molduras/catalogo/terminacionesCatalogo.jpg'
   },
   Antepecho: {
-    Antepecho: '/media/molduras/catalogo/antepechoCatalogo.png'
+    Antepecho: '/media/molduras/catalogo/antepechoCatalogo.jpg'
   },
   Cuadros: {
     Cuadros: [
-      '/media/molduras/catalogo/cuadrosCatalogo.png',
-      '/media/molduras/cuadrosCatalogo2.png'
+      '/media/molduras/catalogo/cuadrosCatalogo.jpg',
+      '/media/molduras/cuadrosCatalogo2.jpg'
     ]
   },
   Contramarcos: {
     Contramarcos: [
-      '/media/molduras/catalogo/contramarcosCatalogo.png',
-      '/media/molduras/catalogo/contramarcosvintage.png',
-      '/media/molduras/catalogo/contrmarcosminimaline.png'
+      '/media/molduras/catalogo/contramarcosCatalogo.jpg',
+      '/media/molduras/catalogo/contramarcosvintage.jpg',
+      '/media/molduras/catalogo/contrmarcosminimaline.jpg'
     ]
   },
   Tapacintas: {
-    Tapacintas: '/media/molduras/tapacintas.png'
+    Tapacintas: '/media/molduras/tapacintas.jpg'
   }
 }
 
@@ -206,34 +206,34 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
     
     {
       name: 'PARAISO',
-      imagenPerfil: '/media/revestimientos/enchapados/paraiso/perfil.png',
+      imagenPerfil: '/media/revestimientos/enchapados/paraiso/perfil.jpg',
       imagenProducto: '/media/revestimientos/enchapados/paraiso/detalle.jpeg'
     },
     {
       name: 'GUAYUBIRA',
       imagenPerfil: '/media/revestimientos/guay.jpeg',
-      imagenProducto: '/media/revestimientos/enchapados/guayubira/detalle.png'
+      imagenProducto: '/media/revestimientos/enchapados/guayubira/detalle.jpg'
     },
     {
       name: 'ROBLE AMERICANO',
-      imagenPerfil: '/media/revestimientos/enchapados/roble americano/perfil.png',
-      imagenProducto: '/media/revestimientos/enchapados/roble americano/detalle.png'
+      imagenPerfil: '/media/revestimientos/enchapados/roble americano/perfil.jpg',
+      imagenProducto: '/media/revestimientos/enchapados/roble americano/detalle.jpg'
     },
     {
       name: 'GUATAMBU',
-      imagenPerfil: '/media/revestimientos/enchapados/guatambu/perfil.png',
-      imagenProducto: '/media/revestimientos/enchapados/guatambu/detalle.png'
+      imagenPerfil: '/media/revestimientos/enchapados/guatambu/perfil.jpg',
+      imagenProducto: '/media/revestimientos/enchapados/guatambu/detalle.jpg'
     },
     {
       name: 'ITAUBA',
-      imagenPerfil: '/media/revestimientos/enchapados/itabua/perfil.png',
-      imagenProducto: '/media/revestimientos/enchapados/itabua/itauba.png'
+      imagenPerfil: '/media/revestimientos/enchapados/itabua/perfil.jpg',
+      imagenProducto: '/media/revestimientos/enchapados/itabua/itauba.jpg'
     },
   
     {
       name: 'FREIJO',
-      imagenPerfil: '/media/revestimientos/freijoenchapado.png',
-      imagenProducto: '/media/revestimientos/enchapados/freijo/freijo.png'
+      imagenPerfil: '/media/revestimientos/freijoenchapado.jpg',
+      imagenProducto: '/media/revestimientos/enchapados/freijo/freijo.jpg'
     },
    
    
@@ -242,24 +242,27 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
   'Revestimientos Especiales': [
     {
       name: 'Cancharana',
-      imagenPerfil: '/media/revestimientos/especiales/cancharanaperfil.png',
-      imagenProducto: '/media/revestimientos/especiales/cancharana1.png'
+      imagenPerfil: '/media/revestimientos/especiales/cancharanaperfil.jpg',
+      // Sin foto de detalle: al igualar perfil y producto, `tieneDosVistas` es
+      // false y la tarjeta muestra una sola vista.
+      imagenProducto: '/media/revestimientos/especiales/cancharanaperfil.jpg'
     },
-    
+
     {
       name: 'Cedro',
-      imagenPerfil: '/media/revestimientos/CEDRO.png',
-      imagenProducto: '/media/revestimientos/especiales/cedro1.png'
+      imagenPerfil: '/media/revestimientos/CEDRO.jpg',
+      // Sin foto de detalle — ver comentario en Cancharana.
+      imagenProducto: '/media/revestimientos/CEDRO.jpg'
     },
     {
       name: 'Kiri',
-      imagenPerfil: '/media/revestimientos/especiales/kiri/perfil.png',
-      imagenProducto: '/media/revestimientos/especiales/kiri/detalle.png'
+      imagenPerfil: '/media/revestimientos/especiales/kiri/perfil.jpg',
+      imagenProducto: '/media/revestimientos/especiales/kiri/detalle.jpg'
     },
     {
       name: 'cambará',
-      imagenPerfil: '/media/revestimientos/especiales/cambara.png',
-      imagenProducto: '/media/revestimientos/especiales/cambara1.png'
+      imagenPerfil: '/media/revestimientos/especiales/cambara.jpg',
+      imagenProducto: '/media/revestimientos/especiales/cambara1.jpg'
     },
     
    
@@ -270,32 +273,32 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
     {
       name: 'MDF Crudos',
       imagenPerfil: '/media/revestimientos/MDFCRUDOPINTADO.jpeg',
-      imagenProducto: '/media/revestimientos/mdfcrudo.png',
+      imagenProducto: '/media/revestimientos/mdfcrudo.jpg',
     },
     {
       name: 'OSB',
       imagenPerfil: '/media/revestimientos/osb.jpeg',
-      imagenProducto: '/media/revestimientos/particuladoosb.png',
+      imagenProducto: '/media/revestimientos/particuladoosb.jpg',
     },
   ],
   Macizos: [
     {
       name: 'pino',
-      imagenPerfil: '/media/revestimientos/macizos/pino/perfil.png',
-      imagenProducto: '/media/revestimientos/macizos/pino/detalle.png'
+      imagenPerfil: '/media/revestimientos/macizos/pino/perfil.jpg',
+      imagenProducto: '/media/revestimientos/macizos/pino/detalle.jpg'
     },
     {
       name: 'eucalipto',
-      imagenPerfil: '/media/revestimientos/macizos/eucalipto/perfil.png',
-      imagenProducto: '/media/revestimientos/macizos/eucalipto/detalle.png'
+      imagenPerfil: '/media/revestimientos/macizos/eucalipto/perfil.jpg',
+      imagenProducto: '/media/revestimientos/macizos/eucalipto/detalle.jpg'
     }
 
   ],
   'Revestimiento para Exterior': [
     {
       name: 'pino impregnado para exteriores',
-      imagenPerfil: '/media/revestimientos/pino impregnado/ChatGPT Image Apr 30, 2026, 02_11_29 AM.png',
-      imagenProducto: '/media/revestimientos/pino impregnado/ChatGPT Image Apr 30, 2026, 02_11_29 AM.png'
+      imagenPerfil: '/media/revestimientos/pino impregnado/ChatGPT Image Apr 30, 2026, 02_11_29 AM.jpg',
+      imagenProducto: '/media/revestimientos/pino impregnado/ChatGPT Image Apr 30, 2026, 02_11_29 AM.jpg'
     }
   ]
 }
@@ -303,8 +306,8 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
 const accesoriosCatalog: { name: string; image: string; catalogImages?: string[] }[] = [
   {
     name: 'Roll Deck',
-    image: '/media/roll-deck-1.png',
-    catalogImages: ['/media/roll-deck-1.png', '/media/roll-deck-2.png']
+    image: '/media/roll-deck-1.jpg',
+    catalogImages: ['/media/roll-deck-1.jpg', '/media/roll-deck-2.jpg']
   },
   {
     name: 'Baldosas deck',
@@ -322,7 +325,7 @@ const moldurasLuminosasProducts = [
 const products = {
   'revestimientos-luminicos': {
     title: 'Revestimientos Lumínicos Alistonados',
-    description: 'Transforma tus espacios con nuestros revestimientos lumínicos alistonados. Paneles de madera con LED integrado que combinan la elegancia de la madera con la tecnología LED para crear ambientes únicos y sofisticados.',
+    description: 'Transforma tus espacios con nuestros revestimientos con iluminación LED integrada. Paneles alistonados de madera con luces LED que combinan la elegancia de la madera con la tecnología LED para crear ambientes únicos y sofisticados.',
     image: '/media/hero1.jpg',
     features: [
       'Sistema LED integrado de alta eficiencia',
@@ -341,9 +344,9 @@ const products = {
       'Espacios de retail'
     ],
     gallery: [
-      '/media/usecases/living.png',
-      '/media/usecases/Gemini_Generated_Image_ib9to0ib9to0ib9t.png',
-      '/media/usecases/dormitorio.png'
+      '/media/usecases/living.jpg',
+      '/media/usecases/Gemini_Generated_Image_ib9to0ib9to0ib9t.jpg',
+      '/media/usecases/dormitorio.jpg'
     ]
   },
   'molduras': {
@@ -367,14 +370,14 @@ const products = {
       'Renovaciones y remodelaciones'
     ],
     gallery: [
-      '/media/usecases/living.png',
-      '/media/usecases/Gemini_Generated_Image_5w8nql5w8nql5w8n.png'
+      '/media/usecases/living.jpg',
+      '/media/usecases/Gemini_Generated_Image_5w8nql5w8nql5w8n.jpg'
     ]
   },
   'accesorios': {
     title: 'Accesorios',
     description: 'Amplía las posibilidades de diseño con nuestra línea completa de accesorios. Desde esquinas hasta terminaciones, todo lo que necesitas para un proyecto perfecto.',
-    image: '/media/products/accesorios.png',
+    image: '/media/products/accesorios.jpg',
     features: [
       'Esquinas y conectores',
       'Terminaciones profesionales',
@@ -392,13 +395,13 @@ const products = {
       'Soluciones a medida'
     ],
     gallery: [
-      '/media/usecases/Gemini_Generated_Image_vzst4vzst4vzst4v.png'
+      '/media/usecases/Gemini_Generated_Image_vzst4vzst4vzst4v.jpg'
     ]
   },
   'molduras-luminosas': {
     title: 'Molduras Luminosas',
     description: 'Ilumina tus espacios con estilo. Nuestras molduras luminosas combinan diseño moderno con tecnología LED para crear ambientes únicos y sofisticados.',
-    image: '/media/products/molduras.png',
+    image: '/media/products/molduras.jpg',
     features: [
       'Iluminación LED integrada',
       'Sistema eléctrico incluido',
@@ -415,10 +418,10 @@ const products = {
       'Espacios comerciales',
       'Proyectos de diseño'
     ],
-    gallery: [
-      '/media/usecases/compariso.png',
-      '/media/usecases/Gemini_Generated_Image_vyx0ikvyx0ikvyx0.png'
-    ]
+    // Sin casos de uso cargados todavía: las dos imágenes que había acá
+    // apuntaban a archivos inexistentes. Con la galería vacía, la sección
+    // "Casos de uso" no se renderiza.
+    gallery: [] as string[]
   }
 }
 

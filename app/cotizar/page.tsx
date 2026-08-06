@@ -206,7 +206,7 @@ export default function CotizarPage() {
           {/* Background Image */}
           <div className="absolute inset-0">
             <Image
-              src="/media/usecases/living.png"
+              src="/media/usecases/living.jpg"
               alt="Background"
               fill
               className="object-cover"

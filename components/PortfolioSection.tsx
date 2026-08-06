@@ -20,7 +20,7 @@ export default function PortfolioSection() {
               Nuestros Proyectos de Revestimientos Alistonados y Lumínicos
             </h2>
             <p className="text-base lg:text-lg text-gray-300 leading-relaxed">
-              Explora nuestros proyectos seleccionados con revestimientos de madera y revestimientos lumínicos con LED integrado, que demuestran nuestro compromiso con la excelencia en diseño, innovación y satisfacción del cliente.
+              Explora nuestros proyectos seleccionados con revestimientos de madera y revestimientos con iluminación LED integrada, que demuestran nuestro compromiso con la excelencia en diseño, innovación y satisfacción del cliente.
             </p>
           </div>
 
@@ -28,7 +28,7 @@ export default function PortfolioSection() {
           <div className="md:col-start-2 md:row-start-1 relative group cursor-pointer">
             <div className="relative h-full min-h-[220px] lg:min-h-[260px] rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/media/usecases/casa.png"
+                src="/media/usecases/casa.jpg"
                 alt="Fachada con revestimiento de madera y piscina"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -45,7 +45,7 @@ export default function PortfolioSection() {
           <div className="md:col-start-3 md:row-start-1 md:row-span-2 relative group cursor-pointer">
             <div className="relative h-full min-h-[300px] lg:min-h-[540px] rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/media/usecases/escalera.png"
+                src="/media/usecases/escalera.jpg"
                 alt="Baño con revestimiento y techo de madera"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -62,7 +62,7 @@ export default function PortfolioSection() {
           <div className="md:col-start-1 md:row-start-2 md:row-span-2 relative group cursor-pointer">
             <div className="relative h-full min-h-[300px] lg:min-h-[540px] rounded-2xl overflow-hidden shadow-lg">
               <Image
-                src="/media/usecases/1.3.png"
+                src="/media/usecases/1.3.jpg"
                 alt="Casa con revestimiento de madera en entorno natural"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
@@ -79,7 +79,7 @@ export default function PortfolioSection() {
            <div className="md:col-start-2 md:row-start-2 md:row-span-2 relative group cursor-pointer">
             <div className="relative h-full min-h-[300px] lg:max-h-[540px] rounded-2xl overflow-hidden shadow-lg">
             <Image
-                src="/media/usecases/entrada.png"
+                src="/media/usecases/entrada.jpg"
                 alt="Hall con revestimiento de madera e iluminación LED"
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"

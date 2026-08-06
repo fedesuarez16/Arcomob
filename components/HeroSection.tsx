@@ -7,11 +7,11 @@ import Header from './Header'
 import StatisticsCard from './StatisticsCard'
 
 const backgroundImages = [
-  '/media/hero/6.png',
-  '/media/hero/1.png',
-  '/media/hero/2.png',
-  '/media/hero/3.png',
-  '/media/hero/4.png',
+  '/media/hero/6.jpg',
+  '/media/hero/1.jpg',
+  '/media/hero/2.jpg',
+  '/media/hero/3.jpg',
+  '/media/hero/4.jpg',
   
 ]
 
@@ -79,7 +79,7 @@ export default function HeroSection() {
               <p className={`text-sm sm:text-base lg:text-lg text-gray-200 max-w-xl leading-relaxed transition-all duration-1000 ease-out delay-150 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
-                Revestimientos alistonados y revestimientos lumínicos con LED integrado.
+                Revestimientos alistonados y revestimientos con iluminación LED integrada.
                 Diseño moderno, instalación rápida y terminaciones premium para hogares y comercios.
               </p>
               
@@ -139,7 +139,7 @@ export default function HeroSection() {
                   >
                     <div className="relative flex-1 w-full rounded-md lg:rounded-lg overflow-hidden bg-white">
                       <Image
-                        src="/media/products/perfil-luminico-corte.png"
+                        src="/media/products/perfil-luminico-corte.jpg"
                         alt="Corte en detalle de un revestimiento lumínico con LED integrado"
                         fill
                         className="object-contain p-1 transition-transform duration-500 group-hover:scale-105"

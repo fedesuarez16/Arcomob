@@ -32,7 +32,7 @@ export default function ComparisonSection() {
             Revestimiento Tradicional vs Revestimiento Lumínico
           </h2>
           <p className="text-xs lg:text-sm text-stone-600 max-w-2xl mx-auto">
-            Descubre las ventajas de los revestimientos lumínicos con LED integrado frente al revestimiento alistonado tradicional
+            Descubre las ventajas de los revestimientos con iluminación LED integrada frente al revestimiento alistonado tradicional
           </p>
         </div>
 
@@ -42,7 +42,7 @@ export default function ComparisonSection() {
           <div className="relative rounded-lg overflow-hidden shadow-md border border-stone-200">
             <div className="relative h-48 lg:h-64">
               <Image
-                src="/media/usecases/tradicional.png"
+                src="/media/usecases/tradicional.jpg"
                 alt="Revestimiento Alistonado Tradicional"
                 fill
                 className="object-cover object-left"
@@ -61,7 +61,7 @@ export default function ComparisonSection() {
           <div className="relative rounded-lg overflow-hidden shadow-md border-2 border-stone-900">
             <div className="relative h-48 lg:h-64">
               <Image
-                src="/media/usecases/revestimiento-luminico.png"
+                src="/media/usecases/revestimiento-luminico.jpg"
                 alt="Revestimiento Alistonado Luminoso"
                 fill
                 className="object-cover object-right"

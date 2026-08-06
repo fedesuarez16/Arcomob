@@ -15,7 +15,7 @@ const profileParts = [
     description: 'El aluminio disipa el calor del LED y el difusor entrega una línea de luz continua, sin puntos visibles.'
   },
   {
-    title: 'Tira LED integrada',
+    title: 'Luces LED integradas',
     description: 'Iluminación de bajo consumo en temperatura cálida o neutra, con cableado oculto detrás del revestimiento.'
   }
 ]
@@ -32,9 +32,9 @@ export default function ProfileDetailSection() {
             El Perfil de un Revestimiento <span className="text-red-600">Lumínico</span> por Dentro
           </h2>
           <p className="text-base sm:text-lg text-stone-600 leading-relaxed">
-            Así se ve un corte de nuestros revestimientos con LED integrado: la madera, el canal fresado,
-            el perfil de aluminio con difusor y la tira LED forman una sola pieza. Se instala una vez y
-            resuelve revestimiento e iluminación al mismo tiempo.
+            Así se ve un corte de nuestros revestimientos con iluminación integrada: la madera, el canal
+            fresado, el perfil de aluminio con difusor y las luces LED forman una sola pieza. Se instala
+            una vez y resuelve revestimiento e iluminación al mismo tiempo.
           </p>
         </div>
 
@@ -43,8 +43,8 @@ export default function ProfileDetailSection() {
           <div className="w-full lg:w-[58%]">
             <div className="relative w-full aspect-[16/9] bg-white rounded-2xl overflow-hidden shadow-xl border border-stone-200">
               <Image
-                src="/media/products/perfil-luminico-corte.png"
-                alt="Corte en detalle de un revestimiento alistonado lumínico con perfil de aluminio, difusor y tira LED integrada"
+                src="/media/products/perfil-luminico-corte.jpg"
+                alt="Corte en detalle de un revestimiento con iluminación LED integrada: panel alistonado de madera con perfil de aluminio, difusor y luces LED"
                 fill
                 className="object-contain p-4 lg:p-6"
                 sizes="(max-width: 1024px) 100vw, 58vw"

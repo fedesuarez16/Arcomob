@@ -3,9 +3,9 @@ import ServiceCard from './ServiceCard'
 const services = [
   {
     image: '/media/hero1.jpg',
-    alt: 'Revestimientos alistonados lumínicos con LED integrado',
+    alt: 'Revestimientos con iluminación LED integrada — paneles alistonados lumínicos',
     title: 'Revestimientos Lumínicos',
-    description: 'Paneles alistonados con LED integrado que iluminan y decoran en una sola instalación. Obtén un presupuesto preciso: especifica las dimensiones y características de tu proyecto — te proporcionaremos la mejor solución adaptada a tus necesidades.',
+    description: 'Revestimientos con luces LED integradas en el propio panel, que iluminan y decoran en una sola instalación. Obtén un presupuesto preciso: especifica las dimensiones y características de tu proyecto — te proporcionaremos la mejor solución adaptada a tus necesidades.',
     actions: [
       { label: 'Ver catalogo', href: '/productos/revestimientos-luminicos' },
       { label: 'Solicitar Presupuesto', href: '/cotizar' }
@@ -22,7 +22,7 @@ const services = [
     ]
   },
   {
-    image: '/media/products/accesorios.png',
+    image: '/media/products/accesorios.jpg',
     alt: 'Accesorios',
     title: 'Accesorios',
     description: 'Amplía las posibilidades de diseño con nuestra línea completa de accesorios. Desde esquinas hasta terminaciones, todo lo que necesitas para un proyecto perfecto.',
@@ -42,7 +42,7 @@ export default function ServicesSection() {
             Soluciones Completas de Revestimientos <span className="text-red-600">Alistonados y Lumínicos</span>
           </h2>
           <p className="text-base sm:text-lg text-stone-600">
-            Desde el diseño hasta la instalación, ofrecemos servicios integrales en revestimientos lumínicos con LED integrado, revestimientos alistonados y molduras para transformar tus espacios
+            Desde el diseño hasta la instalación, ofrecemos servicios integrales en revestimientos con iluminación LED integrada, revestimientos alistonados y molduras para transformar tus espacios
           </p>
         </div>
 
