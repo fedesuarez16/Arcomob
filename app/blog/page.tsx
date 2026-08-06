@@ -1,35 +1,12 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { blogPosts } from '@/data/blog'
 
-const blogPosts = [
-  {
-    id: 1,
-    image: '/media/usecases/living.png',
-    title: 'Cómo Instalar un Revestimiento Luminoso de Forma Sencilla',
-    excerpt: 'Guía paso a paso para instalar revestimientos luminosos en tu hogar o negocio. Aprende los secretos de una instalación profesional y sin complicaciones.',
-    category: 'Instalación',
-    readTime: '5 min lectura',
-    date: '15 Ene 2024'
-  },
-  {
-    id: 2,
-    image: '/media/usecases/dormitorio.png',
-    title: 'Ventajas de los Revestimientos Alistonados vs Otras Opciones',
-    excerpt: 'Descubre por qué los revestimientos alistonados son la mejor opción para transformar tus espacios. Comparativa detallada con otras alternativas del mercado.',
-    category: 'Comparativa',
-    readTime: '7 min lectura',
-    date: '10 Ene 2024'
-  },
-  {
-    id: 3,
-    image: '/media/usecases/Gemini_Generated_Image_5w8nql5w8nql5w8n.png',
-    title: 'Cómo Elegir el Revestimiento Perfecto para tu Espacio',
-    excerpt: 'Consejos profesionales para seleccionar el revestimiento ideal según el tipo de ambiente, estilo decorativo y necesidades específicas de tu proyecto.',
-    category: 'Guía',
-    readTime: '6 min lectura',
-    date: '5 Ene 2024'
-  }
-]
+export const metadata: Metadata = {
+  title: 'Blog y Guías de Revestimientos Alistonados y Lumínicos | ArcoMob',
+  description: 'Guías sobre revestimientos alistonados, revestimientos lumínicos y paneles con LED integrado: instalación, comparativas y consejos para elegir el revestimiento ideal.',
+}
 
 export default function BlogPage() {
   return (
@@ -75,7 +52,7 @@ export default function BlogPage() {
               Blog y Guías
             </h1>
             <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
-              Aprende sobre instalación, mantenimiento y las últimas tendencias en revestimientos alistonados
+              Aprende sobre instalación, mantenimiento y las últimas tendencias en revestimientos alistonados y revestimientos lumínicos con LED integrado
             </p>
           </div>
         </div>

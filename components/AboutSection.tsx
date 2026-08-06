@@ -7,7 +7,7 @@ const statistics = [
   {
     number: 30,
     suffix: '+',
-    description: 'Años de Excelencia en Revestimientos'
+    description: 'Años de Excelencia en Revestimientos Alistonados y Lumínicos'
   },
   {
     number: 500,
@@ -99,8 +99,9 @@ export default function AboutSection() {
               Sobre la Empresa
             </h2>
             <p className="text-lg text-gray-600 leading-relaxed mb-8">
-              En ArcoMob, creemos que los revestimientos alistonados son más que solo paneles; 
-              se trata de crear ambientes que mejoran la experiencia humana. Transformamos espacios 
+              En ArcoMob, creemos que los revestimientos alistonados son más que solo paneles;
+              se trata de crear ambientes que mejoran la experiencia humana. Fabricamos revestimientos
+              de madera y revestimientos lumínicos con LED integrado, transformando espacios
               con diseño moderno, calidad superior y atención al detalle.
             </p>
             

@@ -9,8 +9,17 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Revestimientos Alistonados - Transforma tus Espacios',
-  description: 'Revestimientos alistonados de diseño moderno, instalación rápida y terminaciones premium para hogares y comercios.',
+  title: 'Revestimientos Alistonados y Revestimientos Lumínicos - Transforma tus Espacios',
+  description: 'Revestimientos alistonados de madera y revestimientos lumínicos con LED integrado: diseño moderno, instalación rápida y terminaciones premium para hogares y comercios.',
+  keywords: [
+    'revestimientos lumínicos',
+    'revestimientos luminicos',
+    'revestimientos con LED integrado',
+    'revestimientos alistonados',
+    'paneles alistonados de madera',
+    'revestimientos de madera',
+    'molduras',
+  ],
 }
 
 export default function RootLayout({

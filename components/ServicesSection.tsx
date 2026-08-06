@@ -3,9 +3,9 @@ import ServiceCard from './ServiceCard'
 const services = [
   {
     image: '/media/hero1.jpg',
-    alt: 'Revestimientos Alistonados luminicos',
-    title: 'Revestimientos Alistonados Luminicos',
-    description: 'Obtén un presupuesto preciso: especifica las dimensiones y características de tu proyecto — te proporcionaremos la mejor solución adaptada a tus necesidades.',
+    alt: 'Revestimientos alistonados lumínicos con LED integrado',
+    title: 'Revestimientos Lumínicos',
+    description: 'Paneles alistonados con LED integrado que iluminan y decoran en una sola instalación. Obtén un presupuesto preciso: especifica las dimensiones y características de tu proyecto — te proporcionaremos la mejor solución adaptada a tus necesidades.',
     actions: [
       { label: 'Ver catalogo', href: '/productos/revestimientos-luminicos' },
       { label: 'Solicitar Presupuesto', href: '/cotizar' }
@@ -39,10 +39,10 @@ export default function ServicesSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
         <div className="mb-8 sm:mb-10 lg:mb-14 max-w-3xl">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-stone-800 mb-3 sm:mb-4 leading-tight">
-            Soluciones Completas de Revestimientos <span className="text-red-600">Alistonados</span>
+            Soluciones Completas de Revestimientos <span className="text-red-600">Alistonados y Lumínicos</span>
           </h2>
           <p className="text-base sm:text-lg text-stone-600">
-            Desde el diseño hasta la instalación, ofrecemos servicios integrales para transformar tus espacios
+            Desde el diseño hasta la instalación, ofrecemos servicios integrales en revestimientos lumínicos con LED integrado, revestimientos alistonados y molduras para transformar tus espacios
           </p>
         </div>
 

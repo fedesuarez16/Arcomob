@@ -1,4 +1,5 @@
 import HeroSection from '@/components/HeroSection'
+import ProfileDetailSection from '@/components/ProfileDetailSection'
 import ServicesSection from '@/components/ServicesSection'
 import AboutSection from '@/components/AboutSection'
 import ComparisonSection from '@/components/ComparisonSection'
@@ -11,6 +12,9 @@ export default function Home() {
     <main className="min-h-screen">
       {/* Hero Section */}
       <HeroSection />
+
+      {/* Profile Detail Section — target del CTA del hero */}
+      <ProfileDetailSection />
 
       {/* Services Section */}
       <ServicesSection />

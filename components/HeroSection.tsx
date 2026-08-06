@@ -15,13 +15,9 @@ const backgroundImages = [
   
 ]
 
-const rotatingWords = ['Espacios', 'Comercios', 'Trabajos', 'Hogares']
-
 export default function HeroSection() {
   const [isVisible, setIsVisible] = useState(false)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
-  const [currentWordIndex, setCurrentWordIndex] = useState(0)
-  const [isWordChanging, setIsWordChanging] = useState(false)
 
   useEffect(() => {
     setIsVisible(true)
@@ -33,20 +29,6 @@ export default function HeroSection() {
     }, 4000) // Cambiar cada 3 segundos
 
     return () => clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
-    const wordInterval = setInterval(() => {
-      setIsWordChanging(true)
-      setTimeout(() => {
-        setCurrentWordIndex((prevIndex) => (prevIndex + 1) % rotatingWords.length)
-        setTimeout(() => {
-          setIsWordChanging(false)
-        }, 50) // Pequeño delay para que la nueva palabra aparezca desde arriba
-      }, 250) // Duración de la animación de salida
-    }, 4000) // Cambiar cada 4 segundos
-
-    return () => clearInterval(wordInterval)
   }, [])
 
   return (
@@ -89,28 +71,16 @@ export default function HeroSection() {
               <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.4rem] font-bold text-white leading-[1.4] sm:leading-[1.35] lg:leading-[1] transition-all duration-1000 ease-out ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
-                Revestimientos que Transforman{' '}
-                <span className="inline-block relative h-[1.2em] overflow-hidden align-top">
-                  <span 
-                    className={`inline-block text-red-600 transition-all duration-500 ease-in-out ${
-                      isWordChanging 
-                        ? 'opacity-0 translate-y-full' 
-                        : 'opacity-100 translate-y-0'
-                    }`}
-                    key={currentWordIndex}
-                    style={!isWordChanging ? { animation: 'slideInDown 0.5s ease-out' } : {}}
-                  >
-                    {rotatingWords[currentWordIndex]}
-                  </span>
-                </span>
+                Revestimientos de Madera que Transforman{' '}
+                <span className="text-red-600">Espacios</span>
               </h1>
               
               {/* Description */}
               <p className={`text-sm sm:text-base lg:text-lg text-gray-200 max-w-xl leading-relaxed transition-all duration-1000 ease-out delay-150 ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
-                Diseño moderno, instalación rápida y terminaciones premium. 
-                La combinación perfecta de forma y función para hogares y comercios.
+                Revestimientos alistonados y revestimientos lumínicos con LED integrado.
+                Diseño moderno, instalación rápida y terminaciones premium para hogares y comercios.
               </p>
               
               {/* CTA Button */}
@@ -144,8 +114,8 @@ export default function HeroSection() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                     }
                     number=""
-                    label="Revestimientos"
-                    description="Paneles de alta calidad para transformar tus espacios"
+                    label="Revestimientos Lumínicos"
+                    description="Paneles con LED integrado para transformar tus espacios"
                   />
                 </div>
                 <div className={`transition-all duration-1000 ease-out delay-600 ${
@@ -163,14 +133,35 @@ export default function HeroSection() {
                 <div className={`transition-all duration-1000 ease-out delay-700 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}>
-                  <StatisticsCard
-                    icon={
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    }
-                    number="30+"
-                    label="Más de 30 años de experiencia"
-                    description=""
-                  />
+                  <Link
+                    href="#perfil-luminico"
+                    className="group bg-white/10 backdrop-blur-md border border-white/20 rounded-lg lg:rounded-xl p-2 lg:p-3 shadow-lg h-full flex flex-col min-h-[100px] sm:min-h-[120px] lg:min-h-[140px] hover:bg-white/20 transition-all duration-300"
+                  >
+                    <div className="relative flex-1 w-full rounded-md lg:rounded-lg overflow-hidden bg-white">
+                      <Image
+                        src="/media/products/perfil-luminico-corte.png"
+                        alt="Corte en detalle de un revestimiento lumínico con LED integrado"
+                        fill
+                        className="object-contain p-1 transition-transform duration-500 group-hover:scale-105"
+                        sizes="(max-width: 1024px) 33vw, 200px"
+                        quality={85}
+                      />
+                    </div>
+                    <div className="flex items-center justify-between gap-1 mt-2 flex-shrink-0">
+                      <span className="text-[10px] sm:text-xs lg:text-sm text-gray-200 leading-tight font-semibold">
+                        Ver el perfil en detalle
+                      </span>
+                      <svg
+                        className="w-3 h-3 lg:w-4 lg:h-4 text-white flex-shrink-0 transform group-hover:translate-y-0.5 transition-transform"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                      </svg>
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>

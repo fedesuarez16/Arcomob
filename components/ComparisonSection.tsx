@@ -14,8 +14,8 @@ export default function ComparisonSection() {
   ]
 
   const luminicoFeatures = [
-    'Sistema LED integrado',
-    'Iluminación ambiental integrada',
+    'Sistema LED integrado en el propio panel',
+    'Iluminación ambiental sin artefactos adicionales',
     'Instalación rápida y sencilla',
     'Producto innovador y único',
     'Eficiencia energética',
@@ -29,10 +29,10 @@ export default function ComparisonSection() {
         {/* Section Title */}
         <div className="mb-6 lg:mb-8 text-center">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-stone-900 mb-2">
-            Revestimiento Tradicional vs Luminoso
+            Revestimiento Tradicional vs Revestimiento Lumínico
           </h2>
           <p className="text-xs lg:text-sm text-stone-600 max-w-2xl mx-auto">
-            Descubre las ventajas del revestimiento luminoso frente al tradicional
+            Descubre las ventajas de los revestimientos lumínicos con LED integrado frente al revestimiento alistonado tradicional
           </p>
         </div>
 
@@ -103,7 +103,7 @@ export default function ComparisonSection() {
           {/* Luminous Column */}
           <div className="bg-stone-900 rounded-xl shadow-lg border-2 border-stone-900 p-6 lg:p-8">
             <h3 className="text-xl lg:text-2xl font-bold text-white mb-6 text-center">
-              Revestimiento Luminoso
+              Revestimiento Lumínico
             </h3>
             <ul className="space-y-3">
               {luminicoFeatures.map((feature, index) => (
