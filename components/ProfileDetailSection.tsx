@@ -32,7 +32,7 @@ export default function ProfileDetailSection() {
             El Perfil de un Revestimiento <span className="text-red-600">Lumínico</span> por Dentro
           </h2>
           <p className="text-base sm:text-lg text-stone-600 leading-relaxed">
-            Así se ve un corte de nuestros revestimientos con iluminación integrada: la madera, el canal
+            Así se ve un corte de nuestros revestimientos varillados con iluminación: la madera, el canal
             fresado, el perfil de aluminio con difusor y las luces LED forman una sola pieza. Se instala
             una vez y resuelve revestimiento e iluminación al mismo tiempo.
           </p>

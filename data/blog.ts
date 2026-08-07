@@ -20,7 +20,7 @@ export const blogPosts: BlogPost[] = [
     date: '22 Ene 2024',
     content: `
       <h2>Qué son los revestimientos con iluminación</h2>
-      <p>Los <strong>revestimientos lumínicos</strong> —también llamados <strong>revestimientos con iluminación</strong> o <strong>revestimientos con luces LED</strong>— son paneles alistonados de madera que incorporan una línea de iluminación LED dentro del propio perfil. En lugar de sumar artefactos, apliques o veladores sobre una pared ya revestida, la luz forma parte del revestimiento: el listón y el LED son una sola pieza, instalada de una sola vez.</p>
+      <p>Los <strong>revestimientos lumínicos</strong> —también llamados <strong>revestimientos con iluminación</strong>, <strong>revestimientos varillados con iluminación</strong> o <strong>revestimientos con luces LED</strong>— son paneles alistonados de madera que incorporan una línea de iluminación LED dentro del propio perfil. En el rubro vas a encontrar "alistonado" y "varillado" usados como sinónimos: describen el mismo perfil de listones paralelos. En lugar de sumar artefactos, apliques o veladores sobre una pared ya revestida, la luz forma parte del revestimiento: el listón y el LED son una sola pieza, instalada de una sola vez.</p>
       <p>El resultado es una pared que cumple dos funciones al mismo tiempo. De día se lee como un revestimiento de madera clásico, con su textura y su ritmo de listones. De noche, los <strong>revestimientos con LED integrados</strong> se convierten en la fuente de luz ambiental del ambiente.</p>
 
       <h2>Cómo funciona un revestimiento con luces LED integradas</h2>

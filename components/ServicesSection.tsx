@@ -42,7 +42,7 @@ export default function ServicesSection() {
             Soluciones Completas de Revestimientos <span className="text-red-600">Alistonados y Lumínicos</span>
           </h2>
           <p className="text-base sm:text-lg text-stone-600">
-            Desde el diseño hasta la instalación, ofrecemos servicios integrales en revestimientos con iluminación LED integrada, revestimientos alistonados y molduras para transformar tus espacios
+            Desde el diseño hasta la instalación, ofrecemos servicios integrales en revestimientos varillados con iluminación, revestimientos alistonados y molduras para transformar tus espacios
           </p>
         </div>
 
