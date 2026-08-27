@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { blogPosts } from '@/data/blog'
 
 export const metadata: Metadata = {
-  title: 'Blog y Guías de Revestimientos de Madera Alistonados y Lumínicos | ArcoMob',|title: 'Blog y Guías de Revestimientos de Madera Alistonados y Lumínicos | ArcoMob',
+  title: 'Blog y Guías de Revestimientos de Madera Alistonados y Lumínicos | ArcoMob',
   description: 'Guías sobre revestimientos alistonados, revestimientos lumínicos y revestimientos con iluminación LED integrada: instalación, comparativas y consejos para elegir el revestimiento ideal.',
 }
 
