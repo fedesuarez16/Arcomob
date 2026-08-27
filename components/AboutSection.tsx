@@ -7,7 +7,7 @@ const statistics = [
   {
     number: 30,
     suffix: '+',
-    description: 'Años de Excelencia en Revestimientos Alistonados y Lumínicos'
+    description: 'Años de Excelencia en Revestimientos de Madera Alistonados y Lumínicos'
   },
   {
     number: 500,

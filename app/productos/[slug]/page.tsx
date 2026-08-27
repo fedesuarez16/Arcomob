@@ -324,7 +324,7 @@ const moldurasLuminosasProducts = [
 
 const products = {
   'revestimientos-luminicos': {
-    title: 'Revestimientos Lumínicos Alistonados',
+    title: 'Revestimientos de Madera Lumínicos Alistonados',
     description: 'Transforma tus espacios con nuestros revestimientos con iluminación LED integrada. Paneles alistonados de madera con luces LED que combinan la elegancia de la madera con la tecnología LED para crear ambientes únicos y sofisticados.',
     image: '/media/hero1.jpg',
     features: [

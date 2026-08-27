@@ -4,7 +4,7 @@ const services = [
   {
     image: '/media/hero1.jpg',
     alt: 'Revestimientos con iluminación LED integrada — paneles alistonados lumínicos',
-    title: 'Revestimientos Lumínicos',
+    title: 'Revestimientos de Madera Lumínicos',
     description: 'Revestimientos con luces LED integradas en el propio panel, que iluminan y decoran en una sola instalación. Obtén un presupuesto preciso: especifica las dimensiones y características de tu proyecto — te proporcionaremos la mejor solución adaptada a tus necesidades.',
     actions: [
       { label: 'Ver catalogo', href: '/productos/revestimientos-luminicos' },
@@ -39,7 +39,7 @@ export default function ServicesSection() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-16">
         <div className="mb-8 sm:mb-10 lg:mb-14 max-w-3xl">
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-stone-800 mb-3 sm:mb-4 leading-tight">
-            Soluciones Completas de Revestimientos <span className="text-red-600">Alistonados y Lumínicos</span>
+            Soluciones Completas de Revestimientos de Madera <span className="text-red-600">Alistonados y Lumínicos</span>
           </h2>
           <p className="text-base sm:text-lg text-stone-600">
             Desde el diseño hasta la instalación, ofrecemos servicios integrales en revestimientos varillados con iluminación, revestimientos alistonados y molduras para transformar tus espacios

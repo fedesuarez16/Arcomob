@@ -29,7 +29,7 @@ export default function ComparisonSection() {
         {/* Section Title */}
         <div className="mb-6 lg:mb-8 text-center">
           <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-stone-900 mb-2">
-            Revestimiento Tradicional vs Revestimiento Lumínico
+            Revestimiento de Madera Tradicional vs Revestimiento de Madera Lumínico
           </h2>
           <p className="text-xs lg:text-sm text-stone-600 max-w-2xl mx-auto">
             Descubre las ventajas de los revestimientos con iluminación LED integrada frente al revestimiento alistonado tradicional
@@ -52,7 +52,7 @@ export default function ComparisonSection() {
             </div>
             <div className="absolute bottom-0 left-0 right-0 p-3 lg:p-4 bg-stone-900/90 backdrop-blur-sm">
               <h3 className="text-white text-sm lg:text-base font-semibold">
-                REVESTIMIENTO ALISTONADO TRADICIONAL
+                REVESTIMIENTO DE MADERA ALISTONADO TRADICIONAL
               </h3>
             </div>
           </div>
@@ -71,7 +71,7 @@ export default function ComparisonSection() {
             </div>
             <div className="absolute bottom-0 left-0 right-0 p-3 lg:p-4 bg-stone-900 backdrop-blur-sm">
               <h3 className="text-white text-sm lg:text-base font-semibold">
-                REVESTIMIENTO ALISTONADO LUMÍNICO
+                REVESTIMIENTO DE MADERA ALISTONADO LUMÍNICO
               </h3>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function ComparisonSection() {
           {/* Traditional Column */}
           <div className="bg-white rounded-xl shadow-lg border border-stone-200 p-6 lg:p-8">
             <h3 className="text-xl lg:text-2xl font-bold text-stone-900 mb-6 text-center">
-              Revestimiento Tradicional
+              Revestimiento de Madera Tradicional
             </h3>
             <ul className="space-y-3">
               {tradicionalFeatures.map((feature, index) => (
@@ -103,7 +103,7 @@ export default function ComparisonSection() {
           {/* Luminous Column */}
           <div className="bg-stone-900 rounded-xl shadow-lg border-2 border-stone-900 p-6 lg:p-8">
             <h3 className="text-xl lg:text-2xl font-bold text-white mb-6 text-center">
-              Revestimiento Lumínico
+              Revestimiento de Madera Lumínico
             </h3>
             <ul className="space-y-3">
               {luminicoFeatures.map((feature, index) => (

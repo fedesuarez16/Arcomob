@@ -13,17 +13,17 @@ export const blogPosts: BlogPost[] = [
   {
     id: 4,
     image: '/media/usecases/luminico.jpg',
-    title: 'Revestimientos Lumínicos: Paneles Alistonados con LED Integrado',
+    title: 'Revestimientos de Madera Lumínicos: Paneles Alistonados con LED Integrado',
     excerpt: 'Qué son los revestimientos con iluminación LED integrada, cómo funcionan los paneles con luces LED y por qué se están convirtiendo en el estándar para locales, oficinas y viviendas de diseño.',
     category: 'Innovación',
     readTime: '8 min lectura',
     date: '22 Ene 2024',
     content: `
-      <h2>Qué son los revestimientos con iluminación</h2>
+      <h2>Qué son los revestimientos de madera con iluminación</h2>
       <p>Los <strong>revestimientos lumínicos</strong> —también llamados <strong>revestimientos con iluminación</strong>, <strong>revestimientos varillados con iluminación</strong> o <strong>revestimientos con luces LED</strong>— son paneles alistonados de madera que incorporan una línea de iluminación LED dentro del propio perfil. En el rubro vas a encontrar "alistonado" y "varillado" usados como sinónimos: describen el mismo perfil de listones paralelos. En lugar de sumar artefactos, apliques o veladores sobre una pared ya revestida, la luz forma parte del revestimiento: el listón y el LED son una sola pieza, instalada de una sola vez.</p>
       <p>El resultado es una pared que cumple dos funciones al mismo tiempo. De día se lee como un revestimiento de madera clásico, con su textura y su ritmo de listones. De noche, los <strong>revestimientos con LED integrados</strong> se convierten en la fuente de luz ambiental del ambiente.</p>
 
-      <h2>Cómo funciona un revestimiento con luces LED integradas</h2>
+      <h2>Cómo funciona un revestimiento de madera con luces LED integradas</h2>
       <p>La lógica constructiva es simple, y por eso funciona tan bien:</p>
       <ul>
         <li><strong>Perfil alistonado:</strong> el listón de madera con un canal donde se aloja la tira LED.</li>
@@ -34,7 +34,7 @@ export const blogPosts: BlogPost[] = [
       </ul>
       <p>Toda la instalación eléctrica queda oculta detrás del revestimiento. Sin cajas a la vista, sin cables colgando, sin canaletas.</p>
 
-      <h2>Revestimientos con iluminación vs iluminación tradicional</h2>
+      <h2>Revestimientos de madera con iluminación vs iluminación tradicional</h2>
       <p>La comparación más honesta no es contra "no tener luz", sino contra resolver la iluminación ambiental con artefactos convencionales.</p>
       <ul>
         <li><strong>Menos intervenciones:</strong> un revestimiento con iluminación integrada reemplaza el trabajo de revestir + instalar apliques + pasar cañerías separadas.</li>
@@ -83,7 +83,7 @@ export const blogPosts: BlogPost[] = [
   {
     id: 1,
     image: '/media/usecases/living.jpg',
-    title: 'Cómo Instalar un Revestimiento Luminoso de Forma Sencilla',
+    title: 'Cómo Instalar un Revestimiento de Madera Luminoso de Forma Sencilla',
     excerpt: 'Guía paso a paso para instalar revestimientos lumínicos con LED integrado en tu hogar o negocio. Aprende los secretos de una instalación profesional y sin complicaciones.',
     category: 'Instalación',
     readTime: '5 min lectura',
@@ -232,7 +232,7 @@ export const blogPosts: BlogPost[] = [
       <h3>Revestimientos Tradicionales</h3>
       <p>Ideal para proyectos que buscan una estética clásica y probada. Perfectos para espacios residenciales y comerciales tradicionales.</p>
 
-      <h3>Revestimientos Lumínicos</h3>
+      <h3>Revestimientos de Madera Lumínicos</h3>
       <p>La opción más innovadora, perfecta para crear ambientes modernos y únicos gracias a su LED integrado. Ideal para espacios comerciales, oficinas y áreas de entretenimiento.</p>
 
       <h3>Molduras</h3>

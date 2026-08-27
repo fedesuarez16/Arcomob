@@ -29,7 +29,7 @@ export default function ProfileDetailSection() {
             Anatomía del producto
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-stone-900 mb-4 leading-tight">
-            El Perfil de un Revestimiento <span className="text-red-600">Lumínico</span> por Dentro
+            El Perfil de un Revestimiento de Madera <span className="text-red-600">Lumínico</span> por Dentro
           </h2>
           <p className="text-base sm:text-lg text-stone-600 leading-relaxed">
             Así se ve un corte de nuestros revestimientos varillados con iluminación: la madera, el canal

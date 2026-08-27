@@ -17,7 +17,7 @@ export default function PortfolioSection() {
           {/* Top Left - Title & Description */}
           <div className="md:col-start-1 md:row-start-1 flex flex-col justify-center pr-4">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
-              Nuestros Proyectos de Revestimientos Alistonados y Lumínicos
+              Nuestros Proyectos de Revestimientos de Madera Alistonados y Lumínicos
             </h2>
             <p className="text-base lg:text-lg text-gray-300 leading-relaxed">
               Explora nuestros proyectos seleccionados con revestimientos de madera y revestimientos con iluminación LED integrada, que demuestran nuestro compromiso con la excelencia en diseño, innovación y satisfacción del cliente.
