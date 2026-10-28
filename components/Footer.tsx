@@ -64,7 +64,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="#beneficios"
+                  href="/#beneficios"
                   className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Beneficios
@@ -72,7 +72,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#aplicaciones"
+                  href="/#aplicaciones"
                   className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Aplicaciones
@@ -80,7 +80,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#proyectos"
+                  href="/#proyectos"
                   className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Proyectos
@@ -88,7 +88,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#proceso"
+                  href="/#proceso"
                   className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Proceso
@@ -96,7 +96,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#contacto"
+                  href="/#contacto"
                   className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Contacto
@@ -111,15 +111,15 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="#revestimientos"
+                  href="/productos/revestimientos-alistonados"
                   className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                 >
-                  Revestimientos
+                  Revestimientos Alistonados
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#molduras"
+                  href="/productos/molduras"
                   className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Molduras
@@ -127,7 +127,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#accesorios"
+                  href="/productos/accesorios"
                   className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Accesorios
@@ -135,7 +135,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="#molduras-luminosas"
+                  href="/productos/molduras-luminosas"
                   className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                 >
                   Molduras Luminosas

@@ -7,8 +7,8 @@ import { getBlogPost } from '@/data/blog'
 
 export default function BlogPostPage() {
   const params = useParams()
-  const id = params.id as string
-  const post = getBlogPost(id)
+  const slug = params.slug as string
+  const post = getBlogPost(slug)
 
   if (!post) {
     return (

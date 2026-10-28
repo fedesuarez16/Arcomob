@@ -71,7 +71,7 @@ export default function HeroSection() {
               <h1 className={`text-2xl sm:text-3xl md:text-4xl lg:text-[3rem] xl:text-[3.4rem] font-bold text-white leading-[1.4] sm:leading-[1.35] lg:leading-[1] transition-all duration-1000 ease-out ${
                 isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
-                Revestimientos de Madera que Transforman{' '}
+                Revestimientos Alistonados de Madera que Transforman{' '}
                 <span className="text-red-600">Espacios</span>
               </h1>
               

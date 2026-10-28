@@ -9,6 +9,8 @@ import WhatsAppButton from '@/components/WhatsAppButton'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  // Base para resolver canonicals y URLs de Open Graph relativas.
+  metadataBase: new URL('https://www.arcomob.com'),
   title: 'Revestimientos de Madera Alistonados y Lumínicos - Transforma tus Espacios',
   description: 'Revestimientos alistonados de madera y revestimientos con iluminación LED integrada: diseño moderno, instalación rápida y terminaciones premium para hogares y comercios.',
   keywords: [
@@ -30,6 +32,21 @@ export const metadata: Metadata = {
   ],
 }
 
+const organizationJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'ArcoMob',
+  url: 'https://www.arcomob.com',
+  logo: 'https://www.arcomob.com/media/logo.png',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+54-9-11-6036-7871',
+    contactType: 'sales',
+    areaServed: 'AR',
+    availableLanguage: 'es',
+  },
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -38,6 +55,10 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={inter.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         {children}
         <Footer />
         <WhatsAppButton />

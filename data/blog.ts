@@ -1,5 +1,7 @@
 export type BlogPost = {
   id: number
+  /** Segmento de URL: /blog/<slug>. Si lo cambiás, sumá un redirect 301 en next.config.js. */
+  slug: string
   image: string
   title: string
   excerpt: string
@@ -11,7 +13,58 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 5,
+    slug: 'revestimiento-alistonado-vs-varillado',
+    image: '/media/usecases/tradicional.jpg',
+    title: 'Revestimiento Alistonado vs Varillado: ¿Son lo Mismo? Diferencias y Cómo Elegir',
+    excerpt: 'Alistonado, varillado, ranurado o panel de listones: qué significa cada nombre, en qué se diferencian realmente los revestimientos de madera y cómo elegir el adecuado para tu pared.',
+    category: 'Guía',
+    readTime: '6 min lectura',
+    date: '22 Oct 2026',
+    content: `
+      <h2>La respuesta corta: sí, son lo mismo</h2>
+      <p>Si estás buscando un <strong>revestimiento alistonado</strong> y en otro lado te ofrecen un <strong>revestimiento varillado</strong>, quedate tranquilo: en la gran mayoría de los casos hablan del mismo producto. Ambos nombres describen un revestimiento de pared formado por <strong>listones de madera colocados en paralelo</strong>, con una separación entre cada uno que genera ritmo, sombra y profundidad.</p>
+      <p>La diferencia está en el vocabulario, no en el producto. "Listón" y "varilla" son dos formas de nombrar una pieza de madera larga y angosta, y cada fabricante, corralón o diseñador usa la que le resulta más natural. También vas a encontrar este revestimiento como <strong>panel ranurado</strong>, <strong>revestimiento de listones</strong> o, en publicaciones en inglés, <em>slat wall</em>.</p>
+
+      <h2>Entonces, ¿qué es lo que realmente cambia entre un revestimiento y otro?</h2>
+      <p>Lo que define el resultado no es el nombre, sino cuatro variables concretas. Cuando compares opciones, fijate en esto:</p>
+      <ul>
+        <li><strong>La madera:</strong> maciza (pino, eucalipto), enchapada en madera natural (paraíso, guayubira, roble americano), maderas especiales (cedro, cancharana, kiri) o particulados como el MDF para pintar.</li>
+        <li><strong>La sección del listón:</strong> el ancho y el espesor de cada pieza. Listones finos dan un aspecto más delicado y moderno; listones anchos, una presencia más rústica.</li>
+        <li><strong>La separación:</strong> cuanto más espacio entre listones, más se marca la sombra y más protagonismo toma la pared de fondo.</li>
+        <li><strong>El formato:</strong> listones sueltos que se colocan uno a uno, o paneles prearmados donde los listones ya vienen fijados a una base. En muchos comercios, el nombre "varillado" se usa sobre todo para estos paneles prearmados.</li>
+      </ul>
+
+      <h2>Alistonado tradicional vs alistonado lumínico</h2>
+      <p>Hay una diferencia que sí cambia el producto: si el revestimiento <strong>incorpora iluminación o no</strong>. Un revestimiento alistonado tradicional es solo madera. Un <a href="/productos/revestimientos-luminicos">revestimiento lumínico</a> suma un canal fresado en el propio panel, con perfil de aluminio, difusor y luces LED integradas.</p>
+      <p>El resultado es una pared que de día se ve como un alistonado clásico y de noche funciona como fuente de luz ambiental, sin apliques ni cables a la vista.</p>
+
+      <h2>¿Dónde conviene usar un revestimiento alistonado?</h2>
+      <ul>
+        <li><strong>Living:</strong> como respaldo de TV o para destacar una pared principal.</li>
+        <li><strong>Dormitorio:</strong> como respaldo de cama, de piso a techo.</li>
+        <li><strong>Oficinas y recepciones:</strong> aporta calidez y ayuda a mejorar la acústica del espacio.</li>
+        <li><strong>Locales y gastronomía:</strong> genera identidad visual con poca obra.</li>
+        <li><strong>Exteriores:</strong> en fachadas, galerías y quinchos, siempre con madera preparada para la intemperie, como el pino impregnado.</li>
+      </ul>
+
+      <h2>Cómo elegir el revestimiento alistonado adecuado</h2>
+      <h3>1. Definí si es para interior o exterior</h3>
+      <p>Es la primera decisión, porque descarta materiales. Para exterior necesitás madera tratada para la humedad y el sol; en interior tenés todas las opciones abiertas.</p>
+      <h3>2. Elegí la terminación que buscás</h3>
+      <p>Si querés la veta natural de la madera, andá por macizos o enchapados. Si preferís un color liso que combine con el resto del ambiente, el MDF para pintar es la opción más versátil.</p>
+      <h3>3. Decidí si querés iluminación integrada</h3>
+      <p>Si la pared va a ser el punto focal del ambiente, la versión lumínica resuelve decoración e iluminación en una sola instalación.</p>
+      <h3>4. Medí la pared</h3>
+      <p>Con el ancho y el alto de la superficie ya se puede calcular cuántos listones o paneles necesitás y armar un presupuesto preciso.</p>
+
+      <h2>Conclusión</h2>
+      <p>Alistonado o varillado: el nombre no importa, lo que importa es la madera, la sección, la separación y si querés sumar luz. Si ya tenés las medidas de tu pared, mirá los <a href="/productos/revestimientos-alistonados">revestimientos alistonados</a> que trabajamos o <a href="/cotizar">pedí tu presupuesto</a> y te armamos una propuesta a medida.</p>
+    `
+  },
+  {
     id: 4,
+    slug: 'revestimientos-luminicos-paneles-alistonados-led',
     image: '/media/usecases/luminico.jpg',
     title: 'Revestimientos de Madera Lumínicos: Paneles Alistonados con LED Integrado',
     excerpt: 'Qué son los revestimientos con iluminación LED integrada, cómo funcionan los paneles con luces LED y por qué se están convirtiendo en el estándar para locales, oficinas y viviendas de diseño.',
@@ -82,6 +135,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 1,
+    slug: 'como-instalar-revestimiento-madera-luminoso',
     image: '/media/usecases/living.jpg',
     title: 'Cómo Instalar un Revestimiento de Madera Luminoso de Forma Sencilla',
     excerpt: 'Guía paso a paso para instalar revestimientos lumínicos con LED integrado en tu hogar o negocio. Aprende los secretos de una instalación profesional y sin complicaciones.',
@@ -132,6 +186,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 2,
+    slug: 'ventajas-revestimientos-alistonados',
     image: '/media/usecases/dormitorio.jpg',
     title: 'Ventajas de los Revestimientos Alistonados vs Otras Opciones',
     excerpt: 'Descubre por qué los revestimientos alistonados son la mejor opción para transformar tus espacios. Comparativa detallada con otras alternativas del mercado.',
@@ -188,6 +243,7 @@ export const blogPosts: BlogPost[] = [
   },
   {
     id: 3,
+    slug: 'como-elegir-revestimiento-de-madera',
     image: '/media/usecases/Gemini_Generated_Image_5w8nql5w8nql5w8n.jpg',
     title: 'Cómo Elegir el Revestimiento Perfecto para tu Espacio',
     excerpt: 'Consejos profesionales para seleccionar el revestimiento ideal según el tipo de ambiente, estilo decorativo y necesidades específicas de tu proyecto.',
@@ -276,7 +332,6 @@ export const blogPosts: BlogPost[] = [
   }
 ]
 
-export function getBlogPost(id: string | number): BlogPost | undefined {
-  const numericId = typeof id === 'number' ? id : parseInt(id, 10)
-  return blogPosts.find((post) => post.id === numericId)
+export function getBlogPost(slug: string): BlogPost | undefined {
+  return blogPosts.find((post) => post.slug === slug)
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function ComparisonSection() {
   const tradicionalFeatures = [
@@ -52,7 +53,9 @@ export default function ComparisonSection() {
             </div>
             <div className="absolute bottom-0 left-0 right-0 p-3 lg:p-4 bg-stone-900/90 backdrop-blur-sm">
               <h3 className="text-white text-sm lg:text-base font-semibold">
-                REVESTIMIENTO DE MADERA ALISTONADO TRADICIONAL
+                <Link href="/productos/revestimientos-alistonados" className="hover:underline">
+                  REVESTIMIENTO DE MADERA ALISTONADO TRADICIONAL
+                </Link>
               </h3>
             </div>
           </div>

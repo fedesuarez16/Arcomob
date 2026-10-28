@@ -61,7 +61,7 @@ export default function ContactSection() {
           <div className="hidden lg:block relative h-full min-h-[500px] rounded-2xl overflow-hidden shadow-2xl">
             <Image
               src="/media/usecases/living.jpg"
-              alt="Contacto"
+              alt="Living con revestimiento alistonado de madera"
               fill
               className="object-cover"
               quality={90}
