@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -200,8 +200,9 @@ type RevestimientoItem = {
   description?: string
 }
 
+/** Cada categoría se muestra como un carrusel propio, en este orden. */
 const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
-  'Enchapados de Madera Natural': [
+  'Enchapados Naturales': [
 
     
     {
@@ -239,7 +240,23 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
    
     
   ],
-  'Revestimientos Especiales': [
+  // Incluye las ex categorías "Especiales" y "Exterior": todas son madera maciza.
+  'Maderas Macizas': [
+    {
+      name: 'pino',
+      imagenPerfil: '/media/revestimientos/macizos/pino/perfil.jpg',
+      imagenProducto: '/media/revestimientos/macizos/pino/detalle.jpg'
+    },
+    {
+      name: 'eucalipto',
+      imagenPerfil: '/media/revestimientos/macizos/eucalipto/perfil.jpg',
+      imagenProducto: '/media/revestimientos/macizos/eucalipto/detalle.jpg'
+    },
+    {
+      name: 'pino impregnado para exteriores',
+      imagenPerfil: '/media/revestimientos/pino impregnado/ChatGPT Image Apr 30, 2026, 02_11_29 AM.jpg',
+      imagenProducto: '/media/revestimientos/pino impregnado/ChatGPT Image Apr 30, 2026, 02_11_29 AM.jpg'
+    },
     {
       name: 'Cancharana',
       imagenPerfil: '/media/revestimientos/especiales/cancharanaperfil.jpg',
@@ -281,26 +298,6 @@ const revestimientosSubcategorias: Record<string, RevestimientoItem[]> = {
       imagenProducto: '/media/revestimientos/particuladoosb.jpg',
     },
   ],
-  Macizos: [
-    {
-      name: 'pino',
-      imagenPerfil: '/media/revestimientos/macizos/pino/perfil.jpg',
-      imagenProducto: '/media/revestimientos/macizos/pino/detalle.jpg'
-    },
-    {
-      name: 'eucalipto',
-      imagenPerfil: '/media/revestimientos/macizos/eucalipto/perfil.jpg',
-      imagenProducto: '/media/revestimientos/macizos/eucalipto/detalle.jpg'
-    }
-
-  ],
-  'Revestimiento para Exterior': [
-    {
-      name: 'pino impregnado para exteriores',
-      imagenPerfil: '/media/revestimientos/pino impregnado/ChatGPT Image Apr 30, 2026, 02_11_29 AM.jpg',
-      imagenProducto: '/media/revestimientos/pino impregnado/ChatGPT Image Apr 30, 2026, 02_11_29 AM.jpg'
-    }
-  ]
 }
 
 const accesoriosCatalog: { name: string; image: string; catalogImages?: string[] }[] = [
@@ -425,12 +422,119 @@ const products = {
   }
 }
 
+function RevestimientoCarousel({
+  categoria,
+  items,
+  onOpen,
+}: {
+  categoria: string
+  items: RevestimientoItem[]
+  onOpen: (slides: CatalogLightboxSlide[]) => void
+}) {
+  const trackRef = useRef<HTMLDivElement>(null)
+
+  const scroll = (direction: 1 | -1) => {
+    const track = trackRef.current
+    if (!track) return
+    track.scrollBy({ left: direction * track.clientWidth * 0.9, behavior: 'smooth' })
+  }
+
+  return (
+    <div className="mb-14 last:mb-0">
+      <div className="flex items-end justify-between mb-5 gap-4">
+        <h3 className="text-2xl lg:text-3xl font-bold text-stone-900">{categoria}</h3>
+        <div className="flex gap-2 flex-shrink-0">
+          {([-1, 1] as const).map((direction) => (
+            <button
+              key={direction}
+              type="button"
+              onClick={() => scroll(direction)}
+              aria-label={`${direction === -1 ? 'Anteriores' : 'Siguientes'}: ${categoria}`}
+              className="w-10 h-10 rounded-full bg-white border border-stone-300 text-stone-700 flex items-center justify-center hover:bg-stone-100 transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d={direction === -1 ? 'M15 19l-7-7 7-7' : 'M9 5l7 7-7 7'}
+                />
+              </svg>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div
+        ref={trackRef}
+        className="flex gap-2 overflow-x-auto snap-x snap-mandatory scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {items.map((item, index) => {
+          const tieneDosVistas = item.imagenPerfil !== item.imagenProducto
+          const labelAmpliar = item.name?.trim() || `${categoria} — ${index + 1}`
+          return (
+            <button
+              type="button"
+              key={`${item.name}-${index}`}
+              className="group relative aspect-[3/4] w-[75%] sm:w-[45%] lg:w-[calc((100%-1rem)/3)] flex-shrink-0 snap-start overflow-hidden rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 cursor-zoom-in border border-stone-200 hover:border-stone-300 text-left bg-stone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
+              onClick={() =>
+                onOpen(
+                  tieneDosVistas
+                    ? [
+                        { src: item.imagenPerfil, caption: `${labelAmpliar} — perfil` },
+                        { src: item.imagenProducto, caption: `${labelAmpliar} — detalle` }
+                      ]
+                    : [{ src: item.imagenPerfil, caption: labelAmpliar }]
+                )
+              }
+              aria-label={`Ampliar imagen: ${labelAmpliar}`}
+            >
+              <Image
+                src={item.imagenPerfil}
+                alt={`Revestimiento alistonado de ${item.name}${tieneDosVistas ? ' - perfil' : ''}`}
+                fill
+                className={`object-cover transition-all duration-700 ${
+                  tieneDosVistas
+                    ? 'opacity-100 group-hover:opacity-0 group-hover:scale-110'
+                    : 'group-hover:scale-110'
+                }`}
+                sizes="(max-width: 640px) 75vw, (max-width: 1024px) 45vw, 33vw"
+                quality={85}
+              />
+              {tieneDosVistas && (
+                <Image
+                  src={item.imagenProducto}
+                  alt={`Revestimiento alistonado de ${item.name} - detalle`}
+                  fill
+                  className="object-cover absolute inset-0 transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-110"
+                  sizes="(max-width: 640px) 75vw, (max-width: 1024px) 45vw, 33vw"
+                  quality={85}
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent transition-opacity duration-500 group-hover:from-black/90" />
+              <div className="absolute inset-x-0 bottom-0 p-5 lg:p-6">
+                <h4 className="text-lg lg:text-2xl font-semibold text-white leading-snug drop-shadow-md transition-colors duration-300 group-hover:text-red-300">
+                  {item.name}
+                </h4>
+                {item.description && (
+                  <p className="mt-1 text-xs sm:text-sm text-white/85 leading-relaxed line-clamp-2">
+                    {item.description}
+                  </p>
+                )}
+                <div className="mt-2 h-0.5 w-10 bg-red-600 transition-all duration-500 group-hover:w-20" />
+              </div>
+            </button>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
 export default function ProductPage() {
   const params = useParams()
   const slug = params.slug as string
   const product = products[slug as keyof typeof products]
-  const revestimientosCategorias = Object.keys(revestimientosSubcategorias)
-  const [selectedRevestimientoCategoria, setSelectedRevestimientoCategoria] = useState<string | null>(null)
   const [selectedMoldurasCategoria, setSelectedMoldurasCategoria] = useState<string | null>(null)
   const [catalogImageLightbox, setCatalogImageLightbox] = useState<CatalogLightboxSlide[] | null>(null)
   /** Índice de lámina ampliada con zoom en el lightbox de catálogo (clic para alternar). */
@@ -741,134 +845,15 @@ export default function ProductPage() {
               <p className="text-center text-stone-600 mb-12 text-lg">
                 Explora nuestra línea completa de revestimientos alistonados
               </p>
-              {selectedRevestimientoCategoria && (
-                <div className="mb-6 flex justify-center">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setCatalogImageLightbox(null)
-                      setSelectedRevestimientoCategoria(null)
-                    }}
-                    className="inline-flex items-center gap-2 bg-white border border-stone-300 text-stone-700 px-5 py-2.5 rounded-full text-sm font-medium hover:bg-stone-100 transition-colors"
-                  >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
-                    Volver a subcategorías
-                  </button>
-                </div>
-              )}
+              {Object.entries(revestimientosSubcategorias).map(([categoria, items]) => (
+                <RevestimientoCarousel
+                  key={categoria}
+                  categoria={categoria}
+                  items={items}
+                  onOpen={setCatalogImageLightbox}
+                />
+              ))}
             </div>
-            {!selectedRevestimientoCategoria && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                {revestimientosCategorias.map((categoria, index) => {
-                  const preview = revestimientosSubcategorias[categoria]?.[0]
-                  return (
-                    <button
-                      type="button"
-                      key={index}
-                      onClick={() => setSelectedRevestimientoCategoria(categoria)}
-                      className="group relative aspect-[3/4] overflow-hidden rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer border border-stone-200 hover:border-stone-300 text-left w-full bg-stone-100"
-                    >
-                      {preview ? (
-                        <Image
-                          src={preview.imagenPerfil}
-                          alt={categoria}
-                          fill
-                          className="object-cover transition-transform duration-700 group-hover:scale-110"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          quality={85}
-                        />
-                      ) : (
-                        <div className="absolute inset-0 flex items-center justify-center bg-stone-200 text-stone-500 text-xs sm:text-sm p-4 text-center">
-                          Contenido próximamente
-                        </div>
-                      )}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent transition-opacity duration-500 group-hover:from-black/90" />
-                      <div className="absolute inset-x-0 bottom-0 p-5 lg:p-6">
-                        <h3 className="text-lg lg:text-2xl font-semibold text-white leading-snug drop-shadow-md transition-colors duration-300 group-hover:text-red-300">
-                          {categoria}
-                        </h3>
-                        <div className="mt-2 h-0.5 w-10 bg-red-600 transition-all duration-500 group-hover:w-20" />
-                      </div>
-                    </button>
-                  )
-                })}
-              </div>
-            )}
-
-            {selectedRevestimientoCategoria && (
-              <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                  {revestimientosSubcategorias[selectedRevestimientoCategoria].map((item, index) => {
-                    const tieneDosVistas = item.imagenPerfil !== item.imagenProducto
-                    const labelAmpliar =
-                      item.name?.trim() ||
-                      `${selectedRevestimientoCategoria} — ${index + 1}`
-                    return (
-                      <button
-                        type="button"
-                        key={index}
-                        className="group relative aspect-[3/4] overflow-hidden rounded-lg shadow-md hover:shadow-2xl transition-all duration-500 cursor-zoom-in border border-stone-200 hover:border-stone-300 text-left w-full bg-stone-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-600 focus-visible:ring-offset-2"
-                        onClick={() => {
-                          if (tieneDosVistas) {
-                            setCatalogImageLightbox([
-                              { src: item.imagenPerfil, caption: `${labelAmpliar} — perfil` },
-                              { src: item.imagenProducto, caption: `${labelAmpliar} — detalle` }
-                            ])
-                          } else {
-                            setCatalogImageLightbox([
-                              { src: item.imagenPerfil, caption: labelAmpliar }
-                            ])
-                          }
-                        }}
-                        aria-label={`Ampliar imagen: ${labelAmpliar}`}
-                      >
-                        <Image
-                          src={item.imagenPerfil}
-                          alt={tieneDosVistas ? `${item.name} - perfil` : item.name}
-                          fill
-                          className={`object-cover transition-all duration-700 ${
-                            tieneDosVistas
-                              ? 'opacity-100 group-hover:opacity-0 group-hover:scale-110'
-                              : 'group-hover:scale-110'
-                          }`}
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          quality={85}
-                        />
-                        {tieneDosVistas && (
-                          <Image
-                            src={item.imagenProducto}
-                            alt={item.name}
-                            fill
-                            className="object-cover absolute inset-0 transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-110"
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            quality={85}
-                          />
-                        )}
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent transition-opacity duration-500 group-hover:from-black/90" />
-                        <div className="absolute inset-x-0 bottom-0 p-5 lg:p-6">
-                          <h3 className="text-lg lg:text-2xl font-semibold text-white leading-snug drop-shadow-md transition-colors duration-300 group-hover:text-red-300">
-                            {item.name}
-                          </h3>
-                          {item.description && (
-                            <p className="mt-1 text-xs sm:text-sm text-white/85 leading-relaxed line-clamp-2">
-                              {item.description}
-                            </p>
-                          )}
-                          <div className="mt-2 h-0.5 w-10 bg-red-600 transition-all duration-500 group-hover:w-20" />
-                        </div>
-                      </button>
-                    )
-                  })}
-                </div>
-                {revestimientosSubcategorias[selectedRevestimientoCategoria].length === 0 && (
-                  <p className="text-center text-stone-500 mt-8">
-                    Esta subcategoría aún no tiene productos cargados.
-                  </p>
-                )}
-              </>
-            )}
           </div>
         </section>
       )}
